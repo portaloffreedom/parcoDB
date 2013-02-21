@@ -4,6 +4,12 @@
  */
 package parcodb;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+import parcodb.database.PostgreSQL;
+
 /**
  *
  * @author matteo
@@ -14,6 +20,25 @@ public class ParcoDB {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Logger.getLogger(ParcoDB.class.getName()).setLevel(Level.ALL); 
+        
+        try {
+            Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[1] Loading Driver...");
+            PostgreSQL database = new PostgreSQL();
+            Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[1] Driver Loaded");
+            
+            Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[2] Connecting...");
+            database.connect();
+            Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[2] Connected");
+            
+            Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[3] Closing...");
+            database.close();
+            Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[3] Closed");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ParcoDB.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ParcoDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
