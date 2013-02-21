@@ -6,9 +6,9 @@ package parcodb;
 
 import java.sql.SQLException;
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import parcodb.database.PostgreSQL;
+import parcodb.gui.MainGUI;
 
 /**
  *
@@ -40,5 +40,8 @@ public class ParcoDB {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ParcoDB.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        MainGUI gui = new MainGUI(args);
+        gui.exec();
     }
 }
