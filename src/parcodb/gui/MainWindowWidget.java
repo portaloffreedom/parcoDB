@@ -4,8 +4,14 @@
  */
 package parcodb.gui;
 
-import com.trolltech.qt.core.*;
-import com.trolltech.qt.gui.*;
+import com.trolltech.qt.core.Qt;
+import com.trolltech.qt.gui.QApplication;
+import com.trolltech.qt.gui.QLCDNumber;
+import com.trolltech.qt.gui.QPushButton;
+import com.trolltech.qt.gui.QSlider;
+import com.trolltech.qt.gui.QVBoxLayout;
+import com.trolltech.qt.gui.QWidget;
+
 
 /**
  *
