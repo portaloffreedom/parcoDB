@@ -36,12 +36,18 @@ public class ParcoDB {
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[3] Closed");
             
         } catch (SQLException ex) {
+            databaseError();
             Logger.getLogger(ParcoDB.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
+            databaseError();
             Logger.getLogger(ParcoDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         MainGUI gui = new MainGUI(args);
         gui.exec();
+    }
+    
+    private static void databaseError() {
+        Logger.getLogger(ParcoDB.class.getName()).log(Level.SEVERE, "###Connessione al database non riscita");
     }
 }
