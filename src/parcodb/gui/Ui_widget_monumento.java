@@ -13,26 +13,26 @@ import com.trolltech.qt.gui.*;
 public class Ui_widget_monumento implements com.trolltech.qt.QUiForm<QWidget>
 {
     public QVBoxLayout verticalLayout;
-    public QLabel label_monumento;
-    public QPlainTextEdit plainTextEdit_monumento;
+    public QLabel label;
+    public QPlainTextEdit plainTextEdit;
 
     public Ui_widget_monumento() { super(); }
 
     public void setupUi(QWidget widget_monumento)
     {
         widget_monumento.setObjectName("widget_monumento");
-        widget_monumento.resize(new QSize(485, 371).expandedTo(widget_monumento.minimumSizeHint()));
+        widget_monumento.resize(new QSize(961, 637).expandedTo(widget_monumento.minimumSizeHint()));
         verticalLayout = new QVBoxLayout(widget_monumento);
         verticalLayout.setObjectName("verticalLayout");
-        label_monumento = new QLabel(widget_monumento);
-        label_monumento.setObjectName("label_monumento");
+        label = new QLabel(widget_monumento);
+        label.setObjectName("label");
 
-        verticalLayout.addWidget(label_monumento);
+        verticalLayout.addWidget(label);
 
-        plainTextEdit_monumento = new QPlainTextEdit(widget_monumento);
-        plainTextEdit_monumento.setObjectName("plainTextEdit_monumento");
+        plainTextEdit = new QPlainTextEdit(widget_monumento);
+        plainTextEdit.setObjectName("plainTextEdit");
 
-        verticalLayout.addWidget(plainTextEdit_monumento);
+        verticalLayout.addWidget(plainTextEdit);
 
         retranslateUi(widget_monumento);
 
@@ -42,7 +42,7 @@ public class Ui_widget_monumento implements com.trolltech.qt.QUiForm<QWidget>
     void retranslateUi(QWidget widget_monumento)
     {
         widget_monumento.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("widget_monumento", "Form", null));
-        label_monumento.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_monumento", "Descrizione storica", null));
+        label.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_monumento", "Descrizione storica", null));
     } // retranslateUi
 
 }

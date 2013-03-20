@@ -24,9 +24,11 @@ public class Ui_widget_inserimento implements com.trolltech.qt.QUiForm<QWidget>
     public QPushButton bottone_struttura;
     public QPushButton bottone_iniziativa;
     public QPushButton bottone_terreno;
-    public QPushButton bottone_itinerario;
+    public QPushButton bottone_tappa;
+    public QPushButton bottone_sentiero;
+    public QPushButton bottone_comune;
     public QSpacerItem verticalSpacer;
-    public QPushButton bottone_salva;
+    public QPushButton bottone_inserisci;
 
     public Ui_widget_inserimento() { super(); }
 
@@ -77,33 +79,50 @@ public class Ui_widget_inserimento implements com.trolltech.qt.QUiForm<QWidget>
         verticalLayout_2.setObjectName("verticalLayout_2");
         bottone_struttura = new QPushButton(widget_1);
         bottone_struttura.setObjectName("bottone_struttura");
+        bottone_struttura.setCheckable(true);
+        bottone_struttura.setAutoExclusive(false);
 
         verticalLayout_2.addWidget(bottone_struttura);
 
         bottone_iniziativa = new QPushButton(widget_1);
         bottone_iniziativa.setObjectName("bottone_iniziativa");
+        bottone_iniziativa.setCheckable(true);
 
         verticalLayout_2.addWidget(bottone_iniziativa);
 
         bottone_terreno = new QPushButton(widget_1);
         bottone_terreno.setObjectName("bottone_terreno");
+        bottone_terreno.setCheckable(true);
 
         verticalLayout_2.addWidget(bottone_terreno);
 
-        bottone_itinerario = new QPushButton(widget_1);
-        bottone_itinerario.setObjectName("bottone_itinerario");
+        bottone_tappa = new QPushButton(widget_1);
+        bottone_tappa.setObjectName("bottone_tappa");
+        bottone_tappa.setCheckable(true);
 
-        verticalLayout_2.addWidget(bottone_itinerario);
+        verticalLayout_2.addWidget(bottone_tappa);
+
+        bottone_sentiero = new QPushButton(widget_1);
+        bottone_sentiero.setObjectName("bottone_sentiero");
+        bottone_sentiero.setCheckable(true);
+
+        verticalLayout_2.addWidget(bottone_sentiero);
+
+        bottone_comune = new QPushButton(widget_1);
+        bottone_comune.setObjectName("bottone_comune");
+        bottone_comune.setCheckable(true);
+
+        verticalLayout_2.addWidget(bottone_comune);
 
         verticalSpacer = new QSpacerItem(20, 40, com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding);
 
         verticalLayout_2.addItem(verticalSpacer);
 
-        bottone_salva = new QPushButton(widget_1);
-        bottone_salva.setObjectName("bottone_salva");
-        bottone_salva.setEnabled(false);
+        bottone_inserisci = new QPushButton(widget_1);
+        bottone_inserisci.setObjectName("bottone_inserisci");
+        bottone_inserisci.setEnabled(false);
 
-        verticalLayout_2.addWidget(bottone_salva);
+        verticalLayout_2.addWidget(bottone_inserisci);
 
 
         horizontalLayout_3.addWidget(widget_1);
@@ -119,8 +138,10 @@ public class Ui_widget_inserimento implements com.trolltech.qt.QUiForm<QWidget>
         bottone_struttura.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_inserimento", "Struttura", null));
         bottone_iniziativa.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_inserimento", "Iniziativa", null));
         bottone_terreno.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_inserimento", "Terreno", null));
-        bottone_itinerario.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_inserimento", "Itinerario", null));
-        bottone_salva.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_inserimento", "SALVA", null));
+        bottone_tappa.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_inserimento", "Tappa", null));
+        bottone_sentiero.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_inserimento", "Sentiero", null));
+        bottone_comune.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_inserimento", "Comune", null));
+        bottone_inserisci.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_inserimento", "INSERISCI", null));
     } // retranslateUi
 
 }

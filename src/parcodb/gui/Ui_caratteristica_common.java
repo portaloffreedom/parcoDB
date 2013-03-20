@@ -25,6 +25,10 @@ public class Ui_caratteristica_common implements com.trolltech.qt.QUiForm<QWidge
     public QHBoxLayout horizontalLayout_2;
     public QLabel label_nome;
     public QLineEdit lineEdit_nome;
+    public QWidget widget_2;
+    public QHBoxLayout horizontalLayout_5;
+    public QLabel label;
+    public QComboBox comboBox_comune;
     public QSpacerItem verticalSpacer;
     public QWidget widget_vicinanza;
     public QVBoxLayout verticalLayout_2;
@@ -87,6 +91,23 @@ public class Ui_caratteristica_common implements com.trolltech.qt.QUiForm<QWidge
 
         verticalLayout.addWidget(widget);
 
+        widget_2 = new QWidget(widget_tipologia);
+        widget_2.setObjectName("widget_2");
+        horizontalLayout_5 = new QHBoxLayout(widget_2);
+        horizontalLayout_5.setObjectName("horizontalLayout_5");
+        label = new QLabel(widget_2);
+        label.setObjectName("label");
+
+        horizontalLayout_5.addWidget(label);
+
+        comboBox_comune = new QComboBox(widget_2);
+        comboBox_comune.setObjectName("comboBox_comune");
+
+        horizontalLayout_5.addWidget(comboBox_comune);
+
+
+        verticalLayout.addWidget(widget_2);
+
         verticalSpacer = new QSpacerItem(20, 284, com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding);
 
         verticalLayout.addItem(verticalSpacer);
@@ -125,6 +146,7 @@ public class Ui_caratteristica_common implements com.trolltech.qt.QUiForm<QWidge
         caratteristica_common.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("caratteristica_common", "Form", null));
         label_tipo.setText(com.trolltech.qt.core.QCoreApplication.translate("caratteristica_common", "Tipologia", null));
         label_nome.setText(com.trolltech.qt.core.QCoreApplication.translate("caratteristica_common", "Nome", null));
+        label.setText(com.trolltech.qt.core.QCoreApplication.translate("caratteristica_common", "Comune", null));
         label_vicinanza.setText(com.trolltech.qt.core.QCoreApplication.translate("caratteristica_common", "Vicino a:", null));
     } // retranslateUi
 

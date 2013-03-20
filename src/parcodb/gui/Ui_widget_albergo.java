@@ -23,6 +23,10 @@ public class Ui_widget_albergo implements com.trolltech.qt.QUiForm<QWidget>
     public QVBoxLayout verticalLayout_2;
     public QLabel label_posti;
     public QLineEdit lineEdit_posti;
+    public QWidget widget_2;
+    public QVBoxLayout verticalLayout_4;
+    public QLabel label;
+    public QLineEdit lineEdit_telefono;
     public QSpacerItem horizontalSpacer;
     public QSpacerItem verticalSpacer;
 
@@ -31,7 +35,7 @@ public class Ui_widget_albergo implements com.trolltech.qt.QUiForm<QWidget>
     public void setupUi(QWidget widget_albergo)
     {
         widget_albergo.setObjectName("widget_albergo");
-        widget_albergo.resize(new QSize(333, 185).expandedTo(widget_albergo.minimumSizeHint()));
+        widget_albergo.resize(new QSize(543, 185).expandedTo(widget_albergo.minimumSizeHint()));
         QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
         sizePolicy.setHorizontalStretch((byte)0);
         sizePolicy.setVerticalStretch((byte)0);
@@ -43,7 +47,6 @@ public class Ui_widget_albergo implements com.trolltech.qt.QUiForm<QWidget>
         widget = new QWidget(widget_albergo);
         widget.setObjectName("widget");
         horizontalLayout_2 = new QHBoxLayout(widget);
-        horizontalLayout_2.setMargin(9);
         horizontalLayout_2.setObjectName("horizontalLayout_2");
         widget_stelle = new QWidget(widget);
         widget_stelle.setObjectName("widget_stelle");
@@ -89,6 +92,24 @@ public class Ui_widget_albergo implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_2.addWidget(widget_posti);
 
+        widget_2 = new QWidget(widget);
+        widget_2.setObjectName("widget_2");
+        verticalLayout_4 = new QVBoxLayout(widget_2);
+        verticalLayout_4.setMargin(0);
+        verticalLayout_4.setObjectName("verticalLayout_4");
+        label = new QLabel(widget_2);
+        label.setObjectName("label");
+
+        verticalLayout_4.addWidget(label);
+
+        lineEdit_telefono = new QLineEdit(widget_2);
+        lineEdit_telefono.setObjectName("lineEdit_telefono");
+
+        verticalLayout_4.addWidget(lineEdit_telefono);
+
+
+        horizontalLayout_2.addWidget(widget_2);
+
         horizontalSpacer = new QSpacerItem(40, 20, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Minimum);
 
         horizontalLayout_2.addItem(horizontalSpacer);
@@ -110,6 +131,7 @@ public class Ui_widget_albergo implements com.trolltech.qt.QUiForm<QWidget>
         widget_albergo.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("widget_albergo", "Form", null));
         label_stelle.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_albergo", "Stelle", null));
         label_posti.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_albergo", "Posti", null));
+        label.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_albergo", "Numero di Telefono", null));
     } // retranslateUi
 
 }
