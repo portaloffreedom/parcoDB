@@ -44,6 +44,7 @@ public class ParcoDB {
         }
         
         MainGUI gui = new MainGUI(args);
+        gui.SetupUi();
         gui.exec();
     }
     
