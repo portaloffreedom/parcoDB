@@ -109,7 +109,7 @@ public class Ui_widget_inserimento implements com.trolltech.qt.QUiForm<QWidget>
 
         bottone_inserisci = new QPushButton(widget_1);
         bottone_inserisci.setObjectName("bottone_inserisci");
-        bottone_inserisci.setEnabled(false);
+        bottone_inserisci.setEnabled(true);
 
         verticalLayout_2.addWidget(bottone_inserisci);
 

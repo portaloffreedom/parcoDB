@@ -5,6 +5,7 @@ package parcodb.gui;
 
 import com.trolltech.qt.QUiForm;
 import com.trolltech.qt.gui.QApplication;
+import com.trolltech.qt.gui.QDialog;
 import com.trolltech.qt.gui.QMainWindow;
 import com.trolltech.qt.gui.QWidget;
 
@@ -18,6 +19,7 @@ public class MainGUI {
     private Ui_widget_inserimento inserimento;
     private Ui_caratteristica_common car_com;
     private Ui_iniziativa_common ini_com;
+    private Ui_Dialog_errore_nodati dialog_errore_nodati;
     private QWidget wid_central;
     private QMainWindow qMainWindow;
     
@@ -32,7 +34,7 @@ public class MainGUI {
         inserimento = new Ui_widget_inserimento();
         car_com = new Ui_caratteristica_common();
         ini_com = new Ui_iniziativa_common();
-
+        dialog_errore_nodati = new Ui_Dialog_errore_nodati();
         wid_central = new QWidget();
         qMainWindow = new QMainWindow();
     }
@@ -43,6 +45,12 @@ public class MainGUI {
         mainui.setupUi(qMainWindow);
         qMainWindow.setCentralWidget(wid_central);
         qMainWindow.show();
+    }
+    
+    public void showdialog(){
+        QDialog dialog = new QDialog(qMainWindow);
+        dialog_errore_nodati.setupUi(dialog);
+        dialog.show();
     }
     
     // costruttori personalizzati per alcuni widget
@@ -135,6 +143,7 @@ public class MainGUI {
         inserimento.bottone_sentiero.clicked.connect(this, "set_sentiero()");
         inserimento.bottone_tappa.clicked.connect(this, "set_tappa()");
         inserimento.bottone_comune.clicked.connect(this, "set_comune()");
+        inserimento.bottone_inserisci.clicked.connect(this, "showdialog()");
     }
     
 //impostatori di form diversi nell'interfaccia da usare negli eventi
