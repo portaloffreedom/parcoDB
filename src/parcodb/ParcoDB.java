@@ -35,7 +35,7 @@ public class ParcoDB {
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[2] Connected");
             
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[3] Querying...");
-            conn.insertIntoLago1("lago Laogai", 2.33f);
+            //conn.insertIntoLago1("lago Laogai", 2.33f);
             conn.getCaratteristiche();
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[3] Query done");
             
