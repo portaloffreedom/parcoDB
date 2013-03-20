@@ -7,6 +7,7 @@ package parcodb;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import parcodb.database.DatabaseConnection;
 import parcodb.database.DatabaseConnector;
 import parcodb.database.MySQLconnector;
 import parcodb.database.PostgreSQLconnector;
@@ -30,11 +31,16 @@ public class ParcoDB {
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[1] Driver Loaded");
             
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[2] Connecting...");
-            database.connect();
+            DatabaseConnection conn = database.connect();
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[2] Connected");
             
+            Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[3] Querying...");
+            conn.insertIntoLago1("lago Laogai", 2.33f);
+            conn.getCaratteristiche();
+            Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[3] Query done");
+            
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[3] Closing...");
-            database.close();
+            conn.close();
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[3] Closed");
             
         } catch (SQLException ex) {

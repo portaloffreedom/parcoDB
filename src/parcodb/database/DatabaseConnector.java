@@ -26,15 +26,12 @@ abstract public class DatabaseConnector {
         this.port = port;
     }
     
-    public void connect(String username, String password) throws SQLException {
+    public DatabaseConnection connect(String username, String password) throws SQLException {
         con = DriverManager.getConnection(databseAddress,username,password);
+        return new DatabaseConnection(con);
     }
     
-    abstract public void connect() throws SQLException;
-    
-    public void close() throws SQLException {
-        con.close();
-    }
+    abstract public DatabaseConnection connect() throws SQLException;
     
     protected String genereteAddr(String databaseName) {
         this.databseAddress = "jdbc:"+databaseName+"://"+databseIPAddress+':'+port+"/bdati";

@@ -26,8 +26,8 @@ public class MySQLconnector extends DatabaseConnector{
     }
     
     @Override
-    public void connect() throws SQLException {
-        super.connect("bdati", "transformer");
+    public DatabaseConnection connect() throws SQLException {
+        return (super.connect("bdati", "transformer"));
     }
     
 }

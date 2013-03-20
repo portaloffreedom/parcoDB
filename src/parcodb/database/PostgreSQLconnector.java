@@ -24,8 +24,8 @@ public class PostgreSQLconnector extends DatabaseConnector {
     }
 
     @Override
-    public void connect() throws SQLException {
-        super.connect("admin", "fillo89");
+    public DatabaseConnection connect() throws SQLException {
+        return (super.connect("admin", "fillo89"));
     }
     
 
