@@ -14,11 +14,8 @@ public class Ui_widget_inserimento implements com.trolltech.qt.QUiForm<QWidget>
 {
     public QHBoxLayout horizontalLayout_3;
     public QWidget widget_selection;
-    public QVBoxLayout verticalLayout;
+    public QVBoxLayout layout_special;
     public QWidget widget_common;
-    public QWidget widget_2;
-    public QHBoxLayout layout_inferiore;
-    public QWidget widget_specific;
     public QWidget widget_1;
     public QVBoxLayout verticalLayout_2;
     public QPushButton bottone_struttura;
@@ -35,45 +32,37 @@ public class Ui_widget_inserimento implements com.trolltech.qt.QUiForm<QWidget>
     public void setupUi(QWidget widget_inserimento)
     {
         widget_inserimento.setObjectName("widget_inserimento");
-        widget_inserimento.resize(new QSize(942, 589).expandedTo(widget_inserimento.minimumSizeHint()));
+        widget_inserimento.resize(new QSize(612, 443).expandedTo(widget_inserimento.minimumSizeHint()));
+        QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Maximum);
+        sizePolicy.setHorizontalStretch((byte)0);
+        sizePolicy.setVerticalStretch((byte)0);
+        sizePolicy.setHeightForWidth(widget_inserimento.sizePolicy().hasHeightForWidth());
+        widget_inserimento.setSizePolicy(sizePolicy);
+        widget_inserimento.setMinimumSize(new QSize(600, 440));
         horizontalLayout_3 = new QHBoxLayout(widget_inserimento);
         horizontalLayout_3.setSpacing(3);
         horizontalLayout_3.setMargin(0);
         horizontalLayout_3.setObjectName("horizontalLayout_3");
         widget_selection = new QWidget(widget_inserimento);
         widget_selection.setObjectName("widget_selection");
-        verticalLayout = new QVBoxLayout(widget_selection);
-        verticalLayout.setSpacing(3);
-        verticalLayout.setMargin(0);
-        verticalLayout.setObjectName("verticalLayout");
+        layout_special = new QVBoxLayout(widget_selection);
+        layout_special.setMargin(0);
+        layout_special.setObjectName("layout_special");
         widget_common = new QWidget(widget_selection);
         widget_common.setObjectName("widget_common");
 
-        verticalLayout.addWidget(widget_common);
-
-        widget_2 = new QWidget(widget_selection);
-        widget_2.setObjectName("widget_2");
-        layout_inferiore = new QHBoxLayout(widget_2);
-        layout_inferiore.setMargin(0);
-        layout_inferiore.setObjectName("layout_inferiore");
-        widget_specific = new QWidget(widget_2);
-        widget_specific.setObjectName("widget_specific");
-
-        layout_inferiore.addWidget(widget_specific);
-
-
-        verticalLayout.addWidget(widget_2);
+        layout_special.addWidget(widget_common);
 
 
         horizontalLayout_3.addWidget(widget_selection);
 
         widget_1 = new QWidget(widget_inserimento);
         widget_1.setObjectName("widget_1");
-        QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
-        sizePolicy.setHorizontalStretch((byte)0);
-        sizePolicy.setVerticalStretch((byte)0);
-        sizePolicy.setHeightForWidth(widget_1.sizePolicy().hasHeightForWidth());
-        widget_1.setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy1.setHorizontalStretch((byte)0);
+        sizePolicy1.setVerticalStretch((byte)0);
+        sizePolicy1.setHeightForWidth(widget_1.sizePolicy().hasHeightForWidth());
+        widget_1.setSizePolicy(sizePolicy1);
         verticalLayout_2 = new QVBoxLayout(widget_1);
         verticalLayout_2.setMargin(0);
         verticalLayout_2.setObjectName("verticalLayout_2");

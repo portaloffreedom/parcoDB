@@ -30,6 +30,11 @@ public class Ui_widget_paese implements com.trolltech.qt.QUiForm<QWidget>
     {
         widget_paese.setObjectName("widget_paese");
         widget_paese.resize(new QSize(692, 426).expandedTo(widget_paese.minimumSizeHint()));
+        QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy.setHorizontalStretch((byte)0);
+        sizePolicy.setVerticalStretch((byte)0);
+        sizePolicy.setHeightForWidth(widget_paese.sizePolicy().hasHeightForWidth());
+        widget_paese.setSizePolicy(sizePolicy);
         gridLayout = new QGridLayout(widget_paese);
         gridLayout.setObjectName("gridLayout");
         widget = new QWidget(widget_paese);

@@ -65,7 +65,7 @@ public class MainGUI {
         car_com.combo_tipo.currentIndexChanged.connect(this, "select_car_specific()");
         car_com.combo_tipo.setCurrentIndex(0);
     }
-    
+
     private void setup_iniziativa_common(){
         ini_com.combo_iniziativa.addItem("Gastronomica");
         ini_com.combo_iniziativa.addItem("Culturale");
@@ -75,42 +75,43 @@ public class MainGUI {
     }
 //azioni specifiche per eventi di tipo grafico
     private void select_struttura_specific(){
-        if(inserimento.widget_specific != null) inserimento.widget_specific.dispose();
+        if(strut_com.widget_special != null) strut_com.widget_special.dispose();
         switch(strut_com.combo_tipo.currentIndex()){
             case 0:
-                set_special_widget(new Ui_widget_albergo());
+                set_strut_widget(new Ui_widget_albergo());
                 break;
             case 1:
-                set_special_widget(new Ui_widget_museo());
+                set_strut_widget(new Ui_widget_museo());
                 break;
             case 2:
-                set_special_widget(new Ui_widget_monumento());
+                set_strut_widget(new Ui_widget_monumento());
                 break;
             case 3:
-                set_special_widget(new Ui_widget_infopoint());
+                set_strut_widget(new Ui_widget_infopoint());
                 break;
             case 4:
-                set_special_widget(new Ui_widget_impianti());
+                set_strut_widget(new Ui_widget_impianti_special());
             default:
                 break;
         }
         System.out.println(strut_com.combo_tipo.currentIndex());
     }
     
-    private void select_car_specific(){
-        if(inserimento.widget_specific != null) inserimento.widget_specific.dispose();
+    private void select_car_specific(){        
+        if(car_com.widget_special != null) car_com.widget_special.dispose();
+        
         switch(car_com.combo_tipo.currentIndex()){
             case 0:
-                set_special_widget(new Ui_widget_monte());
+                set_car_widget(new Ui_widget_monte());
                 break;
             case 1:
-                set_special_widget(new Ui_widget_fiume());
+                set_car_widget(new Ui_widget_fiume());
                 break;
             case 2:
-                set_special_widget(new Ui_widget_lago());
+                set_car_widget(new Ui_widget_lago());
                 break;
             case 3:
-                set_special_widget(new Ui_widget_paese());
+                set_car_widget(new Ui_widget_paese());
             default:
                 break;
             
@@ -178,20 +179,26 @@ public class MainGUI {
         set_central_widget(new Ui_widget_comune());
     }
     
-    private void set_central_widget(QUiForm form){
-        if(inserimento.widget_specific != null) inserimento.widget_specific.dispose();
+    private void set_car_widget(QUiForm _special){
+        car_com.widget_special = new QWidget(car_com.widget_tipologia);
+        car_com.layout_special.insertWidget(2,car_com.widget_special);
+        _special.setupUi(car_com.widget_special);
+        car_com.widget_special.show();
+    }
+    
+    private void set_central_widget(QUiForm _special){
         if(inserimento.widget_common != null ) inserimento.widget_common.dispose();
         inserimento.widget_common = new QWidget(inserimento.widget_selection);
-        inserimento.verticalLayout.insertWidget(0,inserimento.widget_common);
-        form.setupUi(inserimento.widget_common);
+        inserimento.layout_special.insertWidget(0,inserimento.widget_common);
+        _special.setupUi(inserimento.widget_common);
         inserimento.widget_common.show();
     }
     
-    private void set_special_widget(QUiForm form){
-        inserimento.widget_specific = new QWidget(inserimento.widget_2);
-        inserimento.layout_inferiore.insertWidget(0,inserimento.widget_specific);
-        form.setupUi(inserimento.widget_specific);
-        inserimento.widget_specific.show();
+    private void set_strut_widget(QUiForm _special){
+        strut_com.widget_special = new QWidget(strut_com.widget_3);
+        strut_com.layout_special.addWidget(strut_com.widget_special);
+        _special.setupUi(strut_com.widget_special);
+        strut_com.widget_special.show();
     }
     
     public void exec() {

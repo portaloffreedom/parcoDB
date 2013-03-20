@@ -233,6 +233,7 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
         widget_3 = new QWidget(widget_comune);
         widget_3.setObjectName("widget_3");
         verticalLayout = new QVBoxLayout(widget_3);
+        verticalLayout.setMargin(0);
         verticalLayout.setObjectName("verticalLayout");
         widget = new QWidget(widget_3);
         widget.setObjectName("widget");
@@ -280,6 +281,7 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
         widget_56 = new QWidget(widget_comune);
         widget_56.setObjectName("widget_56");
         verticalLayout_16 = new QVBoxLayout(widget_56);
+        verticalLayout_16.setMargin(0);
         verticalLayout_16.setObjectName("verticalLayout_16");
         label_55 = new QLabel(widget_56);
         label_55.setObjectName("label_55");
@@ -291,7 +293,7 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
         scrollArea.setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents.setGeometry(new QRect(0, -561, 369, 1419));
+        scrollAreaWidgetContents.setGeometry(new QRect(0, 0, 387, 1419));
         verticalLayout_15 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_15.setObjectName("verticalLayout_15");
         widget_16 = new QWidget(scrollAreaWidgetContents);

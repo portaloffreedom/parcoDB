@@ -25,7 +25,6 @@ public class Ui_iniziativa_common implements com.trolltech.qt.QUiForm<QWidget>
     public QHBoxLayout horizontalLayout_3;
     public QLabel label_iniziat;
     public QComboBox combo_paese;
-    public QSpacerItem horizontalSpacer;
     public QWidget widget_2;
     public QHBoxLayout horizontalLayout_4;
     public QLabel label_settimana;
@@ -41,7 +40,7 @@ public class Ui_iniziativa_common implements com.trolltech.qt.QUiForm<QWidget>
     {
         iniziativa_common.setObjectName("iniziativa_common");
         iniziativa_common.resize(new QSize(821, 332).expandedTo(iniziativa_common.minimumSizeHint()));
-        QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Preferred, com.trolltech.qt.gui.QSizePolicy.Policy.Maximum);
+        QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Preferred, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
         sizePolicy.setHorizontalStretch((byte)0);
         sizePolicy.setVerticalStretch((byte)0);
         sizePolicy.setHeightForWidth(iniziativa_common.sizePolicy().hasHeightForWidth());
@@ -100,10 +99,6 @@ public class Ui_iniziativa_common implements com.trolltech.qt.QUiForm<QWidget>
 
 
         gridLayout.addWidget(widget, 1, 0, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(40, 20, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Minimum);
-
-        gridLayout.addItem(horizontalSpacer, 0, 2, 1, 1);
 
         widget_2 = new QWidget(iniziativa_common);
         widget_2.setObjectName("widget_2");

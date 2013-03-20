@@ -46,6 +46,7 @@ public class Ui_widget_tappa implements com.trolltech.qt.QUiForm<QWidget>
         widget_5 = new QWidget(widget_tappa);
         widget_5.setObjectName("widget_5");
         verticalLayout_2 = new QVBoxLayout(widget_5);
+        verticalLayout_2.setMargin(0);
         verticalLayout_2.setObjectName("verticalLayout_2");
         widget = new QWidget(widget_5);
         widget.setObjectName("widget");

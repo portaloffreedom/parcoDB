@@ -12,7 +12,9 @@ import com.trolltech.qt.gui.*;
 
 public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
 {
-    public QGridLayout gridLayout_2;
+    public QVBoxLayout layout_special;
+    public QWidget widget_3;
+    public QGridLayout gridLayout;
     public QWidget widget_tipo;
     public QHBoxLayout horizontalLayout;
     public QLabel label_tipo;
@@ -35,28 +37,32 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
     public QVBoxLayout verticalLayout_2;
     public QLineEdit lineEdit_ora1;
     public QLineEdit lineEdit_ora2;
-    public QSpacerItem horizontalSpacer_2;
     public QWidget widget_situato;
     public QHBoxLayout horizontalLayout_5;
     public QLabel label_situato;
     public QComboBox combo_situato;
+    public QWidget widget_special;
 
     public Ui_struttura_common() { super(); }
 
     public void setupUi(QWidget struttura_common)
     {
         struttura_common.setObjectName("struttura_common");
-        struttura_common.resize(new QSize(857, 289).expandedTo(struttura_common.minimumSizeHint()));
-        QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Preferred, com.trolltech.qt.gui.QSizePolicy.Policy.Maximum);
+        struttura_common.resize(new QSize(817, 421).expandedTo(struttura_common.minimumSizeHint()));
+        QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Preferred, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
         sizePolicy.setHorizontalStretch((byte)0);
         sizePolicy.setVerticalStretch((byte)0);
         sizePolicy.setHeightForWidth(struttura_common.sizePolicy().hasHeightForWidth());
         struttura_common.setSizePolicy(sizePolicy);
-        gridLayout_2 = new QGridLayout(struttura_common);
-        gridLayout_2.setMargin(0);
-        gridLayout_2.setObjectName("gridLayout_2");
-        gridLayout_2.setHorizontalSpacing(0);
-        widget_tipo = new QWidget(struttura_common);
+        layout_special = new QVBoxLayout(struttura_common);
+        layout_special.setMargin(0);
+        layout_special.setObjectName("layout_special");
+        widget_3 = new QWidget(struttura_common);
+        widget_3.setObjectName("widget_3");
+        gridLayout = new QGridLayout(widget_3);
+        gridLayout.setMargin(0);
+        gridLayout.setObjectName("gridLayout");
+        widget_tipo = new QWidget(widget_3);
         widget_tipo.setObjectName("widget_tipo");
         horizontalLayout = new QHBoxLayout(widget_tipo);
         horizontalLayout.setObjectName("horizontalLayout");
@@ -71,9 +77,9 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout.addWidget(combo_tipo);
 
 
-        gridLayout_2.addWidget(widget_tipo, 0, 0, 1, 1);
+        gridLayout.addWidget(widget_tipo, 0, 0, 1, 1);
 
-        widget_nome = new QWidget(struttura_common);
+        widget_nome = new QWidget(widget_3);
         widget_nome.setObjectName("widget_nome");
         horizontalLayout_2 = new QHBoxLayout(widget_nome);
         horizontalLayout_2.setObjectName("horizontalLayout_2");
@@ -88,9 +94,9 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout_2.addWidget(lineEdit_nome);
 
 
-        gridLayout_2.addWidget(widget_nome, 0, 1, 1, 1);
+        gridLayout.addWidget(widget_nome, 0, 1, 1, 1);
 
-        widget_indirizzo = new QWidget(struttura_common);
+        widget_indirizzo = new QWidget(widget_3);
         widget_indirizzo.setObjectName("widget_indirizzo");
         horizontalLayout_3 = new QHBoxLayout(widget_indirizzo);
         horizontalLayout_3.setObjectName("horizontalLayout_3");
@@ -105,9 +111,9 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout_3.addWidget(lineEdit_indirizzo);
 
 
-        gridLayout_2.addWidget(widget_indirizzo, 1, 0, 1, 1);
+        gridLayout.addWidget(widget_indirizzo, 1, 0, 1, 1);
 
-        widget_orario = new QWidget(struttura_common);
+        widget_orario = new QWidget(widget_3);
         widget_orario.setObjectName("widget_orario");
         horizontalLayout_4 = new QHBoxLayout(widget_orario);
         horizontalLayout_4.setSpacing(3);
@@ -148,13 +154,9 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout_4.addWidget(widget);
 
 
-        gridLayout_2.addWidget(widget_orario, 1, 1, 1, 1);
+        gridLayout.addWidget(widget_orario, 1, 1, 1, 1);
 
-        horizontalSpacer_2 = new QSpacerItem(40, 20, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Minimum);
-
-        gridLayout_2.addItem(horizontalSpacer_2, 0, 2, 1, 1);
-
-        widget_situato = new QWidget(struttura_common);
+        widget_situato = new QWidget(widget_3);
         widget_situato.setObjectName("widget_situato");
         horizontalLayout_5 = new QHBoxLayout(widget_situato);
         horizontalLayout_5.setObjectName("horizontalLayout_5");
@@ -169,7 +171,15 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout_5.addWidget(combo_situato);
 
 
-        gridLayout_2.addWidget(widget_situato, 2, 0, 1, 1);
+        gridLayout.addWidget(widget_situato, 2, 0, 1, 1);
+
+
+        layout_special.addWidget(widget_3);
+
+        widget_special = new QWidget(struttura_common);
+        widget_special.setObjectName("widget_special");
+
+        layout_special.addWidget(widget_special);
 
         retranslateUi(struttura_common);
 

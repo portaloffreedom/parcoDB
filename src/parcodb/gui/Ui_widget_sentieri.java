@@ -42,6 +42,7 @@ public class Ui_widget_sentieri implements com.trolltech.qt.QUiForm<QWidget>
         widget = new QWidget(widget_3);
         widget.setObjectName("widget");
         horizontalLayout_2 = new QHBoxLayout(widget);
+        horizontalLayout_2.setMargin(0);
         horizontalLayout_2.setObjectName("horizontalLayout_2");
         label = new QLabel(widget);
         label.setObjectName("label");
@@ -72,6 +73,7 @@ public class Ui_widget_sentieri implements com.trolltech.qt.QUiForm<QWidget>
         widget_2 = new QWidget(widget_sentieri);
         widget_2.setObjectName("widget_2");
         verticalLayout = new QVBoxLayout(widget_2);
+        verticalLayout.setMargin(0);
         verticalLayout.setObjectName("verticalLayout");
         label_2 = new QLabel(widget_2);
         label_2.setObjectName("label_2");

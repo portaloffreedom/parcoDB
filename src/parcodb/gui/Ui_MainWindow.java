@@ -28,6 +28,11 @@ public class Ui_MainWindow implements com.trolltech.qt.QUiForm<QMainWindow>
     {
         MainWindow.setObjectName("MainWindow");
         MainWindow.resize(new QSize(951, 798).expandedTo(MainWindow.minimumSizeHint()));
+        QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Maximum);
+        sizePolicy.setHorizontalStretch((byte)0);
+        sizePolicy.setVerticalStretch((byte)0);
+        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth());
+        MainWindow.setSizePolicy(sizePolicy);
         actionEsci = new QAction(MainWindow);
         actionEsci.setObjectName("actionEsci");
         actionInformazioni_su = new QAction(MainWindow);
@@ -36,11 +41,11 @@ public class Ui_MainWindow implements com.trolltech.qt.QUiForm<QMainWindow>
         actionModalit_avanzata.setObjectName("actionModalit_avanzata");
         centralwidget = new QWidget(MainWindow);
         centralwidget.setObjectName("centralwidget");
-        QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
-        sizePolicy.setHorizontalStretch((byte)0);
-        sizePolicy.setVerticalStretch((byte)0);
-        sizePolicy.setHeightForWidth(centralwidget.sizePolicy().hasHeightForWidth());
-        centralwidget.setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy1.setHorizontalStretch((byte)0);
+        sizePolicy1.setVerticalStretch((byte)0);
+        sizePolicy1.setHeightForWidth(centralwidget.sizePolicy().hasHeightForWidth());
+        centralwidget.setSizePolicy(sizePolicy1);
         verticalLayout_7 = new QVBoxLayout(centralwidget);
         verticalLayout_7.setObjectName("verticalLayout_7");
         MainWindow.setCentralWidget(centralwidget);
