@@ -61,13 +61,13 @@ public class Comune implements RemoteDBobject {
 
     @Override
     public void insertIntoDB(Connection conn) throws SQLException {
-        PreparedStatement insertIntoZonaStatement = conn.prepareStatement("INSERT INTO `bdati`.`Comune` (`nome`, `provincia`, `superficie`) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareStatement("INSERT INTO `bdati`.`Comune` (`nome`, `provincia`, `superficie`) VALUES ( ? , ? , ? );");
         
-        insertIntoZonaStatement.setString(1, nome);
-        insertIntoZonaStatement.setString(2, provincia);
-        insertIntoZonaStatement.setFloat(3, superficie);
+        insertStatement.setString(1, nome);
+        insertStatement.setString(2, provincia);
+        insertStatement.setFloat(3, superficie);
         
-        insertIntoZonaStatement.execute();
+        insertStatement.execute();
         
          for (int i=0; i< climaArray.length; i++) {
             climaArray[i].insertIntoDBpackage(conn);
