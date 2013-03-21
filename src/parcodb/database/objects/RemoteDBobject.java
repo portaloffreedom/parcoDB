@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  * @author matteo
  */
-public interface remoteDBobject {
+public interface RemoteDBobject {
     
     void insertIntoDB(Connection conn) throws SQLException;
 }

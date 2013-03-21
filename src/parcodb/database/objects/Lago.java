@@ -13,8 +13,8 @@ public class Lago extends Caratteristica {
 
     protected float estensione;
     
-    public Lago(String nome, float estensione) {
-        super(nome);
+    public Lago(String nome, float estensione, Comune[] comuni) throws Exception {
+        super(nome, comuni);
         this.estensione = estensione;
     }
 

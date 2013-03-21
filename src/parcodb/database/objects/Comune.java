@@ -12,7 +12,7 @@ import java.sql.SQLException;
  *
  * @author matteo
  */
-public class Comune implements remoteDBobject {
+public class Comune implements RemoteDBobject {
     protected String nome;
     protected String provincia;
     protected float superficie;

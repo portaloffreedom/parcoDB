@@ -13,8 +13,8 @@ public class Monte extends Caratteristica {
 
     protected float altitudine;
     
-    public Monte(String nome, float altitudine) {
-        super(nome);
+    public Monte(String nome, float altitudine, Comune[] comuni) throws Exception {
+        super(nome, comuni);
         this.altitudine = altitudine;
     }
 

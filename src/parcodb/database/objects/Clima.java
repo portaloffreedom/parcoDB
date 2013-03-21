@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 
 //public class Clima {
-public class Clima implements remoteDBobject {
+public class Clima implements RemoteDBobject {
 
     protected int mese;
     protected float temperatura;

@@ -12,7 +12,7 @@ import java.sql.SQLException;
  *
  * @author matteo
  */
-public abstract class Zona implements remoteDBobject {
+public abstract class Zona implements RemoteDBobject {
     protected String nome;
 
     protected Zona(String nome) {

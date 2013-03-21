@@ -14,8 +14,8 @@ public class Paese extends Caratteristica {
     protected int abitanti;
     protected int CAP;
     
-    public Paese(String nome, int abitanti, int CAP) {
-        super(nome);
+    public Paese(String nome, int abitanti, int CAP, Comune[] comuni) throws Exception {
+        super(nome, comuni);
         this.abitanti = abitanti;
         this.CAP = CAP;
     }

@@ -14,8 +14,8 @@ public class Fiume extends Caratteristica {
     protected float lunghezza;
     protected boolean navigabile;
     
-    public Fiume(String nome, float lunghezza, boolean navigabile) {
-        super(nome);
+    public Fiume(String nome, float lunghezza, boolean navigabile, Comune[] comuni) throws Exception {
+        super(nome, comuni);
         this.lunghezza = lunghezza;
         this.navigabile = navigabile;
     }
