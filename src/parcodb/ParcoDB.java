@@ -11,6 +11,8 @@ import parcodb.database.DatabaseConnection;
 import parcodb.database.DatabaseConnector;
 import parcodb.database.MySQLconnector;
 import parcodb.database.PostgreSQLconnector;
+import parcodb.database.objects.Caratteristica;
+import parcodb.database.objects.Zona;
 import parcodb.gui.MainGUI;
 
 /**
@@ -35,8 +37,14 @@ public class ParcoDB {
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[2] Connected");
             
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[3] Querying...");
-            //conn.insertIntoLago1("lago Laogai", 2.33f);
-            conn.getCaratteristiche();
+            Zona[] zone = Zona.getZone(conn);
+            for (int i=0; i<zone.length; i++){
+                System.out.println("Zona "+i+":"+zone[i].getNome());
+            }
+            Caratteristica[] caratteristiche = Caratteristica.getCaratteristiche(conn);
+            for (int i=0; i<caratteristiche.length; i++){
+                System.out.println("Caratteristica "+i+":"+caratteristiche[i].getNome());
+            }
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[3] Query done");
             
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[3] Closing...");

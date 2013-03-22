@@ -4,10 +4,10 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import parcodb.database.DatabaseConnection;
 
 
 public class Struttura extends Zona {
@@ -61,10 +61,10 @@ public class Struttura extends Zona {
     }
 
     @Override
-    public void insertIntoDB(Connection conn) throws SQLException {
+    public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn); //To change body of generated methods, choose Tools | Templates.
     
-        PreparedStatement insertStatement = conn.prepareStatement("INSERT INTO `bdati`.`Struttura` (`nome`, `indirizzo`, `orario_apertura`, `periodo_inizio`, `periodo_fine`, `localizzazione`) VALUES ( ? , ? , ? , ? , ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Struttura` (`nome`, `indirizzo`, `orario_apertura`, `periodo_inizio`, `periodo_fine`, `localizzazione`) VALUES ( ? , ? , ? , ? , ? , ? );");
             
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);

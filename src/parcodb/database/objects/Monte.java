@@ -4,9 +4,9 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import parcodb.database.DatabaseConnection;
 
 
 public class Monte extends Caratteristica {
@@ -27,9 +27,9 @@ public class Monte extends Caratteristica {
     }
 
     @Override
-    public void insertIntoDB(Connection conn) throws SQLException {
+    public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.prepareStatement("INSERT INTO `bdati`.`Fiume` (`nome`, `altitudine`) VALUES ( ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Fiume` (`nome`, `altitudine`) VALUES ( ? , ? );");
         
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);

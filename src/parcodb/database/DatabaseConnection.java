@@ -26,16 +26,21 @@ public class DatabaseConnection {
         this.getCaratteristicheStatement = this.conn.prepareStatement("SELECT `nome` FROM `Caratteristica` ");
         
     }
+
+    public Connection getConn() {
+        return conn;
+    }
     
     public void close() throws SQLException {
         conn.close();
     }
     
-    public void getCaratteristiche() throws SQLException {
-        ResultSet result = getCaratteristicheStatement.executeQuery();
-        while (result.next()) {
-            System.out.println("Caratteristica: "+result.getString(1));
-        }
+    static public int getResultDim(ResultSet result) throws SQLException {
+        int rowCount = 0;
+        if(result.last()){
+           rowCount = result.getRow(); 
+           result.beforeFirst();
+}       return rowCount;
     }
     
 }

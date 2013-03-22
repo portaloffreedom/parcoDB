@@ -4,9 +4,9 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import parcodb.database.DatabaseConnection;
 
 
 public class Fiume extends Caratteristica {
@@ -37,9 +37,9 @@ public class Fiume extends Caratteristica {
     }
 
     @Override
-    public void insertIntoDB(Connection conn) throws SQLException {
+    public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.prepareStatement("INSERT INTO `bdati`.`Fiume` (`nome`, `lunghezza`, `navigabile`) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Fiume` (`nome`, `lunghezza`, `navigabile`) VALUES ( ? , ? , ? );");
         
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);

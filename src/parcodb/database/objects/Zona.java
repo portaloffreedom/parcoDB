@@ -4,15 +4,16 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import parcodb.database.DatabaseConnection;
 
 /**
  *
  * @author matteo
  */
-public abstract class Zona implements RemoteDBobject {
+public class Zona implements RemoteDBobject {
     protected String nome;
 
     protected Zona(String nome) {
@@ -28,12 +29,31 @@ public abstract class Zona implements RemoteDBobject {
     }
     
     @Override
-    public void insertIntoDB(Connection conn) throws SQLException {
-        PreparedStatement insertIntoZonaStatement = conn.prepareStatement("INSERT INTO `bdati`.`Zona` (`nome`) VALUES ( ? );");
+    public void insertIntoDB(DatabaseConnection conn) throws SQLException {
+        PreparedStatement insertIntoZonaStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Zona` (`nome`) VALUES ( ? );");
         
         insertIntoZonaStatement.setString(1, nome);
         
         insertIntoZonaStatement.execute();
+    }
+    
+    static public Zona[] getZone(DatabaseConnection conn) throws SQLException {
+        PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+                "SELECT `nome` FROM  `Zona` ");
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Zona[] zone = new Zona[DIM];
+        int i;
+        for (i=0; result.next(); i++) {
+            zone[i] = new Zona(result.getString(1));
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di getZones() è incongruo ("+i+','+DIM+')');
+        
+        return zone;
     }
     
 }

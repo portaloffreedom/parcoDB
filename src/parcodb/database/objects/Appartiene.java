@@ -4,9 +4,9 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import parcodb.database.DatabaseConnection;
 
 /**
  *
@@ -31,13 +31,13 @@ class Appartiene implements RemoteDBobject {
     }
     
     @Override
-    public void insertIntoDB(Connection conn) throws SQLException {
+    public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         if (comune == null)
             throw new SQLException("Comune non impostato in \"Appartiene\"");
         if (caratteristica == null)
             throw new SQLException("Caratteristica non impostata in \"Appartiene\"");
         
-        PreparedStatement insertIntoZonaStatement = conn.prepareStatement("INSERT INTO `bdati`.`Appartiene` (`caratteristica`, `comune`, `provincia`) VALUES ( ? , ? , ? );");
+        PreparedStatement insertIntoZonaStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Appartiene` (`caratteristica`, `comune`, `provincia`) VALUES ( ? , ? , ? );");
         
         insertIntoZonaStatement.setString(1, caratteristica.getNome());
         insertIntoZonaStatement.setString(2, comune.getNome());

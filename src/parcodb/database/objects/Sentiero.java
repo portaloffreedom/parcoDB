@@ -4,9 +4,9 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import parcodb.database.DatabaseConnection;
 
 
 public class Sentiero implements RemoteDBobject {
@@ -32,13 +32,13 @@ public class Sentiero implements RemoteDBobject {
     }
     
     @Override
-    public void insertIntoDB(Connection conn) throws SQLException {
+    public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         for (int i=0; i<tappe.length; i++) {
             Composto composto = new Composto(tappe[i], this, i);
             composto.insertIntoDB(conn);
         }
         
-        PreparedStatement insertStatement = conn.prepareStatement("INSERT INTO `bdati`.`Sentiero` (`numero_sentiero`, `lunghezza`) VALUES ( ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Sentiero` (`numero_sentiero`, `lunghezza`) VALUES ( ? , ? );");
         
         insertStatement.setInt(1, numero_sentiero);
         insertStatement.setFloat(2, lunghezza);

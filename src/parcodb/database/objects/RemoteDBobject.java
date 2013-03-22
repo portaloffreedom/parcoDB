@@ -4,8 +4,8 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Connection;
 import java.sql.SQLException;
+import parcodb.database.DatabaseConnection;
 
 /**
  *
@@ -13,5 +13,5 @@ import java.sql.SQLException;
  */
 public interface RemoteDBobject {
     
-    void insertIntoDB(Connection conn) throws SQLException;
+    void insertIntoDB(DatabaseConnection conn) throws SQLException;
 }

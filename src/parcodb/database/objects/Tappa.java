@@ -4,9 +4,9 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import parcodb.database.DatabaseConnection;
 
 
 public class Tappa implements RemoteDBobject {
@@ -34,8 +34,8 @@ public class Tappa implements RemoteDBobject {
     }
 
     @Override
-    public void insertIntoDB(Connection conn) throws SQLException {
-        PreparedStatement insertStatement = conn.prepareStatement("INSERT INTO `bdati`.`Tappa` (`inizio`, `fine`, `lunghezza`) VALUES ( ? , ? , ? );");
+    public void insertIntoDB(DatabaseConnection conn) throws SQLException {
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Tappa` (`inizio`, `fine`, `lunghezza`) VALUES ( ? , ? , ? );");
         
         insertStatement.setString(1, inizio.getNome());
         insertStatement.setString(2, fine.getNome());

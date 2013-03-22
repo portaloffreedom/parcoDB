@@ -4,9 +4,9 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import parcodb.database.DatabaseConnection;
 
 
 //public class Clima {
@@ -68,14 +68,14 @@ public class Clima implements RemoteDBobject {
     }
 
     @Override
-    public void insertIntoDB(Connection conn) throws SQLException {
+    public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         throw new UnsupportedOperationException("Will never be supported. It is can be called only from inside the package");
     }
         
-    void insertIntoDBpackage(Connection conn) throws SQLException {
+    void insertIntoDBpackage(DatabaseConnection conn) throws SQLException {
         if (comune == null)
             throw new SQLException("Comune non impostato nel clima");
-        PreparedStatement insertIntoZonaStatement = conn.prepareStatement("INSERT INTO `bdati`.`Clima` (`comune`, `provincia`, `mese`, `pioggia`, `temperatura`, `umidita`) VALUES ( ? , ? , ? , ? , ? , ? );");
+        PreparedStatement insertIntoZonaStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Clima` (`comune`, `provincia`, `mese`, `pioggia`, `temperatura`, `umidita`) VALUES ( ? , ? , ? , ? , ? , ? );");
         
         insertIntoZonaStatement.setString(1, comune.getNome());
         insertIntoZonaStatement.setString(2, comune.getProvincia());

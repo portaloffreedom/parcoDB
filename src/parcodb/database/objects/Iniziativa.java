@@ -4,9 +4,9 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import parcodb.database.DatabaseConnection;
 
 
 public class Iniziativa implements RemoteDBobject {
@@ -46,8 +46,8 @@ public class Iniziativa implements RemoteDBobject {
     }
 
     @Override
-    public void insertIntoDB(Connection conn) throws SQLException {
-        PreparedStatement insertStatement = conn.prepareStatement("INSERT INTO `bdati`.`Iniziativa` (`paese`, `settimana`, `tipo`, `nome`, `dettagli`) VALUES ( ? , ? , ? , ? , ? );");
+    public void insertIntoDB(DatabaseConnection conn) throws SQLException {
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Iniziativa` (`paese`, `settimana`, `tipo`, `nome`, `dettagli`) VALUES ( ? , ? , ? , ? , ? );");
         
         insertStatement.setString(1, paese.getNome());
         insertStatement.setInt(2, settimana);

@@ -4,10 +4,10 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import parcodb.database.DatabaseConnection;
 
 
 public class ImpiantiRisalita extends Struttura {
@@ -28,10 +28,10 @@ public class ImpiantiRisalita extends Struttura {
     }
 
     @Override
-    public void insertIntoDB(Connection conn) throws SQLException {
+    public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
         
-        PreparedStatement insertStatement = conn.prepareStatement("INSERT INTO `bdati`.`ImpiantiRisalita` (`nome`, `tipologia`) VALUES ( ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`ImpiantiRisalita` (`nome`, `tipologia`) VALUES ( ? , ? );");
             
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);

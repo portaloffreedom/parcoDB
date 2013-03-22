@@ -4,26 +4,38 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import parcodb.database.DatabaseConnection;
 
 
-public abstract class Caratteristica extends Zona {
+public class Caratteristica extends Zona {
 
     protected Comune[] comuni;
     
     protected Caratteristica(String nome, Comune[] comuni) throws Exception {
-        super(nome);
+        this(nome);
         if (this.comuni.length < 1)
             throw new Exception("Almeno in un comune questa caratteristica si deve trovare");
         this.comuni = comuni;
     }
+    
+    private Caratteristica(String nome) {
+        super(nome);
+        this.comuni = null;
+    }
+
+    public Comune[] getComuni() throws SQLException {
+        if (comuni == null)
+            throw new SQLException("operazione non ancora supportata");
+        return comuni;
+    }
 
     @Override
-    public void insertIntoDB(Connection conn) throws SQLException {
+    public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.prepareStatement("INSERT INTO `bdati`.`Caratteristica` (`nome`) VALUES ( ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Caratteristica` (`nome`) VALUES ( ? );");
         
         insertStatement.setString(1, nome);
         
@@ -33,6 +45,25 @@ public abstract class Caratteristica extends Zona {
             Appartiene appartiene = new Appartiene(comuni[i], this);
             appartiene.insertIntoDB(conn);
         }
+    }
+    
+        static public Caratteristica[] getCaratteristiche(DatabaseConnection conn) throws SQLException {
+        PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+                "SELECT `nome` FROM  `Caratteristica` ");
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Caratteristica[] caratteristiche = new Caratteristica[DIM];
+        int i;
+        for (i=0; result.next(); i++) {
+            caratteristiche[i] = new Caratteristica(result.getString(1));
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di getCaratteristiche() è incongruo ("+i+','+DIM+')');
+        
+        return caratteristiche;
     }
     
 }
