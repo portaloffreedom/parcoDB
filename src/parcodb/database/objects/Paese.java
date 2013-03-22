@@ -5,6 +5,7 @@
 package parcodb.database.objects;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import parcodb.database.DatabaseConnection;
 
@@ -16,6 +17,12 @@ public class Paese extends Caratteristica {
     
     public Paese(String nome, int abitanti, int CAP, Comune[] comuni) throws Exception {
         super(nome, comuni);
+        this.abitanti = abitanti;
+        this.CAP = CAP;
+    }    
+    
+    private Paese(String nome, int abitanti, int CAP ) {
+        super(nome);
         this.abitanti = abitanti;
         this.CAP = CAP;
     }
@@ -48,4 +55,22 @@ public class Paese extends Caratteristica {
         insertStatement.execute();
     }
     
+    
+    static public Paese[] getPaesi(DatabaseConnection conn) throws SQLException {
+        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT `nome`, `abitanti`, `cap` FROM `bdati`.`Comune`");
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Paese[] paesi = new Paese[DIM];
+        int i;
+        for (i=0; result.next(); i++) {
+            paesi[i] = new Paese(result.getString(1), result.getInt(2), result.getInt(3));
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di getPaese() è incongruo ("+i+','+DIM+')');
+        
+        return paesi;
+    }
 }

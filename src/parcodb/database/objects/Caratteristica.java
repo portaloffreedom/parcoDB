@@ -21,7 +21,7 @@ public class Caratteristica extends Zona {
         this.comuni = comuni;
     }
     
-    private Caratteristica(String nome) {
+    protected Caratteristica(String nome) {
         super(nome);
         this.comuni = null;
     }
