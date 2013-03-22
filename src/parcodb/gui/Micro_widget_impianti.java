@@ -1,18 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package parcodb.gui;
 
 import com.trolltech.qt.gui.QWidget;
-
+import parcodb.gui.builders.Ui_widget_impianti;
 /**
- *
+ * Classe per costruire il widget impianti.
  * @author stengun
  */
-public class Ui_widget_impianti_special extends Ui_widget_impianti{
+public class Micro_widget_impianti extends Ui_widget_impianti{
 
-    public Ui_widget_impianti_special() {
+    public Micro_widget_impianti() {
         super();
     }
     

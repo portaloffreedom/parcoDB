@@ -5,7 +5,7 @@
  **
  ** WARNING! All changes made in this file will be lost when recompiling ui file!
  ********************************************************************************/
-package parcodb.gui;
+package parcodb.gui.builders;
 
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
@@ -39,6 +39,7 @@ public class Ui_MainWindow implements com.trolltech.qt.QUiForm<QMainWindow>
         actionInformazioni_su.setObjectName("actionInformazioni_su");
         actionModalit_avanzata = new QAction(MainWindow);
         actionModalit_avanzata.setObjectName("actionModalit_avanzata");
+        actionModalit_avanzata.setCheckable(true);
         centralwidget = new QWidget(MainWindow);
         centralwidget.setObjectName("centralwidget");
         QSizePolicy sizePolicy1 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);

@@ -1,11 +1,4 @@
-/********************************************************************************
- ** Form generated from reading ui file 'widget_central.jui'
- **
- ** Created by: Qt User Interface Compiler version 4.6.3
- **
- ** WARNING! All changes made in this file will be lost when recompiling ui file!
- ********************************************************************************/
-package parcodb.gui;
+package parcodb.gui.builders;
 
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;

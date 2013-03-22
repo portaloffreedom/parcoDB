@@ -5,14 +5,14 @@
  **
  ** WARNING! All changes made in this file will be lost when recompiling ui file!
  ********************************************************************************/
-package parcodb.gui;
+package parcodb.gui.builders;
 
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
 
 public class Ui_widget_paese implements com.trolltech.qt.QUiForm<QWidget>
 {
-    public QGridLayout gridLayout;
+    public QVBoxLayout verticalLayout;
     public QWidget widget;
     public QHBoxLayout horizontalLayout_2;
     public QLabel label_abitanti;
@@ -22,7 +22,6 @@ public class Ui_widget_paese implements com.trolltech.qt.QUiForm<QWidget>
     public QLabel label;
     public QLineEdit lineEdit;
     public QSpacerItem verticalSpacer;
-    public QSpacerItem horizontalSpacer;
 
     public Ui_widget_paese() { super(); }
 
@@ -35,50 +34,66 @@ public class Ui_widget_paese implements com.trolltech.qt.QUiForm<QWidget>
         sizePolicy.setVerticalStretch((byte)0);
         sizePolicy.setHeightForWidth(widget_paese.sizePolicy().hasHeightForWidth());
         widget_paese.setSizePolicy(sizePolicy);
-        gridLayout = new QGridLayout(widget_paese);
-        gridLayout.setObjectName("gridLayout");
+        verticalLayout = new QVBoxLayout(widget_paese);
+        verticalLayout.setMargin(0);
+        verticalLayout.setObjectName("verticalLayout");
         widget = new QWidget(widget_paese);
         widget.setObjectName("widget");
         horizontalLayout_2 = new QHBoxLayout(widget);
+        horizontalLayout_2.setMargin(0);
         horizontalLayout_2.setObjectName("horizontalLayout_2");
         label_abitanti = new QLabel(widget);
         label_abitanti.setObjectName("label_abitanti");
+        QSizePolicy sizePolicy1 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy1.setHorizontalStretch((byte)0);
+        sizePolicy1.setVerticalStretch((byte)0);
+        sizePolicy1.setHeightForWidth(label_abitanti.sizePolicy().hasHeightForWidth());
+        label_abitanti.setSizePolicy(sizePolicy1);
 
         horizontalLayout_2.addWidget(label_abitanti);
 
         spinBox_abitanti = new QSpinBox(widget);
         spinBox_abitanti.setObjectName("spinBox_abitanti");
+        spinBox_abitanti.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.LeftToRight);
 
         horizontalLayout_2.addWidget(spinBox_abitanti);
 
 
-        gridLayout.addWidget(widget, 0, 0, 1, 1);
+        verticalLayout.addWidget(widget);
 
         widget_2 = new QWidget(widget_paese);
         widget_2.setObjectName("widget_2");
         horizontalLayout = new QHBoxLayout(widget_2);
+        horizontalLayout.setMargin(0);
         horizontalLayout.setObjectName("horizontalLayout");
         label = new QLabel(widget_2);
         label.setObjectName("label");
+        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy2.setHorizontalStretch((byte)0);
+        sizePolicy2.setVerticalStretch((byte)0);
+        sizePolicy2.setHeightForWidth(label.sizePolicy().hasHeightForWidth());
+        label.setSizePolicy(sizePolicy2);
 
         horizontalLayout.addWidget(label);
 
         lineEdit = new QLineEdit(widget_2);
         lineEdit.setObjectName("lineEdit");
+        QSizePolicy sizePolicy3 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy3.setHorizontalStretch((byte)0);
+        sizePolicy3.setVerticalStretch((byte)0);
+        sizePolicy3.setHeightForWidth(lineEdit.sizePolicy().hasHeightForWidth());
+        lineEdit.setSizePolicy(sizePolicy3);
+        lineEdit.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.RightToLeft);
         lineEdit.setInputMethodHints(com.trolltech.qt.core.Qt.InputMethodHint.createQFlags(com.trolltech.qt.core.Qt.InputMethodHint.ImhDigitsOnly,com.trolltech.qt.core.Qt.InputMethodHint.ImhFormattedNumbersOnly));
 
         horizontalLayout.addWidget(lineEdit);
 
 
-        gridLayout.addWidget(widget_2, 0, 1, 1, 1);
+        verticalLayout.addWidget(widget_2);
 
         verticalSpacer = new QSpacerItem(20, 40, com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding);
 
-        gridLayout.addItem(verticalSpacer, 1, 0, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(40, 20, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Minimum);
-
-        gridLayout.addItem(horizontalSpacer, 0, 2, 1, 1);
+        verticalLayout.addItem(verticalSpacer);
 
         retranslateUi(widget_paese);
 
