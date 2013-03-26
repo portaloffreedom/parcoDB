@@ -110,7 +110,8 @@ public class Macro_widget_struttura extends Ui_struttura_common{
     }
     
     private RemoteDBobject constructMonumento(){
-        return new Monumento(lineEdit_nome.text(), 
+        return new Monumento(lineEdit_nome.text(),
+                Integer.decode(monumento.lineEdit_anno.text()),
                 monumento.plainTextEdit.toPlainText(),
                 lineEdit_indirizzo.text(),
                 lineEdit_orario.text(), 
