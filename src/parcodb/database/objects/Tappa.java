@@ -5,6 +5,7 @@
 package parcodb.database.objects;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import parcodb.database.DatabaseConnection;
 
@@ -43,5 +44,25 @@ public class Tappa implements RemoteDBobject {
         
         insertStatement.execute();
     }
+    
+        static public Tappa[] getTappe(DatabaseConnection conn) throws SQLException {
+        PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+                "SELECT `inizio`,`fine`,`lunghezza` FROM  `Tappa` ");
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Tappa[] tappe = new Tappa[DIM];
+        int i;
+        for (i=0; result.next(); i++) {
+            tappe[i] = new Tappa(new Zona(result.getString(1)),new Zona(result.getString(2)),result.getFloat(3));
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di getCaratteristiche() è incongruo ("+i+','+DIM+')');
+        
+        return tappe;
+    }
+    
     
 }

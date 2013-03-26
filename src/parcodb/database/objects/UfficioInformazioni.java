@@ -4,7 +4,7 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Date;
+import com.trolltech.qt.core.QDate;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import parcodb.database.DatabaseConnection;
@@ -15,7 +15,7 @@ public class UfficioInformazioni extends Struttura {
     protected int numero;
     protected String telefono;
     
-    public UfficioInformazioni(String nome, int numero, String telefono, String indirizzo, String orario_apertura, Date periodo_inizio, Date periodo_fine, Paese paese) {
+    public UfficioInformazioni(String nome, int numero, String telefono, String indirizzo, String orario_apertura, QDate periodo_inizio, QDate periodo_fine, Paese paese) {
         super(nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, paese);
         this.numero = numero;
         this.telefono = telefono;

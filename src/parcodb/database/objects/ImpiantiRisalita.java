@@ -4,7 +4,7 @@
  */
 package parcodb.database.objects;
 
-import java.sql.Date;
+import com.trolltech.qt.core.QDate;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import parcodb.database.DatabaseConnection;
@@ -13,10 +13,12 @@ import parcodb.database.DatabaseConnection;
 public class ImpiantiRisalita extends Struttura {
     
     protected String tipologia;
+    protected int capacita;
 
-    public ImpiantiRisalita(String nome, String tipologia, String indirizzo, String orario_apertura, Date periodo_inizio, Date periodo_fine, Paese paese) {
+    public ImpiantiRisalita(String nome, String tipologia, int capacita, String indirizzo, String orario_apertura, QDate periodo_inizio, QDate periodo_fine, Paese paese) {
         super(nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, paese);
         this.tipologia = tipologia;
+        this.capacita = capacita;
     }
 
     public String getTipologia() {
@@ -31,6 +33,7 @@ public class ImpiantiRisalita extends Struttura {
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
         
+        //TODO impostare anche la capacità
         PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`ImpiantiRisalita` (`nome`, `tipologia`) VALUES ( ? , ? );");
             
         insertStatement.clearParameters();
