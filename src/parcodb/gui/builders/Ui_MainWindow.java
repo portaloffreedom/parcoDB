@@ -15,11 +15,13 @@ public class Ui_MainWindow implements com.trolltech.qt.QUiForm<QMainWindow>
     public QAction actionEsci;
     public QAction actionInformazioni_su;
     public QAction actionModalit_avanzata;
+    public QAction actionCollega_a_database;
     public QWidget centralwidget;
     public QVBoxLayout verticalLayout_7;
     public QMenuBar menubar;
     public QMenu menuFile;
     public QMenu menuHelp;
+    public QMenu menuModalit;
     public QStatusBar statusbar;
 
     public Ui_MainWindow() { super(); }
@@ -40,6 +42,8 @@ public class Ui_MainWindow implements com.trolltech.qt.QUiForm<QMainWindow>
         actionModalit_avanzata = new QAction(MainWindow);
         actionModalit_avanzata.setObjectName("actionModalit_avanzata");
         actionModalit_avanzata.setCheckable(true);
+        actionCollega_a_database = new QAction(MainWindow);
+        actionCollega_a_database.setObjectName("actionCollega_a_database");
         centralwidget = new QWidget(MainWindow);
         centralwidget.setObjectName("centralwidget");
         QSizePolicy sizePolicy1 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
@@ -57,16 +61,20 @@ public class Ui_MainWindow implements com.trolltech.qt.QUiForm<QMainWindow>
         menuFile.setObjectName("menuFile");
         menuHelp = new QMenu(menubar);
         menuHelp.setObjectName("menuHelp");
+        menuModalit = new QMenu(menubar);
+        menuModalit.setObjectName("menuModalit");
         MainWindow.setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar.setObjectName("statusbar");
         MainWindow.setStatusBar(statusbar);
 
         menubar.addAction(menuFile.menuAction());
+        menubar.addAction(menuModalit.menuAction());
         menubar.addAction(menuHelp.menuAction());
-        menuFile.addAction(actionModalit_avanzata);
+        menuFile.addAction(actionCollega_a_database);
         menuFile.addAction(actionEsci);
         menuHelp.addAction(actionInformazioni_su);
+        menuModalit.addAction(actionModalit_avanzata);
         retranslateUi(MainWindow);
         actionEsci.triggered.connect(MainWindow, "close()");
 
@@ -79,8 +87,10 @@ public class Ui_MainWindow implements com.trolltech.qt.QUiForm<QMainWindow>
         actionEsci.setText(com.trolltech.qt.core.QCoreApplication.translate("MainWindow", "Esci", null));
         actionInformazioni_su.setText(com.trolltech.qt.core.QCoreApplication.translate("MainWindow", "Informazioni su", null));
         actionModalit_avanzata.setText(com.trolltech.qt.core.QCoreApplication.translate("MainWindow", "Modalit\u00e0 inserimento", null));
+        actionCollega_a_database.setText(com.trolltech.qt.core.QCoreApplication.translate("MainWindow", "Collega a database", null));
         menuFile.setTitle(com.trolltech.qt.core.QCoreApplication.translate("MainWindow", "File", null));
         menuHelp.setTitle(com.trolltech.qt.core.QCoreApplication.translate("MainWindow", "Aiuto", null));
+        menuModalit.setTitle(com.trolltech.qt.core.QCoreApplication.translate("MainWindow", "Modalit\u00e0", null));
     } // retranslateUi
 
 }

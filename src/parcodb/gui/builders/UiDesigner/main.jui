@@ -41,7 +41,7 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionModalit_avanzata"/>
+    <addaction name="actionCollega_a_database"/>
     <addaction name="actionEsci"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
@@ -50,7 +50,14 @@
     </property>
     <addaction name="actionInformazioni_su"/>
    </widget>
+   <widget class="QMenu" name="menuModalit">
+    <property name="title">
+     <string>Modalità</string>
+    </property>
+    <addaction name="actionModalit_avanzata"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuModalit"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -70,6 +77,11 @@
    </property>
    <property name="text">
     <string>Modalità inserimento</string>
+   </property>
+  </action>
+  <action name="actionCollega_a_database">
+   <property name="text">
+    <string>Collega a database</string>
    </property>
   </action>
  </widget>

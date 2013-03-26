@@ -35,12 +35,16 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
     public QLabel label_ora2;
     public QWidget widget;
     public QVBoxLayout verticalLayout_2;
-    public QLineEdit lineEdit_ora1;
-    public QLineEdit lineEdit_ora2;
+    public QDateEdit dateEdit_apertura;
+    public QDateEdit dateEdit_chiusura;
     public QWidget widget_situato;
     public QHBoxLayout horizontalLayout_5;
     public QLabel label_situato;
     public QComboBox combo_situato;
+    public QWidget widget_4;
+    public QHBoxLayout horizontalLayout_6;
+    public QLabel label;
+    public QLineEdit lineEdit_orario;
     public QWidget widget_special;
 
     public Ui_struttura_common() { super(); }
@@ -85,6 +89,11 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout_2.setObjectName("horizontalLayout_2");
         label_nome = new QLabel(widget_nome);
         label_nome.setObjectName("label_nome");
+        QSizePolicy sizePolicy1 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy1.setHorizontalStretch((byte)0);
+        sizePolicy1.setVerticalStretch((byte)0);
+        sizePolicy1.setHeightForWidth(label_nome.sizePolicy().hasHeightForWidth());
+        label_nome.setSizePolicy(sizePolicy1);
 
         horizontalLayout_2.addWidget(label_nome);
 
@@ -102,6 +111,11 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout_3.setObjectName("horizontalLayout_3");
         label_indirizzo = new QLabel(widget_indirizzo);
         label_indirizzo.setObjectName("label_indirizzo");
+        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy2.setHorizontalStretch((byte)0);
+        sizePolicy2.setVerticalStretch((byte)0);
+        sizePolicy2.setHeightForWidth(label_indirizzo.sizePolicy().hasHeightForWidth());
+        label_indirizzo.setSizePolicy(sizePolicy2);
 
         horizontalLayout_3.addWidget(label_indirizzo);
 
@@ -140,15 +154,15 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         widget.setObjectName("widget");
         verticalLayout_2 = new QVBoxLayout(widget);
         verticalLayout_2.setObjectName("verticalLayout_2");
-        lineEdit_ora1 = new QLineEdit(widget);
-        lineEdit_ora1.setObjectName("lineEdit_ora1");
+        dateEdit_apertura = new QDateEdit(widget);
+        dateEdit_apertura.setObjectName("dateEdit_apertura");
 
-        verticalLayout_2.addWidget(lineEdit_ora1);
+        verticalLayout_2.addWidget(dateEdit_apertura);
 
-        lineEdit_ora2 = new QLineEdit(widget);
-        lineEdit_ora2.setObjectName("lineEdit_ora2");
+        dateEdit_chiusura = new QDateEdit(widget);
+        dateEdit_chiusura.setObjectName("dateEdit_chiusura");
 
-        verticalLayout_2.addWidget(lineEdit_ora2);
+        verticalLayout_2.addWidget(dateEdit_chiusura);
 
 
         horizontalLayout_4.addWidget(widget);
@@ -173,6 +187,29 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
 
         gridLayout.addWidget(widget_situato, 2, 0, 1, 1);
 
+        widget_4 = new QWidget(widget_3);
+        widget_4.setObjectName("widget_4");
+        horizontalLayout_6 = new QHBoxLayout(widget_4);
+        horizontalLayout_6.setObjectName("horizontalLayout_6");
+        label = new QLabel(widget_4);
+        label.setObjectName("label");
+        QSizePolicy sizePolicy3 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy3.setHorizontalStretch((byte)0);
+        sizePolicy3.setVerticalStretch((byte)0);
+        sizePolicy3.setHeightForWidth(label.sizePolicy().hasHeightForWidth());
+        label.setSizePolicy(sizePolicy3);
+
+        horizontalLayout_6.addWidget(label);
+
+        lineEdit_orario = new QLineEdit(widget_4);
+        lineEdit_orario.setObjectName("lineEdit_orario");
+        lineEdit_orario.setInputMethodHints(com.trolltech.qt.core.Qt.InputMethodHint.createQFlags(com.trolltech.qt.core.Qt.InputMethodHint.ImhDigitsOnly,com.trolltech.qt.core.Qt.InputMethodHint.ImhFormattedNumbersOnly));
+
+        horizontalLayout_6.addWidget(lineEdit_orario);
+
+
+        gridLayout.addWidget(widget_4, 2, 1, 1, 1);
+
 
         layout_special.addWidget(widget_3);
 
@@ -195,6 +232,7 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         label_ora1.setText(com.trolltech.qt.core.QCoreApplication.translate("struttura_common", "Data apertura", null));
         label_ora2.setText(com.trolltech.qt.core.QCoreApplication.translate("struttura_common", "Data chiusura", null));
         label_situato.setText(com.trolltech.qt.core.QCoreApplication.translate("struttura_common", "Situato in", null));
+        label.setText(com.trolltech.qt.core.QCoreApplication.translate("struttura_common", "Orario di apertura", null));
     } // retranslateUi
 
 }

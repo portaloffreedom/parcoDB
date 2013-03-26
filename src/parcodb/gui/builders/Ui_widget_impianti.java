@@ -16,7 +16,7 @@ public class Ui_widget_impianti implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget;
     public QHBoxLayout horizontalLayout_2;
     public QLabel label;
-    public QSpinBox spinBox;
+    public QSpinBox spinBox_capacita;
     public QSpacerItem horizontalSpacer;
     public QSpacerItem verticalSpacer;
     public QWidget widget_2;
@@ -42,10 +42,10 @@ public class Ui_widget_impianti implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_2.addWidget(label);
 
-        spinBox = new QSpinBox(widget);
-        spinBox.setObjectName("spinBox");
+        spinBox_capacita = new QSpinBox(widget);
+        spinBox_capacita.setObjectName("spinBox_capacita");
 
-        horizontalLayout_2.addWidget(spinBox);
+        horizontalLayout_2.addWidget(spinBox_capacita);
 
 
         gridLayout.addWidget(widget, 0, 0, 1, 1);

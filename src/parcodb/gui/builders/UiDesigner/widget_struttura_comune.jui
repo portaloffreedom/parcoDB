@@ -50,6 +50,12 @@
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QLabel" name="label_nome">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>Nome</string>
            </property>
@@ -66,6 +72,12 @@
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QLabel" name="label_indirizzo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>Indirizzo</string>
            </property>
@@ -110,10 +122,10 @@
           <widget class="QWidget" name="widget" native="true">
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
-             <widget class="QLineEdit" name="lineEdit_ora1"/>
+             <widget class="QDateEdit" name="dateEdit_apertura"/>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_ora2"/>
+             <widget class="QDateEdit" name="dateEdit_chiusura"/>
             </item>
            </layout>
           </widget>
@@ -133,6 +145,32 @@
          </item>
          <item>
           <widget class="QComboBox" name="combo_situato"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QWidget" name="widget_4" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Orario di apertura</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_orario">
+           <property name="inputMethodHints">
+            <set>com.trolltech.qt.core.Qt.InputMethodHint.ImhDigitsOnly|com.trolltech.qt.core.Qt.InputMethodHint.ImhFormattedNumbersOnly</set>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
