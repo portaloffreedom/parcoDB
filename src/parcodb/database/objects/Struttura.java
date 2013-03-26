@@ -4,6 +4,7 @@
  */
 package parcodb.database.objects;
 
+import com.trolltech.qt.core.QDate;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -19,12 +20,12 @@ public class Struttura extends Zona {
     
     protected Paese paese;
     
-    public Struttura(String nome, String indirizzo, String orario_apertura, Date periodo_inizio, Date periodo_fine, Paese paese) {
+    public Struttura(String nome, String indirizzo, String orario_apertura, QDate periodo_inizio, QDate periodo_fine, Paese paese) {
         super(nome);
         this.indirizzo = indirizzo;
         this.orario_apertura = orario_apertura;
-        this.periodo_inizio = periodo_inizio;
-        this.periodo_fine = periodo_fine;
+        this.periodo_inizio = new Date(periodo_inizio.year(), periodo_inizio.month(), periodo_inizio.day());
+        this.periodo_fine = new Date(periodo_fine.year(), periodo_fine.month(), periodo_fine.day());
         this.paese = paese;
     }
 
@@ -32,24 +33,12 @@ public class Struttura extends Zona {
         return orario_apertura;
     }
 
-    public void setOrario_apertura(String orario_apertura) {
-        this.orario_apertura = orario_apertura;
-    }
-
     public Date getPeriodo_inizio() {
         return periodo_inizio;
     }
 
-    public void setPeriodo_inizio(Date periodo_inizio) {
-        this.periodo_inizio = periodo_inizio;
-    }
-
     public Date getPeriodo_fine() {
         return periodo_fine;
-    }
-
-    public void setPeriodo_fine(Date periodo_fine) {
-        this.periodo_fine = periodo_fine;
     }
 
     public String getIndirizzo() {
