@@ -15,11 +15,12 @@ public class Sentiero implements RemoteDBobject {
     protected float lunghezza;
     protected Tappa[] tappe;
 
-    public Sentiero(int numero_sentiero, float lunghezza, Tappa[] tappe) throws Exception {
+    public Sentiero(int numero_sentiero, Tappa[] tappe) throws Exception {
         if (tappe.length < 4 || tappe.length > 10)
             throw new Exception("il sentiero deve essere composto da 4 a 10 tappe");
         this.numero_sentiero = numero_sentiero;
-        this.lunghezza = lunghezza;
+        this.lunghezza = 0.0f;
+        //for(int i=0;i<tappe.length;i++) this.lunghezza = this.lunghezza + tappe[i].getLunghezza();
         this.tappe = tappe;
     }
 
