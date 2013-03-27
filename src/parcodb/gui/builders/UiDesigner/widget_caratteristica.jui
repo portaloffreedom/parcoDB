@@ -92,7 +92,7 @@
       </item>
       <item>
        <widget class="QWidget" name="widget_2" native="true">
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <layout class="QVBoxLayout" name="verticalLayout">
          <property name="margin">
           <number>0</number>
          </property>
@@ -110,12 +110,9 @@
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="comboBox_comune">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
+          <widget class="QListWidget" name="listWidget_comune">
+           <property name="selectionMode">
+            <enum>com.trolltech.qt.gui.QAbstractItemView.SelectionMode.MultiSelection</enum>
            </property>
           </widget>
          </item>

@@ -18,11 +18,15 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget;
     public QHBoxLayout horizontalLayout;
     public QLabel label;
-    public QLineEdit lineEdit;
+    public QLineEdit lineEdit_nome;
     public QWidget widget_2;
     public QHBoxLayout horizontalLayout_2;
     public QLabel label_2;
-    public QLineEdit lineEdit_2;
+    public QLineEdit lineEdit__provincia;
+    public QWidget widget_8;
+    public QHBoxLayout horizontalLayout_6;
+    public QLabel label_7;
+    public QLineEdit lineEdit_superficie;
     public QSpacerItem verticalSpacer;
     public QWidget widget_56;
     public QVBoxLayout verticalLayout_16;
@@ -36,15 +40,15 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_17;
     public QHBoxLayout horizontalLayout_12;
     public QLabel label_16;
-    public QLineEdit lineEdit_12;
+    public QLineEdit lineEdit__tempGEN;
     public QWidget widget_18;
     public QHBoxLayout horizontalLayout_13;
     public QLabel label_17;
-    public QLineEdit lineEdit_13;
+    public QLineEdit lineEdit_umiGEN;
     public QWidget widget_19;
     public QHBoxLayout horizontalLayout_14;
     public QLabel label_18;
-    public QLineEdit lineEdit_14;
+    public QLineEdit lineEdit_pioGEN;
     public QFrame line;
     public QWidget widget_24;
     public QVBoxLayout verticalLayout_7;
@@ -52,15 +56,15 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_25;
     public QHBoxLayout horizontalLayout_18;
     public QLabel label_24;
-    public QLineEdit lineEdit_18;
+    public QLineEdit lineEdit_tempFEB;
     public QWidget widget_26;
     public QHBoxLayout horizontalLayout_19;
     public QLabel label_25;
-    public QLineEdit lineEdit_19;
+    public QLineEdit lineEdit_umiFEB;
     public QWidget widget_27;
     public QHBoxLayout horizontalLayout_20;
     public QLabel label_26;
-    public QLineEdit lineEdit_20;
+    public QLineEdit lineEdit_pioFEB;
     public QFrame line_2;
     public QWidget widget_4;
     public QVBoxLayout verticalLayout_2;
@@ -68,15 +72,15 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_5;
     public QHBoxLayout horizontalLayout_3;
     public QLabel label_3;
-    public QLineEdit lineEdit_3;
+    public QLineEdit lineEdit_tempMAR;
     public QWidget widget_6;
     public QHBoxLayout horizontalLayout_4;
     public QLabel label_4;
-    public QLineEdit lineEdit_4;
+    public QLineEdit lineEdit_umiMAR;
     public QWidget widget_7;
     public QHBoxLayout horizontalLayout_5;
     public QLabel label_5;
-    public QLineEdit lineEdit_5;
+    public QLineEdit lineEdit_pioMAR;
     public QFrame line_3;
     public QWidget widget_48;
     public QVBoxLayout verticalLayout_13;
@@ -84,15 +88,15 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_49;
     public QHBoxLayout horizontalLayout_36;
     public QLabel label_48;
-    public QLineEdit lineEdit_36;
+    public QLineEdit lineEdit_tempAPR;
     public QWidget widget_50;
     public QHBoxLayout horizontalLayout_37;
     public QLabel label_49;
-    public QLineEdit lineEdit_37;
+    public QLineEdit lineEdit_umiAPR;
     public QWidget widget_51;
     public QHBoxLayout horizontalLayout_38;
     public QLabel label_50;
-    public QLineEdit lineEdit_38;
+    public QLineEdit lineEdit_pioAPR;
     public QFrame line_4;
     public QWidget widget_40;
     public QVBoxLayout verticalLayout_11;
@@ -100,15 +104,15 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_41;
     public QHBoxLayout horizontalLayout_30;
     public QLabel label_40;
-    public QLineEdit lineEdit_30;
+    public QLineEdit lineEdit_tempMAG;
     public QWidget widget_42;
     public QHBoxLayout horizontalLayout_31;
     public QLabel label_41;
-    public QLineEdit lineEdit_31;
+    public QLineEdit lineEdit_umiMAG;
     public QWidget widget_43;
     public QHBoxLayout horizontalLayout_32;
     public QLabel label_42;
-    public QLineEdit lineEdit_32;
+    public QLineEdit lineEdit_pioMAG;
     public QFrame line_5;
     public QWidget widget_52;
     public QVBoxLayout verticalLayout_14;
@@ -116,15 +120,15 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_53;
     public QHBoxLayout horizontalLayout_39;
     public QLabel label_52;
-    public QLineEdit lineEdit_39;
+    public QLineEdit lineEdit_tempGIU;
     public QWidget widget_54;
     public QHBoxLayout horizontalLayout_40;
     public QLabel label_53;
-    public QLineEdit lineEdit_40;
+    public QLineEdit lineEdit_umiGIU;
     public QWidget widget_55;
     public QHBoxLayout horizontalLayout_41;
     public QLabel label_54;
-    public QLineEdit lineEdit_41;
+    public QLineEdit lineEdit_pioGIU;
     public QFrame line_6;
     public QWidget widget_44;
     public QVBoxLayout verticalLayout_12;
@@ -132,15 +136,15 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_45;
     public QHBoxLayout horizontalLayout_33;
     public QLabel label_44;
-    public QLineEdit lineEdit_33;
+    public QLineEdit lineEdit_tempLUG;
     public QWidget widget_46;
     public QHBoxLayout horizontalLayout_34;
     public QLabel label_45;
-    public QLineEdit lineEdit_34;
+    public QLineEdit lineEdit_umiLUG;
     public QWidget widget_47;
     public QHBoxLayout horizontalLayout_35;
     public QLabel label_46;
-    public QLineEdit lineEdit_35;
+    public QLineEdit lineEdit_pioLUG;
     public QFrame line_7;
     public QWidget widget_32;
     public QVBoxLayout verticalLayout_9;
@@ -148,15 +152,15 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_33;
     public QHBoxLayout horizontalLayout_24;
     public QLabel label_32;
-    public QLineEdit lineEdit_24;
+    public QLineEdit lineEdit_tempAGO;
     public QWidget widget_34;
     public QHBoxLayout horizontalLayout_25;
     public QLabel label_33;
-    public QLineEdit lineEdit_25;
+    public QLineEdit lineEdit_umiAGO;
     public QWidget widget_35;
     public QHBoxLayout horizontalLayout_26;
     public QLabel label_34;
-    public QLineEdit lineEdit_26;
+    public QLineEdit lineEdit_pioAGO;
     public QFrame line_8;
     public QWidget widget_36;
     public QVBoxLayout verticalLayout_10;
@@ -164,15 +168,15 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_37;
     public QHBoxLayout horizontalLayout_27;
     public QLabel label_36;
-    public QLineEdit lineEdit_27;
+    public QLineEdit lineEdit_tempSET;
     public QWidget widget_38;
     public QHBoxLayout horizontalLayout_28;
     public QLabel label_37;
-    public QLineEdit lineEdit_28;
+    public QLineEdit lineEdit_umiSET;
     public QWidget widget_39;
     public QHBoxLayout horizontalLayout_29;
     public QLabel label_38;
-    public QLineEdit lineEdit_29;
+    public QLineEdit lineEdit_pioSET;
     public QFrame line_9;
     public QWidget widget_12;
     public QVBoxLayout verticalLayout_4;
@@ -180,15 +184,15 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_13;
     public QHBoxLayout horizontalLayout_9;
     public QLabel label_12;
-    public QLineEdit lineEdit_9;
+    public QLineEdit lineEdit_tempOTT;
     public QWidget widget_14;
     public QHBoxLayout horizontalLayout_10;
     public QLabel label_13;
-    public QLineEdit lineEdit_10;
+    public QLineEdit lineEdit_umiOTT;
     public QWidget widget_15;
     public QHBoxLayout horizontalLayout_11;
     public QLabel label_14;
-    public QLineEdit lineEdit_11;
+    public QLineEdit lineEdit_pioOTT;
     public QFrame line_10;
     public QWidget widget_28;
     public QVBoxLayout verticalLayout_8;
@@ -196,15 +200,15 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_29;
     public QHBoxLayout horizontalLayout_21;
     public QLabel label_28;
-    public QLineEdit lineEdit_21;
+    public QLineEdit lineEdit_tempNOV;
     public QWidget widget_30;
     public QHBoxLayout horizontalLayout_22;
     public QLabel label_29;
-    public QLineEdit lineEdit_22;
+    public QLineEdit lineEdit_umiNOV;
     public QWidget widget_31;
     public QHBoxLayout horizontalLayout_23;
     public QLabel label_30;
-    public QLineEdit lineEdit_23;
+    public QLineEdit lineEdit_pioNOV;
     public QFrame line_11;
     public QWidget widget_20;
     public QVBoxLayout verticalLayout_6;
@@ -212,15 +216,15 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_21;
     public QHBoxLayout horizontalLayout_15;
     public QLabel label_20;
-    public QLineEdit lineEdit_15;
+    public QLineEdit lineEdit_tempDIC;
     public QWidget widget_22;
     public QHBoxLayout horizontalLayout_16;
     public QLabel label_21;
-    public QLineEdit lineEdit_16;
+    public QLineEdit lineEdit_umiDIC;
     public QWidget widget_23;
     public QHBoxLayout horizontalLayout_17;
     public QLabel label_22;
-    public QLineEdit lineEdit_17;
+    public QLineEdit lineEdit_pioDIC;
 
     public Ui_widget_comune() { super(); }
 
@@ -242,13 +246,18 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout.setObjectName("horizontalLayout");
         label = new QLabel(widget);
         label.setObjectName("label");
+        QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy.setHorizontalStretch((byte)0);
+        sizePolicy.setVerticalStretch((byte)0);
+        sizePolicy.setHeightForWidth(label.sizePolicy().hasHeightForWidth());
+        label.setSizePolicy(sizePolicy);
 
         horizontalLayout.addWidget(label);
 
-        lineEdit = new QLineEdit(widget);
-        lineEdit.setObjectName("lineEdit");
+        lineEdit_nome = new QLineEdit(widget);
+        lineEdit_nome.setObjectName("lineEdit_nome");
 
-        horizontalLayout.addWidget(lineEdit);
+        horizontalLayout.addWidget(lineEdit_nome);
 
 
         verticalLayout.addWidget(widget);
@@ -260,16 +269,44 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout_2.setObjectName("horizontalLayout_2");
         label_2 = new QLabel(widget_2);
         label_2.setObjectName("label_2");
+        QSizePolicy sizePolicy1 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy1.setHorizontalStretch((byte)0);
+        sizePolicy1.setVerticalStretch((byte)0);
+        sizePolicy1.setHeightForWidth(label_2.sizePolicy().hasHeightForWidth());
+        label_2.setSizePolicy(sizePolicy1);
 
         horizontalLayout_2.addWidget(label_2);
 
-        lineEdit_2 = new QLineEdit(widget_2);
-        lineEdit_2.setObjectName("lineEdit_2");
+        lineEdit__provincia = new QLineEdit(widget_2);
+        lineEdit__provincia.setObjectName("lineEdit__provincia");
 
-        horizontalLayout_2.addWidget(lineEdit_2);
+        horizontalLayout_2.addWidget(lineEdit__provincia);
 
 
         verticalLayout.addWidget(widget_2);
+
+        widget_8 = new QWidget(widget_3);
+        widget_8.setObjectName("widget_8");
+        horizontalLayout_6 = new QHBoxLayout(widget_8);
+        horizontalLayout_6.setMargin(0);
+        horizontalLayout_6.setObjectName("horizontalLayout_6");
+        label_7 = new QLabel(widget_8);
+        label_7.setObjectName("label_7");
+        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy2.setHorizontalStretch((byte)0);
+        sizePolicy2.setVerticalStretch((byte)0);
+        sizePolicy2.setHeightForWidth(label_7.sizePolicy().hasHeightForWidth());
+        label_7.setSizePolicy(sizePolicy2);
+
+        horizontalLayout_6.addWidget(label_7);
+
+        lineEdit_superficie = new QLineEdit(widget_8);
+        lineEdit_superficie.setObjectName("lineEdit_superficie");
+
+        horizontalLayout_6.addWidget(lineEdit_superficie);
+
+
+        verticalLayout.addWidget(widget_8);
 
         verticalSpacer = new QSpacerItem(20, 814, com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding);
 
@@ -293,7 +330,7 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
         scrollArea.setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents.setGeometry(new QRect(0, 0, 387, 1419));
+        scrollAreaWidgetContents.setGeometry(new QRect(0, -553, 387, 1419));
         verticalLayout_15 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_15.setObjectName("verticalLayout_15");
         widget_16 = new QWidget(scrollAreaWidgetContents);
@@ -322,10 +359,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_12.addWidget(label_16);
 
-        lineEdit_12 = new QLineEdit(widget_17);
-        lineEdit_12.setObjectName("lineEdit_12");
+        lineEdit__tempGEN = new QLineEdit(widget_17);
+        lineEdit__tempGEN.setObjectName("lineEdit__tempGEN");
 
-        horizontalLayout_12.addWidget(lineEdit_12);
+        horizontalLayout_12.addWidget(lineEdit__tempGEN);
 
 
         verticalLayout_5.addWidget(widget_17);
@@ -340,10 +377,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_13.addWidget(label_17);
 
-        lineEdit_13 = new QLineEdit(widget_18);
-        lineEdit_13.setObjectName("lineEdit_13");
+        lineEdit_umiGEN = new QLineEdit(widget_18);
+        lineEdit_umiGEN.setObjectName("lineEdit_umiGEN");
 
-        horizontalLayout_13.addWidget(lineEdit_13);
+        horizontalLayout_13.addWidget(lineEdit_umiGEN);
 
 
         verticalLayout_5.addWidget(widget_18);
@@ -358,10 +395,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_14.addWidget(label_18);
 
-        lineEdit_14 = new QLineEdit(widget_19);
-        lineEdit_14.setObjectName("lineEdit_14");
+        lineEdit_pioGEN = new QLineEdit(widget_19);
+        lineEdit_pioGEN.setObjectName("lineEdit_pioGEN");
 
-        horizontalLayout_14.addWidget(lineEdit_14);
+        horizontalLayout_14.addWidget(lineEdit_pioGEN);
 
 
         verticalLayout_5.addWidget(widget_19);
@@ -401,10 +438,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_18.addWidget(label_24);
 
-        lineEdit_18 = new QLineEdit(widget_25);
-        lineEdit_18.setObjectName("lineEdit_18");
+        lineEdit_tempFEB = new QLineEdit(widget_25);
+        lineEdit_tempFEB.setObjectName("lineEdit_tempFEB");
 
-        horizontalLayout_18.addWidget(lineEdit_18);
+        horizontalLayout_18.addWidget(lineEdit_tempFEB);
 
 
         verticalLayout_7.addWidget(widget_25);
@@ -419,10 +456,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_19.addWidget(label_25);
 
-        lineEdit_19 = new QLineEdit(widget_26);
-        lineEdit_19.setObjectName("lineEdit_19");
+        lineEdit_umiFEB = new QLineEdit(widget_26);
+        lineEdit_umiFEB.setObjectName("lineEdit_umiFEB");
 
-        horizontalLayout_19.addWidget(lineEdit_19);
+        horizontalLayout_19.addWidget(lineEdit_umiFEB);
 
 
         verticalLayout_7.addWidget(widget_26);
@@ -437,10 +474,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_20.addWidget(label_26);
 
-        lineEdit_20 = new QLineEdit(widget_27);
-        lineEdit_20.setObjectName("lineEdit_20");
+        lineEdit_pioFEB = new QLineEdit(widget_27);
+        lineEdit_pioFEB.setObjectName("lineEdit_pioFEB");
 
-        horizontalLayout_20.addWidget(lineEdit_20);
+        horizontalLayout_20.addWidget(lineEdit_pioFEB);
 
 
         verticalLayout_7.addWidget(widget_27);
@@ -480,10 +517,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_3.addWidget(label_3);
 
-        lineEdit_3 = new QLineEdit(widget_5);
-        lineEdit_3.setObjectName("lineEdit_3");
+        lineEdit_tempMAR = new QLineEdit(widget_5);
+        lineEdit_tempMAR.setObjectName("lineEdit_tempMAR");
 
-        horizontalLayout_3.addWidget(lineEdit_3);
+        horizontalLayout_3.addWidget(lineEdit_tempMAR);
 
 
         verticalLayout_2.addWidget(widget_5);
@@ -498,10 +535,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_4.addWidget(label_4);
 
-        lineEdit_4 = new QLineEdit(widget_6);
-        lineEdit_4.setObjectName("lineEdit_4");
+        lineEdit_umiMAR = new QLineEdit(widget_6);
+        lineEdit_umiMAR.setObjectName("lineEdit_umiMAR");
 
-        horizontalLayout_4.addWidget(lineEdit_4);
+        horizontalLayout_4.addWidget(lineEdit_umiMAR);
 
 
         verticalLayout_2.addWidget(widget_6);
@@ -516,10 +553,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_5.addWidget(label_5);
 
-        lineEdit_5 = new QLineEdit(widget_7);
-        lineEdit_5.setObjectName("lineEdit_5");
+        lineEdit_pioMAR = new QLineEdit(widget_7);
+        lineEdit_pioMAR.setObjectName("lineEdit_pioMAR");
 
-        horizontalLayout_5.addWidget(lineEdit_5);
+        horizontalLayout_5.addWidget(lineEdit_pioMAR);
 
 
         verticalLayout_2.addWidget(widget_7);
@@ -559,10 +596,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_36.addWidget(label_48);
 
-        lineEdit_36 = new QLineEdit(widget_49);
-        lineEdit_36.setObjectName("lineEdit_36");
+        lineEdit_tempAPR = new QLineEdit(widget_49);
+        lineEdit_tempAPR.setObjectName("lineEdit_tempAPR");
 
-        horizontalLayout_36.addWidget(lineEdit_36);
+        horizontalLayout_36.addWidget(lineEdit_tempAPR);
 
 
         verticalLayout_13.addWidget(widget_49);
@@ -577,10 +614,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_37.addWidget(label_49);
 
-        lineEdit_37 = new QLineEdit(widget_50);
-        lineEdit_37.setObjectName("lineEdit_37");
+        lineEdit_umiAPR = new QLineEdit(widget_50);
+        lineEdit_umiAPR.setObjectName("lineEdit_umiAPR");
 
-        horizontalLayout_37.addWidget(lineEdit_37);
+        horizontalLayout_37.addWidget(lineEdit_umiAPR);
 
 
         verticalLayout_13.addWidget(widget_50);
@@ -595,10 +632,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_38.addWidget(label_50);
 
-        lineEdit_38 = new QLineEdit(widget_51);
-        lineEdit_38.setObjectName("lineEdit_38");
+        lineEdit_pioAPR = new QLineEdit(widget_51);
+        lineEdit_pioAPR.setObjectName("lineEdit_pioAPR");
 
-        horizontalLayout_38.addWidget(lineEdit_38);
+        horizontalLayout_38.addWidget(lineEdit_pioAPR);
 
 
         verticalLayout_13.addWidget(widget_51);
@@ -638,10 +675,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_30.addWidget(label_40);
 
-        lineEdit_30 = new QLineEdit(widget_41);
-        lineEdit_30.setObjectName("lineEdit_30");
+        lineEdit_tempMAG = new QLineEdit(widget_41);
+        lineEdit_tempMAG.setObjectName("lineEdit_tempMAG");
 
-        horizontalLayout_30.addWidget(lineEdit_30);
+        horizontalLayout_30.addWidget(lineEdit_tempMAG);
 
 
         verticalLayout_11.addWidget(widget_41);
@@ -656,10 +693,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_31.addWidget(label_41);
 
-        lineEdit_31 = new QLineEdit(widget_42);
-        lineEdit_31.setObjectName("lineEdit_31");
+        lineEdit_umiMAG = new QLineEdit(widget_42);
+        lineEdit_umiMAG.setObjectName("lineEdit_umiMAG");
 
-        horizontalLayout_31.addWidget(lineEdit_31);
+        horizontalLayout_31.addWidget(lineEdit_umiMAG);
 
 
         verticalLayout_11.addWidget(widget_42);
@@ -674,10 +711,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_32.addWidget(label_42);
 
-        lineEdit_32 = new QLineEdit(widget_43);
-        lineEdit_32.setObjectName("lineEdit_32");
+        lineEdit_pioMAG = new QLineEdit(widget_43);
+        lineEdit_pioMAG.setObjectName("lineEdit_pioMAG");
 
-        horizontalLayout_32.addWidget(lineEdit_32);
+        horizontalLayout_32.addWidget(lineEdit_pioMAG);
 
 
         verticalLayout_11.addWidget(widget_43);
@@ -717,10 +754,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_39.addWidget(label_52);
 
-        lineEdit_39 = new QLineEdit(widget_53);
-        lineEdit_39.setObjectName("lineEdit_39");
+        lineEdit_tempGIU = new QLineEdit(widget_53);
+        lineEdit_tempGIU.setObjectName("lineEdit_tempGIU");
 
-        horizontalLayout_39.addWidget(lineEdit_39);
+        horizontalLayout_39.addWidget(lineEdit_tempGIU);
 
 
         verticalLayout_14.addWidget(widget_53);
@@ -735,10 +772,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_40.addWidget(label_53);
 
-        lineEdit_40 = new QLineEdit(widget_54);
-        lineEdit_40.setObjectName("lineEdit_40");
+        lineEdit_umiGIU = new QLineEdit(widget_54);
+        lineEdit_umiGIU.setObjectName("lineEdit_umiGIU");
 
-        horizontalLayout_40.addWidget(lineEdit_40);
+        horizontalLayout_40.addWidget(lineEdit_umiGIU);
 
 
         verticalLayout_14.addWidget(widget_54);
@@ -753,10 +790,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_41.addWidget(label_54);
 
-        lineEdit_41 = new QLineEdit(widget_55);
-        lineEdit_41.setObjectName("lineEdit_41");
+        lineEdit_pioGIU = new QLineEdit(widget_55);
+        lineEdit_pioGIU.setObjectName("lineEdit_pioGIU");
 
-        horizontalLayout_41.addWidget(lineEdit_41);
+        horizontalLayout_41.addWidget(lineEdit_pioGIU);
 
 
         verticalLayout_14.addWidget(widget_55);
@@ -796,10 +833,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_33.addWidget(label_44);
 
-        lineEdit_33 = new QLineEdit(widget_45);
-        lineEdit_33.setObjectName("lineEdit_33");
+        lineEdit_tempLUG = new QLineEdit(widget_45);
+        lineEdit_tempLUG.setObjectName("lineEdit_tempLUG");
 
-        horizontalLayout_33.addWidget(lineEdit_33);
+        horizontalLayout_33.addWidget(lineEdit_tempLUG);
 
 
         verticalLayout_12.addWidget(widget_45);
@@ -814,10 +851,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_34.addWidget(label_45);
 
-        lineEdit_34 = new QLineEdit(widget_46);
-        lineEdit_34.setObjectName("lineEdit_34");
+        lineEdit_umiLUG = new QLineEdit(widget_46);
+        lineEdit_umiLUG.setObjectName("lineEdit_umiLUG");
 
-        horizontalLayout_34.addWidget(lineEdit_34);
+        horizontalLayout_34.addWidget(lineEdit_umiLUG);
 
 
         verticalLayout_12.addWidget(widget_46);
@@ -832,10 +869,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_35.addWidget(label_46);
 
-        lineEdit_35 = new QLineEdit(widget_47);
-        lineEdit_35.setObjectName("lineEdit_35");
+        lineEdit_pioLUG = new QLineEdit(widget_47);
+        lineEdit_pioLUG.setObjectName("lineEdit_pioLUG");
 
-        horizontalLayout_35.addWidget(lineEdit_35);
+        horizontalLayout_35.addWidget(lineEdit_pioLUG);
 
 
         verticalLayout_12.addWidget(widget_47);
@@ -875,10 +912,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_24.addWidget(label_32);
 
-        lineEdit_24 = new QLineEdit(widget_33);
-        lineEdit_24.setObjectName("lineEdit_24");
+        lineEdit_tempAGO = new QLineEdit(widget_33);
+        lineEdit_tempAGO.setObjectName("lineEdit_tempAGO");
 
-        horizontalLayout_24.addWidget(lineEdit_24);
+        horizontalLayout_24.addWidget(lineEdit_tempAGO);
 
 
         verticalLayout_9.addWidget(widget_33);
@@ -893,10 +930,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_25.addWidget(label_33);
 
-        lineEdit_25 = new QLineEdit(widget_34);
-        lineEdit_25.setObjectName("lineEdit_25");
+        lineEdit_umiAGO = new QLineEdit(widget_34);
+        lineEdit_umiAGO.setObjectName("lineEdit_umiAGO");
 
-        horizontalLayout_25.addWidget(lineEdit_25);
+        horizontalLayout_25.addWidget(lineEdit_umiAGO);
 
 
         verticalLayout_9.addWidget(widget_34);
@@ -911,10 +948,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_26.addWidget(label_34);
 
-        lineEdit_26 = new QLineEdit(widget_35);
-        lineEdit_26.setObjectName("lineEdit_26");
+        lineEdit_pioAGO = new QLineEdit(widget_35);
+        lineEdit_pioAGO.setObjectName("lineEdit_pioAGO");
 
-        horizontalLayout_26.addWidget(lineEdit_26);
+        horizontalLayout_26.addWidget(lineEdit_pioAGO);
 
 
         verticalLayout_9.addWidget(widget_35);
@@ -954,10 +991,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_27.addWidget(label_36);
 
-        lineEdit_27 = new QLineEdit(widget_37);
-        lineEdit_27.setObjectName("lineEdit_27");
+        lineEdit_tempSET = new QLineEdit(widget_37);
+        lineEdit_tempSET.setObjectName("lineEdit_tempSET");
 
-        horizontalLayout_27.addWidget(lineEdit_27);
+        horizontalLayout_27.addWidget(lineEdit_tempSET);
 
 
         verticalLayout_10.addWidget(widget_37);
@@ -972,10 +1009,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_28.addWidget(label_37);
 
-        lineEdit_28 = new QLineEdit(widget_38);
-        lineEdit_28.setObjectName("lineEdit_28");
+        lineEdit_umiSET = new QLineEdit(widget_38);
+        lineEdit_umiSET.setObjectName("lineEdit_umiSET");
 
-        horizontalLayout_28.addWidget(lineEdit_28);
+        horizontalLayout_28.addWidget(lineEdit_umiSET);
 
 
         verticalLayout_10.addWidget(widget_38);
@@ -990,10 +1027,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_29.addWidget(label_38);
 
-        lineEdit_29 = new QLineEdit(widget_39);
-        lineEdit_29.setObjectName("lineEdit_29");
+        lineEdit_pioSET = new QLineEdit(widget_39);
+        lineEdit_pioSET.setObjectName("lineEdit_pioSET");
 
-        horizontalLayout_29.addWidget(lineEdit_29);
+        horizontalLayout_29.addWidget(lineEdit_pioSET);
 
 
         verticalLayout_10.addWidget(widget_39);
@@ -1033,10 +1070,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_9.addWidget(label_12);
 
-        lineEdit_9 = new QLineEdit(widget_13);
-        lineEdit_9.setObjectName("lineEdit_9");
+        lineEdit_tempOTT = new QLineEdit(widget_13);
+        lineEdit_tempOTT.setObjectName("lineEdit_tempOTT");
 
-        horizontalLayout_9.addWidget(lineEdit_9);
+        horizontalLayout_9.addWidget(lineEdit_tempOTT);
 
 
         verticalLayout_4.addWidget(widget_13);
@@ -1051,10 +1088,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_10.addWidget(label_13);
 
-        lineEdit_10 = new QLineEdit(widget_14);
-        lineEdit_10.setObjectName("lineEdit_10");
+        lineEdit_umiOTT = new QLineEdit(widget_14);
+        lineEdit_umiOTT.setObjectName("lineEdit_umiOTT");
 
-        horizontalLayout_10.addWidget(lineEdit_10);
+        horizontalLayout_10.addWidget(lineEdit_umiOTT);
 
 
         verticalLayout_4.addWidget(widget_14);
@@ -1069,10 +1106,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_11.addWidget(label_14);
 
-        lineEdit_11 = new QLineEdit(widget_15);
-        lineEdit_11.setObjectName("lineEdit_11");
+        lineEdit_pioOTT = new QLineEdit(widget_15);
+        lineEdit_pioOTT.setObjectName("lineEdit_pioOTT");
 
-        horizontalLayout_11.addWidget(lineEdit_11);
+        horizontalLayout_11.addWidget(lineEdit_pioOTT);
 
 
         verticalLayout_4.addWidget(widget_15);
@@ -1112,10 +1149,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_21.addWidget(label_28);
 
-        lineEdit_21 = new QLineEdit(widget_29);
-        lineEdit_21.setObjectName("lineEdit_21");
+        lineEdit_tempNOV = new QLineEdit(widget_29);
+        lineEdit_tempNOV.setObjectName("lineEdit_tempNOV");
 
-        horizontalLayout_21.addWidget(lineEdit_21);
+        horizontalLayout_21.addWidget(lineEdit_tempNOV);
 
 
         verticalLayout_8.addWidget(widget_29);
@@ -1130,10 +1167,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_22.addWidget(label_29);
 
-        lineEdit_22 = new QLineEdit(widget_30);
-        lineEdit_22.setObjectName("lineEdit_22");
+        lineEdit_umiNOV = new QLineEdit(widget_30);
+        lineEdit_umiNOV.setObjectName("lineEdit_umiNOV");
 
-        horizontalLayout_22.addWidget(lineEdit_22);
+        horizontalLayout_22.addWidget(lineEdit_umiNOV);
 
 
         verticalLayout_8.addWidget(widget_30);
@@ -1148,10 +1185,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_23.addWidget(label_30);
 
-        lineEdit_23 = new QLineEdit(widget_31);
-        lineEdit_23.setObjectName("lineEdit_23");
+        lineEdit_pioNOV = new QLineEdit(widget_31);
+        lineEdit_pioNOV.setObjectName("lineEdit_pioNOV");
 
-        horizontalLayout_23.addWidget(lineEdit_23);
+        horizontalLayout_23.addWidget(lineEdit_pioNOV);
 
 
         verticalLayout_8.addWidget(widget_31);
@@ -1191,10 +1228,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_15.addWidget(label_20);
 
-        lineEdit_15 = new QLineEdit(widget_21);
-        lineEdit_15.setObjectName("lineEdit_15");
+        lineEdit_tempDIC = new QLineEdit(widget_21);
+        lineEdit_tempDIC.setObjectName("lineEdit_tempDIC");
 
-        horizontalLayout_15.addWidget(lineEdit_15);
+        horizontalLayout_15.addWidget(lineEdit_tempDIC);
 
 
         verticalLayout_6.addWidget(widget_21);
@@ -1209,10 +1246,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_16.addWidget(label_21);
 
-        lineEdit_16 = new QLineEdit(widget_22);
-        lineEdit_16.setObjectName("lineEdit_16");
+        lineEdit_umiDIC = new QLineEdit(widget_22);
+        lineEdit_umiDIC.setObjectName("lineEdit_umiDIC");
 
-        horizontalLayout_16.addWidget(lineEdit_16);
+        horizontalLayout_16.addWidget(lineEdit_umiDIC);
 
 
         verticalLayout_6.addWidget(widget_22);
@@ -1227,10 +1264,10 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_17.addWidget(label_22);
 
-        lineEdit_17 = new QLineEdit(widget_23);
-        lineEdit_17.setObjectName("lineEdit_17");
+        lineEdit_pioDIC = new QLineEdit(widget_23);
+        lineEdit_pioDIC.setObjectName("lineEdit_pioDIC");
 
-        horizontalLayout_17.addWidget(lineEdit_17);
+        horizontalLayout_17.addWidget(lineEdit_pioDIC);
 
 
         verticalLayout_6.addWidget(widget_23);
@@ -1255,6 +1292,7 @@ public class Ui_widget_comune implements com.trolltech.qt.QUiForm<QWidget>
         widget_comune.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("widget_comune", "Form", null));
         label.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_comune", "Nome", null));
         label_2.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_comune", "Provincia", null));
+        label_7.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_comune", "Superficie", null));
         label_55.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_comune", "Medie climatiche mensili", null));
         label_15.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_comune", "Gennaio", null));
         label_16.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_comune", "Temperatura", null));

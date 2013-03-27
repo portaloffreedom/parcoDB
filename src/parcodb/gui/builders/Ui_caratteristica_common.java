@@ -24,9 +24,9 @@ public class Ui_caratteristica_common implements com.trolltech.qt.QUiForm<QWidge
     public QLabel label_nome;
     public QLineEdit lineEdit_nome;
     public QWidget widget_2;
-    public QHBoxLayout horizontalLayout_5;
+    public QVBoxLayout verticalLayout;
     public QLabel label;
-    public QComboBox comboBox_comune;
+    public QListWidget listWidget_comune;
     public QWidget widget_special;
     public QSpacerItem verticalSpacer;
     public QWidget widget_vicinanza;
@@ -109,9 +109,9 @@ public class Ui_caratteristica_common implements com.trolltech.qt.QUiForm<QWidge
 
         widget_2 = new QWidget(widget_tipologia);
         widget_2.setObjectName("widget_2");
-        horizontalLayout_5 = new QHBoxLayout(widget_2);
-        horizontalLayout_5.setMargin(0);
-        horizontalLayout_5.setObjectName("horizontalLayout_5");
+        verticalLayout = new QVBoxLayout(widget_2);
+        verticalLayout.setMargin(0);
+        verticalLayout.setObjectName("verticalLayout");
         label = new QLabel(widget_2);
         label.setObjectName("label");
         QSizePolicy sizePolicy4 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
@@ -120,17 +120,13 @@ public class Ui_caratteristica_common implements com.trolltech.qt.QUiForm<QWidge
         sizePolicy4.setHeightForWidth(label.sizePolicy().hasHeightForWidth());
         label.setSizePolicy(sizePolicy4);
 
-        horizontalLayout_5.addWidget(label);
+        verticalLayout.addWidget(label);
 
-        comboBox_comune = new QComboBox(widget_2);
-        comboBox_comune.setObjectName("comboBox_comune");
-        QSizePolicy sizePolicy5 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
-        sizePolicy5.setHorizontalStretch((byte)0);
-        sizePolicy5.setVerticalStretch((byte)0);
-        sizePolicy5.setHeightForWidth(comboBox_comune.sizePolicy().hasHeightForWidth());
-        comboBox_comune.setSizePolicy(sizePolicy5);
+        listWidget_comune = new QListWidget(widget_2);
+        listWidget_comune.setObjectName("listWidget_comune");
+        listWidget_comune.setSelectionMode(com.trolltech.qt.gui.QAbstractItemView.SelectionMode.MultiSelection);
 
-        horizontalLayout_5.addWidget(comboBox_comune);
+        verticalLayout.addWidget(listWidget_comune);
 
 
         layout_special.addWidget(widget_2);
@@ -154,42 +150,42 @@ public class Ui_caratteristica_common implements com.trolltech.qt.QUiForm<QWidge
         verticalLayout_2.setObjectName("verticalLayout_2");
         label_2 = new QLabel(widget_vicinanza);
         label_2.setObjectName("label_2");
-        QSizePolicy sizePolicy6 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Maximum);
-        sizePolicy6.setHorizontalStretch((byte)0);
-        sizePolicy6.setVerticalStretch((byte)0);
-        sizePolicy6.setHeightForWidth(label_2.sizePolicy().hasHeightForWidth());
-        label_2.setSizePolicy(sizePolicy6);
+        QSizePolicy sizePolicy5 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Maximum);
+        sizePolicy5.setHorizontalStretch((byte)0);
+        sizePolicy5.setVerticalStretch((byte)0);
+        sizePolicy5.setHeightForWidth(label_2.sizePolicy().hasHeightForWidth());
+        label_2.setSizePolicy(sizePolicy5);
 
         verticalLayout_2.addWidget(label_2);
 
         listWidget_tappe = new QListWidget(widget_vicinanza);
         listWidget_tappe.setObjectName("listWidget_tappe");
-        QSizePolicy sizePolicy7 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding);
-        sizePolicy7.setHorizontalStretch((byte)0);
-        sizePolicy7.setVerticalStretch((byte)0);
-        sizePolicy7.setHeightForWidth(listWidget_tappe.sizePolicy().hasHeightForWidth());
-        listWidget_tappe.setSizePolicy(sizePolicy7);
+        QSizePolicy sizePolicy6 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding);
+        sizePolicy6.setHorizontalStretch((byte)0);
+        sizePolicy6.setVerticalStretch((byte)0);
+        sizePolicy6.setHeightForWidth(listWidget_tappe.sizePolicy().hasHeightForWidth());
+        listWidget_tappe.setSizePolicy(sizePolicy6);
         listWidget_tappe.setSelectionMode(com.trolltech.qt.gui.QAbstractItemView.SelectionMode.MultiSelection);
 
         verticalLayout_2.addWidget(listWidget_tappe);
 
         label_vicinanza = new QLabel(widget_vicinanza);
         label_vicinanza.setObjectName("label_vicinanza");
-        QSizePolicy sizePolicy8 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Maximum);
-        sizePolicy8.setHorizontalStretch((byte)0);
-        sizePolicy8.setVerticalStretch((byte)0);
-        sizePolicy8.setHeightForWidth(label_vicinanza.sizePolicy().hasHeightForWidth());
-        label_vicinanza.setSizePolicy(sizePolicy8);
+        QSizePolicy sizePolicy7 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Maximum);
+        sizePolicy7.setHorizontalStretch((byte)0);
+        sizePolicy7.setVerticalStretch((byte)0);
+        sizePolicy7.setHeightForWidth(label_vicinanza.sizePolicy().hasHeightForWidth());
+        label_vicinanza.setSizePolicy(sizePolicy7);
 
         verticalLayout_2.addWidget(label_vicinanza);
 
         lista_vicinanza = new QListWidget(widget_vicinanza);
         lista_vicinanza.setObjectName("lista_vicinanza");
-        QSizePolicy sizePolicy9 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding);
-        sizePolicy9.setHorizontalStretch((byte)0);
-        sizePolicy9.setVerticalStretch((byte)0);
-        sizePolicy9.setHeightForWidth(lista_vicinanza.sizePolicy().hasHeightForWidth());
-        lista_vicinanza.setSizePolicy(sizePolicy9);
+        QSizePolicy sizePolicy8 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding);
+        sizePolicy8.setHorizontalStretch((byte)0);
+        sizePolicy8.setVerticalStretch((byte)0);
+        sizePolicy8.setHeightForWidth(lista_vicinanza.sizePolicy().hasHeightForWidth());
+        lista_vicinanza.setSizePolicy(sizePolicy8);
         lista_vicinanza.setAlternatingRowColors(true);
         lista_vicinanza.setSelectionMode(com.trolltech.qt.gui.QAbstractItemView.SelectionMode.MultiSelection);
         lista_vicinanza.setSortingEnabled(true);

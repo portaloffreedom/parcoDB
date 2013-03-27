@@ -4,7 +4,7 @@ import parcodb.gui.MainGUI;
 
 /**
  *
- * @author matteo
+ * @author stengun
  */
 public class ParcoDB {
 
@@ -13,7 +13,6 @@ public class ParcoDB {
      */
     public static void main(String[] args) {
 
-        
         MainGUI gui = new MainGUI(args);
         gui.SetupUi();
         gui.exec();

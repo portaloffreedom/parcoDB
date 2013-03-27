@@ -14,7 +14,6 @@ import parcodb.ParcoDB;
 import parcodb.database.DatabaseConnection;
 import parcodb.database.DatabaseConnector;
 import parcodb.database.MySQLconnector;
-import parcodb.database.objects.RemoteDBobject;
 import parcodb.gui.builders.Ui_Dialog_connetti;
 import parcodb.gui.builders.Ui_MainWindow;
 

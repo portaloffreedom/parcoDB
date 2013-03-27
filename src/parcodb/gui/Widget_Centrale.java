@@ -9,6 +9,7 @@ public abstract class Widget_Centrale extends parcodb.gui.builders.Ui_widget_ins
     protected QMainWindow qMainWindow;
     protected MainGUI maiunui;
     protected RemoteDBobject insertor;
+    
     public Widget_Centrale(MainGUI mainui)
     {
         super();
@@ -29,6 +30,7 @@ public abstract class Widget_Centrale extends parcodb.gui.builders.Ui_widget_ins
         this.bottone_sentiero.clicked.connect(this, "set_sentiero()");
         this.bottone_tappa.clicked.connect(this, "set_tappa()");
         this.bottone_comune.clicked.connect(this, "set_comune()");
+        this.bottone_inserisci.clicked.connect(this, "inserisci()");
     }
  
     // widget changer   

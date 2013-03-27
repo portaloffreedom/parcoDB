@@ -20,7 +20,7 @@ public class Ui_widget_paese implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_2;
     public QHBoxLayout horizontalLayout;
     public QLabel label;
-    public QLineEdit lineEdit;
+    public QLineEdit lineEdit_cap;
     public QSpacerItem verticalSpacer;
 
     public Ui_widget_paese() { super(); }
@@ -76,17 +76,17 @@ public class Ui_widget_paese implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout.addWidget(label);
 
-        lineEdit = new QLineEdit(widget_2);
-        lineEdit.setObjectName("lineEdit");
+        lineEdit_cap = new QLineEdit(widget_2);
+        lineEdit_cap.setObjectName("lineEdit_cap");
         QSizePolicy sizePolicy3 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
         sizePolicy3.setHorizontalStretch((byte)0);
         sizePolicy3.setVerticalStretch((byte)0);
-        sizePolicy3.setHeightForWidth(lineEdit.sizePolicy().hasHeightForWidth());
-        lineEdit.setSizePolicy(sizePolicy3);
-        lineEdit.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.RightToLeft);
-        lineEdit.setInputMethodHints(com.trolltech.qt.core.Qt.InputMethodHint.createQFlags(com.trolltech.qt.core.Qt.InputMethodHint.ImhDigitsOnly,com.trolltech.qt.core.Qt.InputMethodHint.ImhFormattedNumbersOnly));
+        sizePolicy3.setHeightForWidth(lineEdit_cap.sizePolicy().hasHeightForWidth());
+        lineEdit_cap.setSizePolicy(sizePolicy3);
+        lineEdit_cap.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.RightToLeft);
+        lineEdit_cap.setInputMethodHints(com.trolltech.qt.core.Qt.InputMethodHint.createQFlags(com.trolltech.qt.core.Qt.InputMethodHint.ImhDigitsOnly,com.trolltech.qt.core.Qt.InputMethodHint.ImhFormattedNumbersOnly));
 
-        horizontalLayout.addWidget(lineEdit);
+        horizontalLayout.addWidget(lineEdit_cap);
 
 
         verticalLayout.addWidget(widget_2);

@@ -21,6 +21,7 @@ public class Comune implements RemoteDBobject {
     protected Clima[] climaArray;
 
     public Comune(String nome, String provincia, float superficie, Clima[] climaArray) throws Exception {
+        this(nome, provincia, superficie);
         if (climaArray.length != 12)
             throw new Exception("ad ogni comune devono essere associati 12 climi, uno per ogni mese");
         this.climaArray = climaArray;
@@ -104,5 +105,10 @@ public class Comune implements RemoteDBobject {
             throw new SQLException("il numero di risultati di getComuni() è incongruo ("+i+','+DIM+')');
         
         return comuni;
+    }
+    
+    @Override
+    public String toString(){
+        return nome;
     }
 }

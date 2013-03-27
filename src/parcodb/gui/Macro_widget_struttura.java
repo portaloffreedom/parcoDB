@@ -1,7 +1,6 @@
 package parcodb.gui;
 import com.trolltech.qt.QUiForm;
 import com.trolltech.qt.gui.QWidget;
-import java.sql.Date;
 import parcodb.database.objects.Albergo;
 import parcodb.database.objects.ImpiantiRisalita;
 import parcodb.database.objects.Monumento;
@@ -19,7 +18,7 @@ import parcodb.gui.builders.Ui_widget_museo;
  *
  * @author stengun
  */
-public class Macro_widget_struttura extends Ui_struttura_common{
+public class Macro_widget_struttura extends Ui_struttura_common implements Insertor{
     private Ui_widget_albergo albergo;
     private Ui_widget_museo museo;
     private Ui_widget_monumento monumento;
@@ -40,6 +39,7 @@ public class Macro_widget_struttura extends Ui_struttura_common{
         this.combo_tipo.addItem("Impianto di risalita");
         this.combo_tipo.currentIndexChanged.connect(this, "select_struttura_specific()");
         this.combo_tipo.setCurrentIndex(0);
+        
         albergo = new Ui_widget_albergo();
         museo = new Ui_widget_museo();
         monumento = new Ui_widget_monumento();
@@ -54,23 +54,19 @@ public class Macro_widget_struttura extends Ui_struttura_common{
         widget_special.show();
     }
     
+    @Override
     public RemoteDBobject getInsertor(){
         switch(combo_tipo.currentIndex()){
             case 0:
                 return constructAlbergo();
-                //set_strut_widget(albergo);
             case 1:
                 return constructMuseo();
-                //set_strut_widget(museo);
             case 2:
                 return constructMonumento();
-                //set_strut_widget(monumento);
             case 3:
                 return constructInfopoint();
-                //set_strut_widget(infopoint);
             case 4:
                 return constructImpianti();
-                //set_strut_widget(impianti);
             default:
                 return null;
         }
