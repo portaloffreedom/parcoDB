@@ -34,17 +34,18 @@ public class Sentiero implements RemoteDBobject {
     
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        for (int i=0; i<tappe.length; i++) {
-            Composto composto = new Composto(tappe[i], this, i);
-            composto.insertIntoDB(conn);
-        }
-        
         PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Sentiero` (`numero_sentiero`, `lunghezza`) VALUES ( ? , ? );");
         
         insertStatement.setInt(1, numero_sentiero);
         insertStatement.setFloat(2, lunghezza);
         
         insertStatement.execute();
+        
+        for (int i=0; i<tappe.length; i++) {
+            Composto composto = new Composto(tappe[i], this, i);
+            composto.insertIntoDB(conn);
+        }
+        
     }
     
 }
