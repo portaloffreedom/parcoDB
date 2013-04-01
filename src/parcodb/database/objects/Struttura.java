@@ -53,7 +53,7 @@ public class Struttura extends Zona {
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn); //To change body of generated methods, choose Tools | Templates.
     
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Struttura` (`nome`, `indirizzo`, `orario_apertura`, `periodo_inizio`, `periodo_fine`, `localizzazione`) VALUES ( ? , ? , ? , ? , ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Struttura (nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione) VALUES ( ? , ? , ? , ? , ? , ? );");
             
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);

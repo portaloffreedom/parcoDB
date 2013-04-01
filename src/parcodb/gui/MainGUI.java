@@ -14,6 +14,7 @@ import parcodb.ParcoDB;
 import parcodb.database.DatabaseConnection;
 import parcodb.database.DatabaseConnector;
 import parcodb.database.MySQLconnector;
+import parcodb.database.PostgreSQLconnector;
 import parcodb.gui.builders.Ui_Dialog_connetti;
 import parcodb.gui.builders.Ui_MainWindow;
 
@@ -84,6 +85,7 @@ public class MainGUI {
         try {
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[1] Loading Driver...");
             DatabaseConnector database = new MySQLconnector(indirizzo, porta);
+            //DatabaseConnector database = new PostgreSQLconnector(indirizzo, porta);
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[1] Driver Loaded");
             
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[2] Connecting...");

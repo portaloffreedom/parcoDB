@@ -47,7 +47,7 @@ public class Iniziativa implements RemoteDBobject {
 
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Iniziativa` (`paese`, `settimana`, `tipo`, `nome`, `dettagli`) VALUES ( ? , ? , ? , ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Iniziativa (paese, settimana, tipo, nome, dettagli) VALUES ( ? , ? , ? , ? , ? );");
         
         insertStatement.setString(1, paese.getNome());
         insertStatement.setInt(2, settimana);

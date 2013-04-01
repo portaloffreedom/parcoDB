@@ -29,7 +29,7 @@ public class Lago extends Caratteristica {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn); 
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Lago` (`nome`, `estensione`) VALUES ( ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Lago (nome, estensione) VALUES ( ? , ? );");
     
         insertStatement.setString(1, nome);
         insertStatement.setFloat(2, estensione);

@@ -39,7 +39,7 @@ public class Fiume extends Caratteristica {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Fiume` (`nome`, `lunghezza`, `navigabile`) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Fiume (nome, lunghezza, navigabile) VALUES ( ? , ? , ? );");
         
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);

@@ -41,7 +41,7 @@ public class UfficioInformazioni extends Struttura {
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
         
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`UfficioInformazioni` (`nome`, `numero`, `telefono`) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO UfficioInformazioni (nome, numero, telefono) VALUES ( ? , ? , ? );");
             
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);

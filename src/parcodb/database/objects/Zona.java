@@ -30,7 +30,7 @@ public class Zona implements RemoteDBobject {
     
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        PreparedStatement insertIntoZonaStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Zona` (`nome`) VALUES ( ? );");
+        PreparedStatement insertIntoZonaStatement = conn.getConn().prepareStatement("INSERT INTO Zona (nome) VALUES ( ? );");
         
         insertIntoZonaStatement.setString(1, nome);
         
@@ -39,7 +39,7 @@ public class Zona implements RemoteDBobject {
     
     static public Zona[] getZone(DatabaseConnection conn) throws SQLException {
         PreparedStatement preparedStatement = conn.getConn().prepareStatement(
-                "SELECT `nome` FROM  `Zona` ");
+                "SELECT nome FROM  Zona ");
         
         ResultSet result = preparedStatement.executeQuery();
         

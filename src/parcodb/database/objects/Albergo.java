@@ -49,7 +49,7 @@ public class Albergo extends Struttura {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Albergo` (`nome`, `categoria`, `numero_posti`, `telefono`) VALUES ( ? , ? , ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Albergo (nome, categoria, numero_posti, telefono) VALUES ( ? , ? , ? , ? );");
         
         insertStatement.setString(1, nome);
         insertStatement.setString(2, categoria);

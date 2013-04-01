@@ -46,7 +46,7 @@ public class Paese extends Caratteristica {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn); 
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Paese` (`nome`, `abitanti`, `cap`) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Paese (nome, abitanti, cap) VALUES ( ? , ? , ? );");
         
         insertStatement.setString(1, nome);
         insertStatement.setInt(2, abitanti);
@@ -57,7 +57,7 @@ public class Paese extends Caratteristica {
     
     
     static public Paese[] getPaesi(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT `nome`, `abitanti`, `cap` FROM `bdati`.`Paese`");
+        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT nome, abitanti, cap FROM Paese");
         
         ResultSet result = preparedStatement.executeQuery();
         

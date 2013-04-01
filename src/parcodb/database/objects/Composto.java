@@ -35,7 +35,7 @@ class Composto implements RemoteDBobject {
     
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`Composto` (`inizio`, `fine`, `sentiero`, `numero_tappa`) VALUES ( ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Composto (inizio, fine, sentiero, numero_tappa) VALUES ( ? , ? );");
         
         insertStatement.setString(1, tappa.getInizio().getNome());
         insertStatement.setString(2, tappa.getFine().getNome());

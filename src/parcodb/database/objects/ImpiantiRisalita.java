@@ -34,7 +34,7 @@ public class ImpiantiRisalita extends Struttura {
         super.insertIntoDB(conn);
         
         //TODO impostare anche la capacità
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO `bdati`.`ImpiantiRisalita` (`nome`, `tipologia`, `capacita`) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO ImpiantiRisalita (nome, tipologia, capacita) VALUES ( ? , ? , ? );");
             
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);
