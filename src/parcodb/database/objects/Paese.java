@@ -69,8 +69,24 @@ public class Paese extends Caratteristica {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getPaese() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getPaesi() è incongruo ("+i+','+DIM+')');
         
         return paesi;
+    }
+    
+    static public Paese getPaese(DatabaseConnection conn, String nome) throws SQLException {
+        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT nome, abitanti, cap FROM Paese WHERE nome = ? ");
+        preparedStatement.setString(1, nome);
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        if (DIM != 1)
+            throw new SQLException("il numero di risultati di getPaese(nome) è incongruo ( dovrebbe essere 1 , invece è "+DIM+')');
+            
+        result.next();
+        Paese paese = new Paese(result.getString(1), result.getInt(2), result.getInt(3));
+        
+        return paese;
     }
 }
