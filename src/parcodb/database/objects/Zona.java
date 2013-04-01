@@ -51,7 +51,7 @@ public class Zona implements RemoteDBobject {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getZones() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getZone() è incongruo ("+i+','+DIM+')');
         
         return zone;
     }

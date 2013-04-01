@@ -59,7 +59,7 @@ public class Tappa implements RemoteDBobject {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getCaratteristiche() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getTappe() è incongruo ("+i+','+DIM+')');
         
         return tappe;
     }

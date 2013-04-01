@@ -81,7 +81,7 @@ public class UfficioInformazioni extends Struttura {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getAlberghi() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getUfficioInformazioni() è incongruo ("+i+','+DIM+')');
         
         return ufficiInformazioni;
     }

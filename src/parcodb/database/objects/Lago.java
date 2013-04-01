@@ -5,6 +5,7 @@
 package parcodb.database.objects;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import parcodb.database.DatabaseConnection;
 
@@ -15,6 +16,11 @@ public class Lago extends Caratteristica {
     
     public Lago(String nome, float estensione, Comune[] comuni) throws Exception {
         super(nome, comuni);
+        this.estensione = estensione;
+    }
+    
+    protected Lago(String nome, float estensione) {
+        super(nome);
         this.estensione = estensione;
     }
 
@@ -35,6 +41,24 @@ public class Lago extends Caratteristica {
         insertStatement.setFloat(2, estensione);
         
         insertStatement.execute();
+    }
+    
+    static public Lago[] getLaghi(DatabaseConnection conn) throws SQLException {
+        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT nome, estensione FROM Lago");
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Lago[] laghi = new Lago[DIM];
+        int i;
+        for (i=0; result.next(); i++) {
+            laghi[i] = new Lago(result.getString(1), result.getFloat(2));
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di getLaghi() è incongruo ("+i+','+DIM+')');
+        
+        return laghi;
     }
     
 }

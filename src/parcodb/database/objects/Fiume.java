@@ -5,6 +5,7 @@
 package parcodb.database.objects;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import parcodb.database.DatabaseConnection;
 
@@ -16,6 +17,12 @@ public class Fiume extends Caratteristica {
     
     public Fiume(String nome, float lunghezza, boolean navigabile, Comune[] comuni) throws Exception {
         super(nome, comuni);
+        this.lunghezza = lunghezza;
+        this.navigabile = navigabile;
+    }
+    
+    public Fiume(String nome, float lunghezza, boolean navigabile) {
+        super(nome);
         this.lunghezza = lunghezza;
         this.navigabile = navigabile;
     }
@@ -49,5 +56,22 @@ public class Fiume extends Caratteristica {
         insertStatement.execute();
     }
     
+    static public Fiume[] getFiumi(DatabaseConnection conn) throws SQLException {
+        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT nome, lunghezza, navigabile FROM Fiume");
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Fiume[] fiumi = new Fiume[DIM];
+        int i;
+        for (i=0; result.next(); i++) {
+            fiumi[i] = new Fiume(result.getString(1), result.getFloat(2), result.getBoolean(3));
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di getFiumi() è incongruo ("+i+','+DIM+')');
+        
+        return fiumi;
+    }
     
 }

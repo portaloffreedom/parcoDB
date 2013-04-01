@@ -79,7 +79,7 @@ public class Museo extends Struttura {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getAlberghi() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getMusei() è incongruo ("+i+','+DIM+')');
         
         return musei;
     }

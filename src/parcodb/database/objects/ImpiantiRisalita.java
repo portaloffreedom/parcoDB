@@ -75,7 +75,7 @@ public class ImpiantiRisalita extends Struttura {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getAlberghi() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getImpiantiRisalita() è incongruo ("+i+','+DIM+')');
         
         return impiantiRisalita;
     }

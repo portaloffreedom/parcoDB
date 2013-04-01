@@ -5,6 +5,7 @@
 package parcodb.database.objects;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import parcodb.database.DatabaseConnection;
 
@@ -15,6 +16,11 @@ public class Monte extends Caratteristica {
     
     public Monte(String nome, float altitudine, Comune[] comuni) throws Exception {
         super(nome, comuni);
+        this.altitudine = altitudine;
+    }
+    
+    private Monte(String nome, float altitudine) {
+        super(nome);
         this.altitudine = altitudine;
     }
 
@@ -36,6 +42,24 @@ public class Monte extends Caratteristica {
         insertStatement.setFloat(2, altitudine);
         
         insertStatement.execute();
+    }
+    
+    static public Monte[] getMonti(DatabaseConnection conn) throws SQLException {
+        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT nome, altitudine FROM Monte");
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Monte[] monti = new Monte[DIM];
+        int i;
+        for (i=0; result.next(); i++) {
+            monti[i] = new Monte(result.getString(1), result.getFloat(2));
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di getMonti() è incongruo ("+i+','+DIM+')');
+        
+        return monti;
     }
     
 }
