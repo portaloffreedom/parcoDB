@@ -7,8 +7,10 @@ package parcodb.database.objects;
 import com.trolltech.qt.core.QDate;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import parcodb.database.DatabaseConnection;
+import static parcodb.database.objects.Struttura.getStruttura;
 
 
 public class Monumento extends Struttura {
@@ -51,6 +53,35 @@ public class Monumento extends Struttura {
         insertStatement.setInt(2, anno);
         insertStatement.setString(3, descrizione);
         insertStatement.execute();
-    }    
+    }
+    
+    static public Monumento[] getMonumenti(DatabaseConnection conn) throws SQLException {
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, anno, descrizione FROM Monumento");
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Monumento[] monumenti = new Monumento[DIM];
+        int i;
+        for (i=0; result.next(); i++) {
+            String nome = result.getString(1);
+            Struttura struttura = getStruttura(conn, nome);
+            monumenti[i] = new Monumento(
+                    nome, 
+                    result.getInt(2), 
+                    result.getString(3),
+                    struttura.indirizzo,
+                    struttura.orario_apertura,
+                    struttura.periodo_inizio,
+                    struttura.periodo_fine,
+                    struttura.paese
+                    );
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di getMonumento() è incongruo ("+i+','+DIM+')');
+        
+        return monumenti;
+    }
     
 }
