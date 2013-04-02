@@ -73,7 +73,7 @@ public class Comune implements RemoteDBobject {
 
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Comune (nome, provincia, superficie) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Comune (nome, provincia, superficie) VALUES ( ? , ? , ? );");
         
         insertStatement.setString(1, nome);
         insertStatement.setString(2, provincia);
@@ -90,7 +90,7 @@ public class Comune implements RemoteDBobject {
     }
     
     static public Comune[] getComuni(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT nome, provincia, superficie FROM Comune");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, provincia, superficie FROM Comune");
         
         ResultSet result = preparedStatement.executeQuery();
         

@@ -45,7 +45,7 @@ public class Monumento extends Struttura {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Monumento (nome, anno, descrizione) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Monumento (nome, anno, descrizione) VALUES ( ? , ? , ? );");
         
         insertStatement.setString(1, nome);
         insertStatement.setInt(2, anno);

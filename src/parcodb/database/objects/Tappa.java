@@ -36,7 +36,7 @@ public class Tappa implements RemoteDBobject {
 
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Tappa (inizio, fine, lunghezza) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Tappa (inizio, fine, lunghezza) VALUES ( ? , ? , ? );");
         
         insertStatement.setString(1, inizio.getNome());
         insertStatement.setString(2, fine.getNome());
@@ -46,7 +46,7 @@ public class Tappa implements RemoteDBobject {
     }
     
         static public Tappa[] getTappe(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.getConn().prepareStatement(
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
                 "SELECT inizio,fine,lunghezza FROM  Tappa ");
         
         ResultSet result = preparedStatement.executeQuery();

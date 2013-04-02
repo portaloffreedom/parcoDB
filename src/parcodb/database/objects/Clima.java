@@ -75,7 +75,7 @@ public class Clima implements RemoteDBobject {
     void insertIntoDBpackage(DatabaseConnection conn) throws SQLException {
         if (comune == null)
             throw new SQLException("Comune non impostato nel clima");
-        PreparedStatement insertIntoZonaStatement = conn.getConn().prepareStatement("INSERT INTO Clima (comune, provincia, mese, pioggia, temperatura, umidita) VALUES ( ? , ? , ? , ? , ? , ? );");
+        PreparedStatement insertIntoZonaStatement = conn.prepareInsertStatement("INSERT INTO Clima (comune, provincia, mese, pioggia, temperatura, umidita) VALUES ( ? , ? , ? , ? , ? , ? );");
         
         insertIntoZonaStatement.setString(1, comune.getNome());
         insertIntoZonaStatement.setString(2, comune.getProvincia());

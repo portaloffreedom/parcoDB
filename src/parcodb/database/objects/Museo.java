@@ -47,7 +47,7 @@ public class Museo extends Struttura {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Fiume (nome, descirzione, telefono) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Fiume (nome, descirzione, telefono) VALUES ( ? , ? , ? );");
         
         insertStatement.setString(1, nome);
         insertStatement.setString(2, descrizione);
@@ -56,7 +56,7 @@ public class Museo extends Struttura {
     }
     
     static public Museo[] getMusei(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT nome, descirzione, telefono FROM Museo");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, descirzione, telefono FROM Museo");
         
         ResultSet result = preparedStatement.executeQuery();
         

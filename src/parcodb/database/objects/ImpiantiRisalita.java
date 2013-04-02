@@ -42,7 +42,7 @@ public class ImpiantiRisalita extends Struttura {
         super.insertIntoDB(conn);
         
         //TODO impostare anche la capacità
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO ImpiantiRisalita (nome, tipologia, capacita) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO ImpiantiRisalita (nome, tipologia, capacita) VALUES ( ? , ? , ? );");
             
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);
@@ -52,7 +52,7 @@ public class ImpiantiRisalita extends Struttura {
     }
     
     static public ImpiantiRisalita[] getImpiantiRisalita(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT nome, tipologia, capacita FROM Albergo");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, tipologia, capacita FROM Albergo");
         
         ResultSet result = preparedStatement.executeQuery();
         
@@ -78,6 +78,40 @@ public class ImpiantiRisalita extends Struttura {
             throw new SQLException("il numero di risultati di getImpiantiRisalita() è incongruo ("+i+','+DIM+')');
         
         return impiantiRisalita;
+    }
+    
+    static public ImpiantiRisalita getImpiantiRisalita(DatabaseConnection conn, String nome) throws SQLException {
+        String nome_funzione = "getImpiantiRisalita(nome)";
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, tipologia, capacita FROM Albergo WHERE nome = ? ");
+        preparedStatement.setString(1, nome);
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        if (DIM != 1)
+            throw new SQLException("il numero di risultati di "+nome_funzione+" è incongruo ( dovrebbe essere 1, invece è: "+DIM+')');
+        
+        result.next();
+        String nome_2 = result.getString(1);
+        
+        if (nome == null ? nome_2 != null : !nome.equals(nome_2))
+            throw new SQLException("incongruenza nei nomi nella funzione "+nome_funzione+" ("+nome+" vs "+nome_2+')');
+        
+        
+        Struttura struttura = getStruttura(conn, nome);
+        ImpiantiRisalita impiantoRisalita = new ImpiantiRisalita(
+                                 nome, 
+                                 result.getString(2), 
+                                 result.getInt(3),
+                                 struttura.indirizzo,
+                                 struttura.orario_apertura,
+                                 struttura.periodo_inizio,
+                                 struttura.periodo_fine,
+                                 struttura.paese
+                                 );
+        
+        
+        return impiantoRisalita;
     }
     
 }

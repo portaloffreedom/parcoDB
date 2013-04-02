@@ -34,7 +34,7 @@ public class Sentiero implements RemoteDBobject {
     
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Sentiero (numero_sentiero, lunghezza) VALUES ( ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Sentiero (numero_sentiero, lunghezza) VALUES ( ? , ? );");
         
         insertStatement.setInt(1, numero_sentiero);
         insertStatement.setFloat(2, lunghezza);

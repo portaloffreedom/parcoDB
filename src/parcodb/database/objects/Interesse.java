@@ -29,7 +29,7 @@ public class Interesse implements RemoteDBobject {
     
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Interesse (caratteristica, tappa_inizio, tappa_fine) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Interesse (caratteristica, tappa_inizio, tappa_fine) VALUES ( ? , ? , ? );");
         
         insertStatement.setString(1, caratteristica.getNome());
         insertStatement.setString(2, tappa.getInizio().getNome());

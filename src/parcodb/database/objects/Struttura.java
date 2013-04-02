@@ -71,7 +71,7 @@ public class Struttura extends Zona {
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn); //To change body of generated methods, choose Tools | Templates.
     
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Struttura (nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione) VALUES ( ? , ? , ? , ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Struttura (nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione) VALUES ( ? , ? , ? , ? , ? , ? );");
             
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);
@@ -84,7 +84,7 @@ public class Struttura extends Zona {
     }
     
         static public Struttura[] getStrutture(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione FROM Struttura");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione FROM Struttura");
         
         ResultSet result = preparedStatement.executeQuery();
         
@@ -110,7 +110,7 @@ public class Struttura extends Zona {
     }
         
     static public Struttura getStruttura(DatabaseConnection conn, String nome) throws SQLException {
-        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione FROM Struttura WHERE nome = ? ");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione FROM Struttura WHERE nome = ? ");
         preparedStatement.setString(1, nome);
         
         ResultSet result = preparedStatement.executeQuery();

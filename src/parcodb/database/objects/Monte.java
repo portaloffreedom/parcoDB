@@ -35,7 +35,7 @@ public class Monte extends Caratteristica {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Fiume (nome, altitudine) VALUES ( ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Fiume (nome, altitudine) VALUES ( ? , ? );");
         
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);
@@ -45,7 +45,7 @@ public class Monte extends Caratteristica {
     }
     
     static public Monte[] getMonti(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT nome, altitudine FROM Monte");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, altitudine FROM Monte");
         
         ResultSet result = preparedStatement.executeQuery();
         

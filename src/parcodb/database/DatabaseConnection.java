@@ -27,7 +27,7 @@ public class DatabaseConnection {
         
     }
 
-    public Connection getConn() {
+    private Connection getConn() {
         return conn;
     }
     
@@ -42,5 +42,14 @@ public class DatabaseConnection {
            result.beforeFirst();
 }       return rowCount;
     }
+    
+    public PreparedStatement prepareQueryStatement(String query) throws SQLException {
+        return conn.prepareStatement(query,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+    }
+    
+    public PreparedStatement prepareInsertStatement(String query) throws SQLException {
+        return conn.prepareStatement(query);
+    }
+        
     
 }

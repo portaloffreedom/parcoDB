@@ -55,7 +55,7 @@ public class Albergo extends Struttura {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Albergo (nome, categoria, numero_posti, telefono) VALUES ( ? , ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Albergo (nome, categoria, numero_posti, telefono) VALUES ( ? , ? , ? , ? );");
         
         insertStatement.setString(1, nome);
         insertStatement.setString(2, categoria);
@@ -66,7 +66,7 @@ public class Albergo extends Struttura {
     }
     
     static public Albergo[] getAlberghi(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT nome, categoria, numero_posti, telefono FROM Albergo");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, categoria, numero_posti, telefono FROM Albergo");
         
         ResultSet result = preparedStatement.executeQuery();
         

@@ -29,7 +29,7 @@ public class Vicino implements RemoteDBobject {
 
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO Vicino (nomeA, nomeB) VALUES ( ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Vicino (nomeA, nomeB) VALUES ( ? , ? );");
         
         insertStatement.setString(1, caratteristicaA.getNome());
         insertStatement.setString(2, caratteristicaB.getNome());

@@ -48,7 +48,7 @@ public class UfficioInformazioni extends Struttura {
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
         
-        PreparedStatement insertStatement = conn.getConn().prepareStatement("INSERT INTO UfficioInformazioni (nome, numero, telefono) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO UfficioInformazioni (nome, numero, telefono) VALUES ( ? , ? , ? );");
             
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);
@@ -58,7 +58,7 @@ public class UfficioInformazioni extends Struttura {
     }
     
     static public UfficioInformazioni[] getUfficiInformazioni(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.getConn().prepareStatement("SELECT nome, numero, telefono FROM UfficioInformazioni");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, numero, telefono FROM UfficioInformazioni");
         
         ResultSet result = preparedStatement.executeQuery();
         
