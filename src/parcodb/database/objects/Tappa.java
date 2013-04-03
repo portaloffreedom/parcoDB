@@ -45,9 +45,9 @@ public class Tappa implements RemoteDBobject {
         insertStatement.execute();
     }
     
-        static public Tappa[] getTappe(DatabaseConnection conn) throws SQLException {
+    static public Tappa[] getTappe(DatabaseConnection conn) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
-                "SELECT inizio,fine,lunghezza FROM  Tappa ");
+                "SELECT inizio,fine,lunghezza FROM Tappa ");
         
         ResultSet result = preparedStatement.executeQuery();
         
@@ -63,6 +63,10 @@ public class Tappa implements RemoteDBobject {
         
         return tappe;
     }
-    
+
+    @Override
+    public String toString() {
+        return this.getInizio().toString()+" - "+this.getFine().toString();
+    }
     
 }
