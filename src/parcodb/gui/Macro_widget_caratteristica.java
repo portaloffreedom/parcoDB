@@ -1,6 +1,8 @@
 package parcodb.gui;
 import com.trolltech.qt.QUiForm;
+import com.trolltech.qt.gui.QListWidgetItem;
 import com.trolltech.qt.gui.QWidget;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import parcodb.database.objects.Comune;
@@ -77,7 +79,7 @@ public class Macro_widget_caratteristica extends Ui_caratteristica_common implem
         try {
             lago = new Lago(lineEdit_nome.text(), 
                     Float.parseFloat(lago_wdg.lineEdit.text()),
-                    ((Comune[])listWidget_comune.selectedItems().toArray()));
+                    getComuni());
         } catch (Exception ex) {
             Logger.getLogger(Macro_widget_caratteristica.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -89,7 +91,7 @@ public class Macro_widget_caratteristica extends Ui_caratteristica_common implem
         try {
             monte = new Monte(lineEdit_nome.text(),
                     monte_wdg.spinBox_altitudine.value(),
-                    ((Comune[])listWidget_comune.selectedItems().toArray()));
+                    getComuni());
         } catch (Exception ex) {
             Logger.getLogger(Macro_widget_caratteristica.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -102,7 +104,7 @@ public class Macro_widget_caratteristica extends Ui_caratteristica_common implem
             fiume = new Fiume(lineEdit_nome.text(), 
                     Float.parseFloat(fiume_wdg.lineEdit_lunghezza.text()),
                     fiume_wdg.checkBox_navigabile.isChecked(),
-                    ((Comune[])listWidget_comune.selectedItems().toArray()));
+                    getComuni());
         } catch (Exception ex) {
             Logger.getLogger(Macro_widget_caratteristica.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -111,17 +113,27 @@ public class Macro_widget_caratteristica extends Ui_caratteristica_common implem
     
     private RemoteDBobject constructPaese(){
         Paese paese = null;
+        
         try {
             paese = new Paese(lineEdit_nome.text(), 
                     paese_wdg.spinBox_abitanti.value(), 
                     Integer.decode(paese_wdg.lineEdit_cap.text()),
-                    (Comune[])listWidget_comune.selectedItems().toArray());
+                    getComuni());
         } catch (Exception ex) {
             Logger.getLogger(Macro_widget_caratteristica.class.getName()).log(Level.SEVERE, null, ex);
         }
         return paese;
     }
     
+    private Comune[] getComuni(){
+        List<QListWidgetItem> arritem = listWidget_comune.selectedItems();
+        Comune[] comuni = new Comune[arritem.toArray().length];
+        int i = 0;
+        for(QListWidgetItem ogg : arritem){
+            comuni[i++] = (Comune)ogg.data(0);
+        }
+        return comuni;
+    }
     public void select_car_specific(){        
         if(widget_special != null) widget_special.dispose();
         

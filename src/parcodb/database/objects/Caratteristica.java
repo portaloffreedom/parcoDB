@@ -16,9 +16,10 @@ public class Caratteristica extends Zona {
     
     protected Caratteristica(String nome, Comune[] comuni) throws Exception {
         this(nome);
+        this.comuni = comuni;
         if (this.comuni.length < 1)
             throw new Exception("Almeno in un comune questa caratteristica si deve trovare");
-        this.comuni = comuni;
+        
     }
     
     protected Caratteristica(String nome) {

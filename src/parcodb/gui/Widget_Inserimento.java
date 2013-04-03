@@ -4,8 +4,11 @@ import com.trolltech.qt.gui.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import parcodb.database.objects.Caratteristica;
 import parcodb.database.objects.Comune;
 import parcodb.database.objects.Paese;
+import parcodb.database.objects.Tappa;
+import parcodb.database.objects.Zona;
 import parcodb.gui.builders.*;
 
 public class Widget_Inserimento extends Widget_Centrale
@@ -51,15 +54,13 @@ public class Widget_Inserimento extends Widget_Centrale
         set_central_widget(car_com);
         car_com.select_car_specific();
         try {
-            Comune[] comuni = Comune.getComuni(this.maiunui.conn);
-            for(Comune comune:comuni){
-                QListWidgetItem list = new QListWidgetItem();
-                list.setData(0, comune);
-                car_com.listWidget_comune.addItem(list);
-            }
+            popolaListaComune(car_com.listWidget_comune);
+            popolaListaTappe(car_com.listWidget_tappe);
+            popolaListaCaratt(car_com.lista_vicinanza);
         } catch (SQLException ex) {
             Logger.getLogger(Widget_Inserimento.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         active = car_com;
     }
     
@@ -68,10 +69,7 @@ public class Widget_Inserimento extends Widget_Centrale
         toggle_button(bottone_struttura);
         set_central_widget(strut_com);
         try {
-            Paese[] paesi = Paese.getPaesi(this.maiunui.conn);
-            for (Paese paese : paesi) {
-                strut_com.combo_situato.addItem(paese.getNome(), paese);
-            }
+            popolaComboPaesi(strut_com.combo_situato);
         } catch (SQLException ex) {
             Logger.getLogger(Widget_Inserimento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -84,10 +82,7 @@ public class Widget_Inserimento extends Widget_Centrale
         toggle_button(bottone_iniziativa);
         set_central_widget(ini_com);
         try {
-            Paese[] paesi = Paese.getPaesi(this.maiunui.conn);
-            for (Paese paese : paesi) {
-                ini_com.combo_paese.addItem(paese.getNome(), paese);
-            }
+            popolaComboPaesi(ini_com.combo_paese);
         } catch (SQLException ex) {
             Logger.getLogger(Widget_Inserimento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -98,6 +93,17 @@ public class Widget_Inserimento extends Widget_Centrale
     protected void set_tappa(){
         toggle_button(bottone_tappa);
         set_central_widget(tappa_com);
+        try {
+            Zona[] zone = Zona.getZone(maiunui.conn);
+            for(Zona zona:zone){
+                tappa_com.comboBox_inizio.addItem(zona.getNome(), zona);
+                tappa_com.comboBox_fine.addItem(zona.getNome(), zona);
+            }
+            popolaListaCaratt(tappa_com.list_interesse);
+        } catch (SQLException ex) {
+            Logger.getLogger(Widget_Inserimento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         active = tappa_com;
     }
     
@@ -105,6 +111,11 @@ public class Widget_Inserimento extends Widget_Centrale
     protected void set_sentiero(){
         toggle_button(bottone_sentiero);
         set_central_widget(sentiero_com);
+        try {
+            popolaListaTappe(sentiero_com.listWidget);
+        } catch (SQLException ex) {
+            Logger.getLogger(Widget_Inserimento.class.getName()).log(Level.SEVERE, null, ex);
+        }
         active = sentiero_com;
     }
     
@@ -114,7 +125,7 @@ public class Widget_Inserimento extends Widget_Centrale
         set_central_widget(comune_com);
         active = comune_com;
     }
-
+    
     @Override
     protected void inserisci(){
         insertor = active.getInsertor();
@@ -125,6 +136,42 @@ public class Widget_Inserimento extends Widget_Centrale
         }
         System.out.println("Inserito con successo");
     }
-
+    
+    //popolatori di widget
+    
+    private void popolaListaTappe(QListWidget where) throws SQLException{
+        Tappa[] tappe = Tappa.getTappe(maiunui.conn);
+        for(Tappa tappa:tappe){
+            QListWidgetItem list = new QListWidgetItem();
+            list.setData(0, tappa);
+            where.addItem(list);
+        }
+    }
+    
+    private void popolaListaCaratt(QListWidget where) throws SQLException{
+        Caratteristica[] caratteristiche = Caratteristica.getCaratteristiche(maiunui.conn);
+        for (Caratteristica caratteristica : caratteristiche) {
+            QListWidgetItem list = new QListWidgetItem();
+            list.setData(0, caratteristica);
+            where.addItem(list);
+        }
+    }
+    
+    private void popolaListaComune(QListWidget where) throws SQLException{
+        Comune[] comuni = Comune.getComuni(this.maiunui.conn);
+        for(Comune comune:comuni){
+            QListWidgetItem list = new QListWidgetItem();
+            list.setData(0, comune);
+            where.addItem(list);
+        }
+    }
+    
+    private void popolaComboPaesi(QComboBox where) throws SQLException{
+        Paese[] paesi = Paese.getPaesi(this.maiunui.conn);
+        for (Paese paese : paesi) {
+           where.addItem(paese.getNome(), paese);
+        }
+    }
+    
 }
 
