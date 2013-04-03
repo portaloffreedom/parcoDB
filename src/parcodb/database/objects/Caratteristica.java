@@ -65,5 +65,12 @@ public class Caratteristica extends Zona {
         
         return caratteristiche;
     }
+
+    @Override
+    public String toString() {
+        return this.getNome();
+    }
+        
+        
     
 }
