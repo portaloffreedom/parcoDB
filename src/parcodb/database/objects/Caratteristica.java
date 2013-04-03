@@ -69,7 +69,7 @@ public class Caratteristica extends Zona {
 
     @Override
     public String toString() {
-        return this.getNome();
+        return this.getNome().trim();
     }
         
         

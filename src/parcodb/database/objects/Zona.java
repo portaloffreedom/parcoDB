@@ -58,6 +58,6 @@ public class Zona implements RemoteDBobject {
     
     @Override
     public String toString(){
-        return getNome();
+        return getNome().trim();
     }
 }

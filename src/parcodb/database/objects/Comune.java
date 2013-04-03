@@ -109,6 +109,6 @@ public class Comune implements RemoteDBobject {
     
     @Override
     public String toString(){
-        return nome;
+        return getNome().trim();
     }
 }
