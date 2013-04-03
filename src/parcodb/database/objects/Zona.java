@@ -56,4 +56,8 @@ public class Zona implements RemoteDBobject {
         return zone;
     }
     
+    @Override
+    public String toString(){
+        return getNome();
+    }
 }
