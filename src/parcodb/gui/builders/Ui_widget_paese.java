@@ -55,6 +55,7 @@ public class Ui_widget_paese implements com.trolltech.qt.QUiForm<QWidget>
         spinBox_abitanti = new QSpinBox(widget);
         spinBox_abitanti.setObjectName("spinBox_abitanti");
         spinBox_abitanti.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.LeftToRight);
+        spinBox_abitanti.setMaximum(800000);
 
         horizontalLayout_2.addWidget(spinBox_abitanti);
 

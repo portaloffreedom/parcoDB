@@ -51,6 +51,7 @@ public class Ui_widget_sentieri implements com.trolltech.qt.QUiForm<QWidget>
 
         spinBox = new QSpinBox(widget);
         spinBox.setObjectName("spinBox");
+        spinBox.setMaximum(999999);
 
         horizontalLayout_2.addWidget(spinBox);
 

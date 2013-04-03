@@ -47,6 +47,9 @@
         <property name="layoutDirection">
          <enum>com.trolltech.qt.core.Qt.LayoutDirection.LeftToRight</enum>
         </property>
+        <property name="maximum">
+         <number>800000</number>
+        </property>
        </widget>
       </item>
      </layout>

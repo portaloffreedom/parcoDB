@@ -44,6 +44,7 @@ public class Ui_widget_impianti implements com.trolltech.qt.QUiForm<QWidget>
 
         spinBox_capacita = new QSpinBox(widget);
         spinBox_capacita.setObjectName("spinBox_capacita");
+        spinBox_capacita.setMaximum(9999999);
 
         horizontalLayout_2.addWidget(spinBox_capacita);
 
