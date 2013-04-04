@@ -42,27 +42,15 @@ public class Comune implements RemoteDBobject {
     }
 
     public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+        return nome.trim();
     }
 
     public String getProvincia() {
-        return provincia;
-    }
-
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
+        return provincia.trim();
     }
 
     public float getSuperficie() {
         return superficie;
-    }
-
-    public void setSuperficie(float superficie) {
-        this.superficie = superficie;
     }
 
     public Clima[] getClima() throws SQLException {

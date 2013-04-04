@@ -31,16 +31,8 @@ public class Fiume extends Caratteristica {
         return lunghezza;
     }
 
-    public void setLunghezza(float lunghezza) {
-        this.lunghezza = lunghezza;
-    }
-
-    public boolean isNavigabile() {
+    public boolean getNavigabile() {
         return navigabile;
-    }
-
-    public void setNavigabile(boolean navigabile) {
-        this.navigabile = navigabile;
     }
 
     @Override

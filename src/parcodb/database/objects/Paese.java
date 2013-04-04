@@ -35,14 +35,6 @@ public class Paese extends Caratteristica {
         return CAP;
     }
 
-    public void setAbitanti(int abitanti) {
-        this.abitanti = abitanti;
-    }
-
-    public void setCAP(int CAP) {
-        this.CAP = CAP;
-    }
-
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn); 

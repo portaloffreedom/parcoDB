@@ -28,10 +28,6 @@ public class Lago extends Caratteristica {
         return estensione;
     }
 
-    public void setEstensione(float estensione) {
-        this.estensione = estensione;
-    }
-
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn); 

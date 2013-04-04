@@ -28,10 +28,6 @@ public class Monte extends Caratteristica {
         return altitudine;
     }
 
-    public void setAltitudine(float altitudine) {
-        this.altitudine = altitudine;
-    }
-
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);

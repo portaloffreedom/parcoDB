@@ -29,27 +29,15 @@ public class Albergo extends Struttura {
     }
 
     public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+        return categoria.trim();
     }
 
     public int getNumero_posti() {
         return numero_posti;
     }
 
-    public void setNumero_posti(int numero_posti) {
-        this.numero_posti = numero_posti;
-    }
-
     public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+        return telefono.trim();
     }
 
     @Override

@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import parcodb.database.DatabaseConnection;
-import static parcodb.database.objects.Struttura.getStruttura;
 
 
 public class Iniziativa implements RemoteDBobject {
@@ -36,15 +35,15 @@ public class Iniziativa implements RemoteDBobject {
     }
 
     public String getTipo() {
-        return tipo;
+        return tipo.trim();
     }
 
     public String getNome() {
-        return nome;
+        return nome.trim();
     }
 
     public String getDettagli() {
-        return dettagli;
+        return dettagli.trim();
     }
 
     @Override
