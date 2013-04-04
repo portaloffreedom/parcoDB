@@ -1,6 +1,8 @@
 package parcodb.gui;
 
 import com.trolltech.qt.gui.QWidget;
+import parcodb.database.objects.Iniziativa;
+import parcodb.database.objects.Paese;
 import parcodb.database.objects.RemoteDBobject;
 import parcodb.gui.builders.Ui_iniziativa_common;
 /**
@@ -24,6 +26,10 @@ public class Macro_widget_iniziativa extends Ui_iniziativa_common implements Ins
 
     @Override
     public RemoteDBobject getInsertor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Iniziativa((Paese)combo_paese.itemData(combo_paese.currentIndex()),
+                spinBox.value(),
+                combo_iniziativa.currentText(),
+                lineEdit_nome.text(),
+                plainText_descrizione.toPlainText());
     }
 }

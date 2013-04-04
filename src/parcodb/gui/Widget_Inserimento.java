@@ -22,6 +22,7 @@ public class Widget_Inserimento extends Widget_Centrale
     
     private Ui_Dialog_errore_nodati dialog_errore_nodati;
     private Insertor active;
+    
     public Widget_Inserimento(MainGUI mainui)
     {
         super(mainui);
@@ -45,7 +46,6 @@ public class Widget_Inserimento extends Widget_Centrale
     @Override
     protected void set_signals(){
         super.set_signals();
-        
     }
     
     @Override
@@ -128,13 +128,17 @@ public class Widget_Inserimento extends Widget_Centrale
     
     @Override
     protected void inserisci(){
+        String messaggio = "Inserito con successo!";
         insertor = active.getInsertor();
         try {
             insertor.insertIntoDB(maiunui.conn);
         } catch (SQLException ex) {
             Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+            messaggio = "Errore nell'inserimento dei dati. Forse manca qualcosa?";
+        } finally {
+            MainGUI.statusMessage(messaggio);
         }
-        System.out.println("Inserito con successo");
+        
     }
     
     //popolatori di widget
@@ -169,7 +173,7 @@ public class Widget_Inserimento extends Widget_Centrale
     private void popolaComboPaesi(QComboBox where) throws SQLException{
         Paese[] paesi = Paese.getPaesi(this.maiunui.conn);
         for (Paese paese : paesi) {
-           where.addItem(paese.getNome(), paese);
+           where.addItem(paese.toString(), paese);
         }
     }
     

@@ -54,7 +54,13 @@ public class Ui_widget_paese implements com.trolltech.qt.QUiForm<QWidget>
 
         spinBox_abitanti = new QSpinBox(widget);
         spinBox_abitanti.setObjectName("spinBox_abitanti");
+        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy2.setHorizontalStretch((byte)0);
+        sizePolicy2.setVerticalStretch((byte)0);
+        sizePolicy2.setHeightForWidth(spinBox_abitanti.sizePolicy().hasHeightForWidth());
+        spinBox_abitanti.setSizePolicy(sizePolicy2);
         spinBox_abitanti.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.LeftToRight);
+        spinBox_abitanti.setMaximum(800000);
 
         horizontalLayout_2.addWidget(spinBox_abitanti);
 
@@ -68,21 +74,21 @@ public class Ui_widget_paese implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout.setObjectName("horizontalLayout");
         label = new QLabel(widget_2);
         label.setObjectName("label");
-        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
-        sizePolicy2.setHorizontalStretch((byte)0);
-        sizePolicy2.setVerticalStretch((byte)0);
-        sizePolicy2.setHeightForWidth(label.sizePolicy().hasHeightForWidth());
-        label.setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy3.setHorizontalStretch((byte)0);
+        sizePolicy3.setVerticalStretch((byte)0);
+        sizePolicy3.setHeightForWidth(label.sizePolicy().hasHeightForWidth());
+        label.setSizePolicy(sizePolicy3);
 
         horizontalLayout.addWidget(label);
 
         lineEdit_cap = new QLineEdit(widget_2);
         lineEdit_cap.setObjectName("lineEdit_cap");
-        QSizePolicy sizePolicy3 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
-        sizePolicy3.setHorizontalStretch((byte)0);
-        sizePolicy3.setVerticalStretch((byte)0);
-        sizePolicy3.setHeightForWidth(lineEdit_cap.sizePolicy().hasHeightForWidth());
-        lineEdit_cap.setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy4 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy4.setHorizontalStretch((byte)0);
+        sizePolicy4.setVerticalStretch((byte)0);
+        sizePolicy4.setHeightForWidth(lineEdit_cap.sizePolicy().hasHeightForWidth());
+        lineEdit_cap.setSizePolicy(sizePolicy4);
         lineEdit_cap.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.RightToLeft);
         lineEdit_cap.setInputMethodHints(com.trolltech.qt.core.Qt.InputMethodHint.createQFlags(com.trolltech.qt.core.Qt.InputMethodHint.ImhDigitsOnly,com.trolltech.qt.core.Qt.InputMethodHint.ImhFormattedNumbersOnly));
 

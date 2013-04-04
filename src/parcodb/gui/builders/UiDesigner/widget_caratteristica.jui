@@ -111,6 +111,12 @@
          </item>
          <item>
           <widget class="QListWidget" name="listWidget_comune">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="selectionMode">
             <enum>com.trolltech.qt.gui.QAbstractItemView.SelectionMode.MultiSelection</enum>
            </property>

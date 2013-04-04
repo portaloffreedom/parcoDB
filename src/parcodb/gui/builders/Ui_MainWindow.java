@@ -35,6 +35,7 @@ public class Ui_MainWindow implements com.trolltech.qt.QUiForm<QMainWindow>
         sizePolicy.setVerticalStretch((byte)0);
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth());
         MainWindow.setSizePolicy(sizePolicy);
+        MainWindow.setUnifiedTitleAndToolBarOnMac(false);
         actionEsci = new QAction(MainWindow);
         actionEsci.setObjectName("actionEsci");
         actionInformazioni_su = new QAction(MainWindow);
