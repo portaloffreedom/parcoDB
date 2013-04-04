@@ -48,7 +48,7 @@ public class Struttura extends Zona {
     }
 
     public String getOrario_apertura() {
-        return orario_apertura;
+        return orario_apertura.trim();
     }
 
     public Date getPeriodo_inizio() {
@@ -60,11 +60,7 @@ public class Struttura extends Zona {
     }
 
     public String getIndirizzo() {
-        return indirizzo;
-    }
-
-    public void setIndirizzo(String indirizzo) {
-        this.indirizzo = indirizzo;
+        return indirizzo.trim();
     }
 
     @Override

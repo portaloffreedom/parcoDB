@@ -31,17 +31,8 @@ public class Monumento extends Struttura {
     public int getAnno() {
         return anno;
     }
-
-    public void setAnno(int anno) {
-        this.anno = anno;
-    }
-
     public String getDescrizione() {
-        return descrizione;
-    }
-
-    public void setDescrizione(String descrizione) {
-        this.descrizione = descrizione;
+        return descrizione.trim();
     }
 
     @Override

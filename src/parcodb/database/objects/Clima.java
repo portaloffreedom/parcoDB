@@ -31,39 +31,23 @@ public class Clima implements RemoteDBobject {
         return mese;
     }
 
-    public void setMese(int mese) {
-        this.mese = mese;
-    }
-
     public float getTemperatura() {
         return temperatura;
     }
-
-    public void setTemperatura(float temperatura) {
-        this.temperatura = temperatura;
-    }
-
+    
     public float getUmidita() {
         return umidita;
-    }
-
-    public void setUmidita(float umidita) {
-        this.umidita = umidita;
     }
 
     public float getPioggia() {
         return pioggia;
     }
 
-    public void setPioggia(float pioggia) {
-        this.pioggia = pioggia;
-    }
-
     public Comune getComune() {
         return comune;
     }
 
-    public void setComune(Comune comune) {
+    void setComune(Comune comune) {
         this.comune = comune;
     }
 

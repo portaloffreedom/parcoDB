@@ -30,11 +30,7 @@ public class ImpiantiRisalita extends Struttura {
 
 
     public String getTipologia() {
-        return tipologia;
-    }
-
-    public void setTipologia(String tipologia) {
-        this.tipologia = tipologia;
+        return tipologia.trim();
     }
 
     @Override

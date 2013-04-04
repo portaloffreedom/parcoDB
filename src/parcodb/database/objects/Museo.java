@@ -29,21 +29,12 @@ public class Museo extends Struttura {
     }
     
     public String getDescrizione() {
-        return descrizione;
-    }
-
-    public void setDescrizione(String descrizione) {
-        this.descrizione = descrizione;
+        return descrizione.trim();
     }
 
     public String getTelefono() {
-        return telefono;
+        return telefono.trim();
     }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
