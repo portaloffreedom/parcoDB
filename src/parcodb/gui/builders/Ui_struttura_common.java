@@ -63,6 +63,11 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         layout_special.setObjectName("layout_special");
         widget_3 = new QWidget(struttura_common);
         widget_3.setObjectName("widget_3");
+        QSizePolicy sizePolicy1 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Preferred, com.trolltech.qt.gui.QSizePolicy.Policy.Maximum);
+        sizePolicy1.setHorizontalStretch((byte)0);
+        sizePolicy1.setVerticalStretch((byte)0);
+        sizePolicy1.setHeightForWidth(widget_3.sizePolicy().hasHeightForWidth());
+        widget_3.setSizePolicy(sizePolicy1);
         gridLayout = new QGridLayout(widget_3);
         gridLayout.setMargin(0);
         gridLayout.setObjectName("gridLayout");
@@ -72,11 +77,21 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout.setObjectName("horizontalLayout");
         label_tipo = new QLabel(widget_tipo);
         label_tipo.setObjectName("label_tipo");
+        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy2.setHorizontalStretch((byte)0);
+        sizePolicy2.setVerticalStretch((byte)0);
+        sizePolicy2.setHeightForWidth(label_tipo.sizePolicy().hasHeightForWidth());
+        label_tipo.setSizePolicy(sizePolicy2);
 
         horizontalLayout.addWidget(label_tipo);
 
         combo_tipo = new QComboBox(widget_tipo);
         combo_tipo.setObjectName("combo_tipo");
+        QSizePolicy sizePolicy3 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy3.setHorizontalStretch((byte)0);
+        sizePolicy3.setVerticalStretch((byte)0);
+        sizePolicy3.setHeightForWidth(combo_tipo.sizePolicy().hasHeightForWidth());
+        combo_tipo.setSizePolicy(sizePolicy3);
 
         horizontalLayout.addWidget(combo_tipo);
 
@@ -89,16 +104,21 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout_2.setObjectName("horizontalLayout_2");
         label_nome = new QLabel(widget_nome);
         label_nome.setObjectName("label_nome");
-        QSizePolicy sizePolicy1 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
-        sizePolicy1.setHorizontalStretch((byte)0);
-        sizePolicy1.setVerticalStretch((byte)0);
-        sizePolicy1.setHeightForWidth(label_nome.sizePolicy().hasHeightForWidth());
-        label_nome.setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy4 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy4.setHorizontalStretch((byte)0);
+        sizePolicy4.setVerticalStretch((byte)0);
+        sizePolicy4.setHeightForWidth(label_nome.sizePolicy().hasHeightForWidth());
+        label_nome.setSizePolicy(sizePolicy4);
 
         horizontalLayout_2.addWidget(label_nome);
 
         lineEdit_nome = new QLineEdit(widget_nome);
         lineEdit_nome.setObjectName("lineEdit_nome");
+        QSizePolicy sizePolicy5 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy5.setHorizontalStretch((byte)0);
+        sizePolicy5.setVerticalStretch((byte)0);
+        sizePolicy5.setHeightForWidth(lineEdit_nome.sizePolicy().hasHeightForWidth());
+        lineEdit_nome.setSizePolicy(sizePolicy5);
 
         horizontalLayout_2.addWidget(lineEdit_nome);
 
@@ -111,16 +131,21 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout_3.setObjectName("horizontalLayout_3");
         label_indirizzo = new QLabel(widget_indirizzo);
         label_indirizzo.setObjectName("label_indirizzo");
-        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
-        sizePolicy2.setHorizontalStretch((byte)0);
-        sizePolicy2.setVerticalStretch((byte)0);
-        sizePolicy2.setHeightForWidth(label_indirizzo.sizePolicy().hasHeightForWidth());
-        label_indirizzo.setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy6 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy6.setHorizontalStretch((byte)0);
+        sizePolicy6.setVerticalStretch((byte)0);
+        sizePolicy6.setHeightForWidth(label_indirizzo.sizePolicy().hasHeightForWidth());
+        label_indirizzo.setSizePolicy(sizePolicy6);
 
         horizontalLayout_3.addWidget(label_indirizzo);
 
         lineEdit_indirizzo = new QLineEdit(widget_indirizzo);
         lineEdit_indirizzo.setObjectName("lineEdit_indirizzo");
+        QSizePolicy sizePolicy7 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy7.setHorizontalStretch((byte)0);
+        sizePolicy7.setVerticalStretch((byte)0);
+        sizePolicy7.setHeightForWidth(lineEdit_indirizzo.sizePolicy().hasHeightForWidth());
+        lineEdit_indirizzo.setSizePolicy(sizePolicy7);
 
         horizontalLayout_3.addWidget(lineEdit_indirizzo);
 
@@ -139,11 +164,21 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         verticalLayout.setObjectName("verticalLayout");
         label_ora1 = new QLabel(widget_2);
         label_ora1.setObjectName("label_ora1");
+        QSizePolicy sizePolicy8 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy8.setHorizontalStretch((byte)0);
+        sizePolicy8.setVerticalStretch((byte)0);
+        sizePolicy8.setHeightForWidth(label_ora1.sizePolicy().hasHeightForWidth());
+        label_ora1.setSizePolicy(sizePolicy8);
 
         verticalLayout.addWidget(label_ora1);
 
         label_ora2 = new QLabel(widget_2);
         label_ora2.setObjectName("label_ora2");
+        QSizePolicy sizePolicy9 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy9.setHorizontalStretch((byte)0);
+        sizePolicy9.setVerticalStretch((byte)0);
+        sizePolicy9.setHeightForWidth(label_ora2.sizePolicy().hasHeightForWidth());
+        label_ora2.setSizePolicy(sizePolicy9);
 
         verticalLayout.addWidget(label_ora2);
 
@@ -156,11 +191,21 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         verticalLayout_2.setObjectName("verticalLayout_2");
         dateEdit_apertura = new QDateEdit(widget);
         dateEdit_apertura.setObjectName("dateEdit_apertura");
+        QSizePolicy sizePolicy10 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy10.setHorizontalStretch((byte)0);
+        sizePolicy10.setVerticalStretch((byte)0);
+        sizePolicy10.setHeightForWidth(dateEdit_apertura.sizePolicy().hasHeightForWidth());
+        dateEdit_apertura.setSizePolicy(sizePolicy10);
 
         verticalLayout_2.addWidget(dateEdit_apertura);
 
         dateEdit_chiusura = new QDateEdit(widget);
         dateEdit_chiusura.setObjectName("dateEdit_chiusura");
+        QSizePolicy sizePolicy11 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy11.setHorizontalStretch((byte)0);
+        sizePolicy11.setVerticalStretch((byte)0);
+        sizePolicy11.setHeightForWidth(dateEdit_chiusura.sizePolicy().hasHeightForWidth());
+        dateEdit_chiusura.setSizePolicy(sizePolicy11);
 
         verticalLayout_2.addWidget(dateEdit_chiusura);
 
@@ -176,11 +221,21 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout_5.setObjectName("horizontalLayout_5");
         label_situato = new QLabel(widget_situato);
         label_situato.setObjectName("label_situato");
+        QSizePolicy sizePolicy12 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy12.setHorizontalStretch((byte)0);
+        sizePolicy12.setVerticalStretch((byte)0);
+        sizePolicy12.setHeightForWidth(label_situato.sizePolicy().hasHeightForWidth());
+        label_situato.setSizePolicy(sizePolicy12);
 
         horizontalLayout_5.addWidget(label_situato);
 
         combo_situato = new QComboBox(widget_situato);
         combo_situato.setObjectName("combo_situato");
+        QSizePolicy sizePolicy13 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy13.setHorizontalStretch((byte)0);
+        sizePolicy13.setVerticalStretch((byte)0);
+        sizePolicy13.setHeightForWidth(combo_situato.sizePolicy().hasHeightForWidth());
+        combo_situato.setSizePolicy(sizePolicy13);
 
         horizontalLayout_5.addWidget(combo_situato);
 
@@ -193,16 +248,21 @@ public class Ui_struttura_common implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout_6.setObjectName("horizontalLayout_6");
         label = new QLabel(widget_4);
         label.setObjectName("label");
-        QSizePolicy sizePolicy3 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
-        sizePolicy3.setHorizontalStretch((byte)0);
-        sizePolicy3.setVerticalStretch((byte)0);
-        sizePolicy3.setHeightForWidth(label.sizePolicy().hasHeightForWidth());
-        label.setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy14 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy14.setHorizontalStretch((byte)0);
+        sizePolicy14.setVerticalStretch((byte)0);
+        sizePolicy14.setHeightForWidth(label.sizePolicy().hasHeightForWidth());
+        label.setSizePolicy(sizePolicy14);
 
         horizontalLayout_6.addWidget(label);
 
         lineEdit_orario = new QLineEdit(widget_4);
         lineEdit_orario.setObjectName("lineEdit_orario");
+        QSizePolicy sizePolicy15 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy15.setHorizontalStretch((byte)0);
+        sizePolicy15.setVerticalStretch((byte)0);
+        sizePolicy15.setHeightForWidth(lineEdit_orario.sizePolicy().hasHeightForWidth());
+        lineEdit_orario.setSizePolicy(sizePolicy15);
         lineEdit_orario.setInputMethodHints(com.trolltech.qt.core.Qt.InputMethodHint.createQFlags(com.trolltech.qt.core.Qt.InputMethodHint.ImhDigitsOnly,com.trolltech.qt.core.Qt.InputMethodHint.ImhFormattedNumbersOnly));
 
         horizontalLayout_6.addWidget(lineEdit_orario);

@@ -28,7 +28,7 @@ public class Ui_iniziativa_common implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget_2;
     public QHBoxLayout horizontalLayout_4;
     public QLabel label_settimana;
-    public QDateEdit dateEdit_settimana;
+    public QSpinBox spinBox;
     public QWidget widget_3;
     public QVBoxLayout verticalLayout;
     public QLabel label_descrizione;
@@ -60,6 +60,11 @@ public class Ui_iniziativa_common implements com.trolltech.qt.QUiForm<QWidget>
 
         combo_iniziativa = new QComboBox(widget_tipo);
         combo_iniziativa.setObjectName("combo_iniziativa");
+        QSizePolicy sizePolicy1 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy1.setHorizontalStretch((byte)0);
+        sizePolicy1.setVerticalStretch((byte)0);
+        sizePolicy1.setHeightForWidth(combo_iniziativa.sizePolicy().hasHeightForWidth());
+        combo_iniziativa.setSizePolicy(sizePolicy1);
 
         horizontalLayout.addWidget(combo_iniziativa);
 
@@ -77,6 +82,11 @@ public class Ui_iniziativa_common implements com.trolltech.qt.QUiForm<QWidget>
 
         lineEdit_nome = new QLineEdit(widget_nome);
         lineEdit_nome.setObjectName("lineEdit_nome");
+        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy2.setHorizontalStretch((byte)0);
+        sizePolicy2.setVerticalStretch((byte)0);
+        sizePolicy2.setHeightForWidth(lineEdit_nome.sizePolicy().hasHeightForWidth());
+        lineEdit_nome.setSizePolicy(sizePolicy2);
 
         horizontalLayout_2.addWidget(lineEdit_nome);
 
@@ -94,6 +104,11 @@ public class Ui_iniziativa_common implements com.trolltech.qt.QUiForm<QWidget>
 
         combo_paese = new QComboBox(widget);
         combo_paese.setObjectName("combo_paese");
+        QSizePolicy sizePolicy3 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy3.setHorizontalStretch((byte)0);
+        sizePolicy3.setVerticalStretch((byte)0);
+        sizePolicy3.setHeightForWidth(combo_paese.sizePolicy().hasHeightForWidth());
+        combo_paese.setSizePolicy(sizePolicy3);
 
         horizontalLayout_3.addWidget(combo_paese);
 
@@ -109,10 +124,16 @@ public class Ui_iniziativa_common implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_4.addWidget(label_settimana);
 
-        dateEdit_settimana = new QDateEdit(widget_2);
-        dateEdit_settimana.setObjectName("dateEdit_settimana");
+        spinBox = new QSpinBox(widget_2);
+        spinBox.setObjectName("spinBox");
+        QSizePolicy sizePolicy4 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy4.setHorizontalStretch((byte)0);
+        sizePolicy4.setVerticalStretch((byte)0);
+        sizePolicy4.setHeightForWidth(spinBox.sizePolicy().hasHeightForWidth());
+        spinBox.setSizePolicy(sizePolicy4);
+        spinBox.setMaximum(52);
 
-        horizontalLayout_4.addWidget(dateEdit_settimana);
+        horizontalLayout_4.addWidget(spinBox);
 
 
         gridLayout.addWidget(widget_2, 1, 1, 1, 1);

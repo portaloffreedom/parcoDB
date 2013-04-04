@@ -44,6 +44,12 @@
       </item>
       <item>
        <widget class="QSpinBox" name="spinBox_altitudine">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="layoutDirection">
          <enum>com.trolltech.qt.core.Qt.LayoutDirection.LeftToRight</enum>
         </property>

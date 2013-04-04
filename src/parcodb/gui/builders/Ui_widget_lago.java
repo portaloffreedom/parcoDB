@@ -50,7 +50,7 @@ public class Ui_widget_lago implements com.trolltech.qt.QUiForm<QWidget>
 
         lineEdit = new QLineEdit(widget);
         lineEdit.setObjectName("lineEdit");
-        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
         sizePolicy2.setHorizontalStretch((byte)0);
         sizePolicy2.setVerticalStretch((byte)0);
         sizePolicy2.setHeightForWidth(lineEdit.sizePolicy().hasHeightForWidth());

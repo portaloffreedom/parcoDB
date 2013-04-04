@@ -17,7 +17,10 @@ public class Ui_widget_fiume implements com.trolltech.qt.QUiForm<QWidget>
     public QHBoxLayout horizontalLayout;
     public QLabel label_lunghezza;
     public QLineEdit lineEdit_lunghezza;
+    public QWidget widget_2;
+    public QHBoxLayout horizontalLayout_2;
     public QCheckBox checkBox_navigabile;
+    public QSpacerItem horizontalSpacer;
     public QSpacerItem verticalSpacer;
 
     public Ui_widget_fiume() { super(); }
@@ -25,7 +28,7 @@ public class Ui_widget_fiume implements com.trolltech.qt.QUiForm<QWidget>
     public void setupUi(QWidget widget_fiume)
     {
         widget_fiume.setObjectName("widget_fiume");
-        widget_fiume.resize(new QSize(260, 293).expandedTo(widget_fiume.minimumSizeHint()));
+        widget_fiume.resize(new QSize(261, 293).expandedTo(widget_fiume.minimumSizeHint()));
         QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
         sizePolicy.setHorizontalStretch((byte)0);
         sizePolicy.setVerticalStretch((byte)0);
@@ -51,7 +54,7 @@ public class Ui_widget_fiume implements com.trolltech.qt.QUiForm<QWidget>
 
         lineEdit_lunghezza = new QLineEdit(widget);
         lineEdit_lunghezza.setObjectName("lineEdit_lunghezza");
-        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
         sizePolicy2.setHorizontalStretch((byte)0);
         sizePolicy2.setVerticalStretch((byte)0);
         sizePolicy2.setHeightForWidth(lineEdit_lunghezza.sizePolicy().hasHeightForWidth());
@@ -64,14 +67,31 @@ public class Ui_widget_fiume implements com.trolltech.qt.QUiForm<QWidget>
 
         verticalLayout.addWidget(widget);
 
-        checkBox_navigabile = new QCheckBox(widget_fiume);
+        widget_2 = new QWidget(widget_fiume);
+        widget_2.setObjectName("widget_2");
+        horizontalLayout_2 = new QHBoxLayout(widget_2);
+        horizontalLayout_2.setMargin(0);
+        horizontalLayout_2.setObjectName("horizontalLayout_2");
+        checkBox_navigabile = new QCheckBox(widget_2);
         checkBox_navigabile.setObjectName("checkBox_navigabile");
         checkBox_navigabile.setEnabled(true);
-        checkBox_navigabile.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.LeftToRight);
+        QSizePolicy sizePolicy3 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy3.setHorizontalStretch((byte)0);
+        sizePolicy3.setVerticalStretch((byte)0);
+        sizePolicy3.setHeightForWidth(checkBox_navigabile.sizePolicy().hasHeightForWidth());
+        checkBox_navigabile.setSizePolicy(sizePolicy3);
+        checkBox_navigabile.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.RightToLeft);
         checkBox_navigabile.setCheckable(true);
         checkBox_navigabile.setTristate(false);
 
-        verticalLayout.addWidget(checkBox_navigabile);
+        horizontalLayout_2.addWidget(checkBox_navigabile);
+
+        horizontalSpacer = new QSpacerItem(40, 20, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Minimum);
+
+        horizontalLayout_2.addItem(horizontalSpacer);
+
+
+        verticalLayout.addWidget(widget_2);
 
         verticalSpacer = new QSpacerItem(20, 40, com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding);
 

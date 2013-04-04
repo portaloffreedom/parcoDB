@@ -46,7 +46,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="combo_iniziativa"/>
+       <widget class="QComboBox" name="combo_iniziativa">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -62,7 +69,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_nome"/>
+       <widget class="QLineEdit" name="lineEdit_nome">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -78,7 +92,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="combo_paese"/>
+       <widget class="QComboBox" name="combo_paese">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -94,7 +115,17 @@
        </widget>
       </item>
       <item>
-       <widget class="QDateEdit" name="dateEdit_settimana"/>
+       <widget class="QSpinBox" name="spinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximum">
+         <number>52</number>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

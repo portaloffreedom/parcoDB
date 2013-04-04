@@ -25,6 +25,12 @@
    </property>
    <item>
     <widget class="QWidget" name="widget_3" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <layout class="QGridLayout" name="gridLayout">
       <property name="margin">
        <number>0</number>
@@ -34,13 +40,26 @@
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="label_tipo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>Tipologia</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="combo_tipo"/>
+          <widget class="QComboBox" name="combo_tipo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -62,7 +81,14 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_nome"/>
+          <widget class="QLineEdit" name="lineEdit_nome">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -84,7 +110,14 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_indirizzo"/>
+          <widget class="QLineEdit" name="lineEdit_indirizzo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -103,6 +136,12 @@
            <layout class="QVBoxLayout" name="verticalLayout">
             <item>
              <widget class="QLabel" name="label_ora1">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="text">
                <string>Data apertura</string>
               </property>
@@ -110,6 +149,12 @@
             </item>
             <item>
              <widget class="QLabel" name="label_ora2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="text">
                <string>Data chiusura</string>
               </property>
@@ -122,10 +167,24 @@
           <widget class="QWidget" name="widget" native="true">
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
-             <widget class="QDateEdit" name="dateEdit_apertura"/>
+             <widget class="QDateEdit" name="dateEdit_apertura">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
             </item>
             <item>
-             <widget class="QDateEdit" name="dateEdit_chiusura"/>
+             <widget class="QDateEdit" name="dateEdit_chiusura">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -138,13 +197,26 @@
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
           <widget class="QLabel" name="label_situato">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>Situato in</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="combo_situato"/>
+          <widget class="QComboBox" name="combo_situato">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -167,6 +239,12 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineEdit_orario">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="inputMethodHints">
             <set>com.trolltech.qt.core.Qt.InputMethodHint.ImhDigitsOnly|com.trolltech.qt.core.Qt.InputMethodHint.ImhFormattedNumbersOnly</set>
            </property>
