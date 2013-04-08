@@ -64,7 +64,7 @@ public class Iniziativa implements RemoteDBobject {
     static public Iniziativa[] getIniziative(DatabaseConnection conn) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
                 "SELECT paese, settimana, tipo, nome, dettagli "
-                + "FROM Monumento");
+                + "FROM Iniziativa");
         
         ResultSet result = preparedStatement.executeQuery();
         
@@ -92,7 +92,7 @@ public class Iniziativa implements RemoteDBobject {
         static public Iniziativa[] getIniziative(DatabaseConnection conn, Paese paese) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
                 "SELECT paese, settimana, tipo, nome, dettagli "
-                + "FROM Monumento"
+                + "FROM Iniziativa"
                 + "WHERE paese = ? ");
         preparedStatement.setString(1, paese.getNome());
         
@@ -121,5 +121,10 @@ public class Iniziativa implements RemoteDBobject {
             Paese _paese = Paese.getPaese(conn, paese);
             return getIniziative(conn, _paese);
         }
+
+    @Override
+    public String toString() {
+        return this.getNome()+" a "+this.getPaese().getNome();
+    }
     
 }
