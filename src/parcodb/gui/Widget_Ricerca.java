@@ -1,12 +1,9 @@
 package parcodb.gui;
 
-import com.trolltech.qt.gui.QListWidget;
-import com.trolltech.qt.gui.QListWidgetItem;
 import com.trolltech.qt.gui.QWidget;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import parcodb.database.objects.Struttura;
 import parcodb.database.objects.Zona;
 import parcodb.gui.builders.Ui_widget_ricerca_common;
 
@@ -38,6 +35,7 @@ public class Widget_Ricerca extends Widget_Centrale{
     protected void set_caratteristica() {
         String messaggio = "Ricerca terminata.";
         toggle_button(bottone_terreno);
+        ric_com.listWidget_trovati.clear();
         try {
             maiunui.popolaListaCaratt(ric_com.listWidget_trovati);
         } catch (SQLException ex) {
@@ -52,6 +50,7 @@ public class Widget_Ricerca extends Widget_Centrale{
     protected void set_struttura() {
         String messaggio = "Ricerca terminata.";
         toggle_button(bottone_struttura);
+        ric_com.listWidget_trovati.clear();
         strut_com.setupUi(ric_com.widget_common);
         setupStrut();
         try {
@@ -68,6 +67,7 @@ public class Widget_Ricerca extends Widget_Centrale{
     protected void set_iniziativa() {
         String messaggio = "Ricerca terminata.";
         toggle_button(bottone_iniziativa);
+        ric_com.listWidget_trovati.clear();
         try {
             maiunui.popolaListaIniziative(ric_com.listWidget_trovati);
         } catch (SQLException ex) {
@@ -82,6 +82,7 @@ public class Widget_Ricerca extends Widget_Centrale{
     protected void set_tappa() {
         String messaggio = "Ricerca terminata.";
         toggle_button(bottone_tappa);
+        ric_com.listWidget_trovati.clear();
         try {
             maiunui.popolaListaTappe(ric_com.listWidget_trovati);
         } catch (SQLException ex) {
@@ -96,6 +97,7 @@ public class Widget_Ricerca extends Widget_Centrale{
     protected void set_sentiero() {
         String messaggio = "Ricerca terminata.";
         toggle_button(bottone_sentiero);
+        ric_com.listWidget_trovati.clear();
         try {
             maiunui.popolaListaSentieri(ric_com.listWidget_trovati);
         } catch (SQLException ex) {
@@ -110,6 +112,7 @@ public class Widget_Ricerca extends Widget_Centrale{
     protected void set_comune() {
         String messaggio = "Ricerca terminata.";
         toggle_button(bottone_comune);
+        ric_com.listWidget_trovati.clear();
         try {
             maiunui.popolaListaComune(ric_com.listWidget_trovati);
         } catch (SQLException ex) {

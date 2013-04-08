@@ -141,7 +141,7 @@ public class MainGUI {
     }
         //popolatori di widget
     
-    public void popolaListaSentieri(QListWidget lista){
+    public void popolaListaSentieri(QListWidget lista) throws SQLException{
         Sentiero[] sentieri = Sentiero.getSentieri(conn);
         for(Sentiero sentiero:sentieri){
             QListWidgetItem list = new QListWidgetItem();
