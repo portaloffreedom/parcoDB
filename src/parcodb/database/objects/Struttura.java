@@ -117,6 +117,41 @@ public class Struttura extends Zona {
         return strutture;
     }
         
+    static public Struttura[] getSpecificStruttura(DatabaseConnection conn) throws SQLException {
+        
+        ImpiantiRisalita[] impiantiRisalita = ImpiantiRisalita.getImpiantiRisalita(conn);
+        UfficioInformazioni[] ufficiInformazioni = UfficioInformazioni.getUfficiInformazioni(conn);
+        Museo[] musei = Museo.getMusei(conn);
+        Monumento[] monumenti = Monumento.getMonumenti(conn);
+        Albergo[] alberghi = Albergo.getAlberghi(conn);
+        
+        int DIM_STRUTTURE = impiantiRisalita.length 
+                + ufficiInformazioni.length 
+                + musei.length
+                + monumenti.length
+                + alberghi.length;
+        Struttura[] strutture = new Struttura[DIM_STRUTTURE];
+        
+        int i=0;
+        for (int j=0; j< impiantiRisalita.length; i++, j++) {
+            strutture[i] = impiantiRisalita[j];
+        }
+        for (int j=0; j< ufficiInformazioni.length; i++, j++) {
+            strutture[i] = ufficiInformazioni[j];
+        }
+        for (int j=0; j< musei.length; i++, j++) {
+            strutture[i] = musei[j];
+        }
+        for (int j=0; j< monumenti.length; i++, j++) {
+            strutture[i] = monumenti[j];
+        }
+        for (int j=0; j< alberghi.length; i++, j++) {
+            strutture[i] = alberghi[j];
+        }
+        
+        return strutture;
+    }
+        
     static public Struttura getStruttura(DatabaseConnection conn, String nome) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione FROM Struttura WHERE nome = ? ");
         preparedStatement.setString(1, nome);
