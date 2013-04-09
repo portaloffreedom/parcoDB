@@ -112,7 +112,7 @@ FOREIGN KEY (nome) REFERENCES Struttura(nome)
 
 CREATE TABLE Albergo (
 	nome char(64),
-	categoria char(64),
+	categoria int,
 	numero_posti int,
 	telefono char(16),
 PRIMARY KEY (nome),

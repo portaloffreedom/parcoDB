@@ -13,23 +13,23 @@ import parcodb.database.DatabaseConnection;
 
 
 public class Albergo extends Struttura {
-    protected String categoria;
+    protected int categoria;
     protected int numero_posti;
     protected String telefono;
             
-    public Albergo(String nome, String categoria, int numero_posti, String telefono, String indirizzo, String orario_apertura, QDate periodo_inizio, QDate periodo_fine, Paese paese) {
+    public Albergo(String nome, int categoria, int numero_posti, String telefono, String indirizzo, String orario_apertura, QDate periodo_inizio, QDate periodo_fine, Paese paese) {
         this(nome, categoria, numero_posti, telefono, indirizzo, orario_apertura, transformDate(periodo_inizio), transformDate(periodo_fine), paese);
     }
 
-    protected Albergo(String nome, String categoria, int numero_posti, String telefono, String indirizzo, String orario_apertura, Date periodo_inizio, Date periodo_fine, Paese paese) {
+    protected Albergo(String nome, int categoria, int numero_posti, String telefono, String indirizzo, String orario_apertura, Date periodo_inizio, Date periodo_fine, Paese paese) {
         super(nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, paese);
         this.categoria = categoria;
         this.numero_posti = numero_posti;
         this.telefono = telefono;
     }
 
-    public String getCategoria() {
-        return categoria.trim();
+    public int getCategoria() {
+        return categoria;
     }
 
     public int getNumero_posti() {
@@ -46,7 +46,7 @@ public class Albergo extends Struttura {
         PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Albergo (nome, categoria, numero_posti, telefono) VALUES ( ? , ? , ? , ? );");
         
         insertStatement.setString(1, nome);
-        insertStatement.setString(2, categoria);
+        insertStatement.setInt(2, categoria);
         insertStatement.setInt(3, numero_posti);
         insertStatement.setString(4, telefono);
         insertStatement.execute();
@@ -66,7 +66,7 @@ public class Albergo extends Struttura {
             Struttura struttura = getStruttura(conn, nome);
             alberghi[i] = new Albergo(
                     nome, 
-                    result.getString(2), 
+                    result.getInt(2), 
                     result.getInt(3),
                     result.getString(4),
                     struttura.indirizzo,
