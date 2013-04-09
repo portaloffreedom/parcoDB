@@ -57,10 +57,22 @@ public class Struttura extends Zona {
 
     public Date getPeriodo_fine() {
         return periodo_fine;
+    }    
+    
+    public QDate getQPeriodo_inizio() {
+        return transformDate(getPeriodo_inizio());
+    }
+
+    public QDate getQPeriodo_fine() {
+        return transformDate(getPeriodo_fine());
     }
 
     public String getIndirizzo() {
         return indirizzo.trim();
+    }
+
+    public Paese getPaese() {
+        return paese;
     }
 
     @Override

@@ -18,10 +18,16 @@ CREATE TRIGGER numero_tappe BEFORE INSERT OR UPDATE ON Composto
 CREATE OR REPLACE FUNCTION seq_sent_proc_trig() RETURNS trigger AS $seq_sent_proc_trig$
   BEGIN
     IF inserting THEN
-      --TODO <blocco PL/SQL>
+        --comp_sentiero = (SELECT * FROM Composto WHERE Composto.sentiero = NEW.sentiero)
+        --IF ((comp_sentiero == NULL) OR (NEW.inizio != (SELECT fine FROM comp_sentiero WHERE numero_tappa = NEW.numero_tappa+1 ))) THEN
+        IF ((NEW.inizio != (SELECT fine FROM Composto WHERE sentiero = NEW.sentiero AND numero_tappa = NEW.numero_tappa+1 ))) THEN
+            RAISE EXCEPTION 'Sentiero non inseribile';
+        END IF
     END IF;
     IF updating THEN
-      --TODO <blocco PL/SQL>
+      IF ((NEW.inizio != OLD.inizio) OR (NEW.fine != OLD.fine)) THEN
+        RAISE EXCEPTION 'Sostituzione della tappa non valida';
+      END IF
     END IF;
     IF deleting THEN
       --TODO <blocco PL/SQL>
