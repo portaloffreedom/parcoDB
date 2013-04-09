@@ -33,6 +33,10 @@ public class ImpiantiRisalita extends Struttura {
         return tipologia.trim();
     }
 
+    public int getCapacita() {
+        return capacita;
+    }
+
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
