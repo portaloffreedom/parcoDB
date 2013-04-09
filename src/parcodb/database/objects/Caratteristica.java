@@ -67,6 +67,36 @@ public class Caratteristica extends Zona {
         return caratteristiche;
     }
 
+    static public Caratteristica[] getSpecificCaratteristiche(DatabaseConnection conn) throws SQLException {
+        
+        Paese[] paesi = Paese.getPaesi(conn);
+        Monte[] monti = Monte.getMonti(conn);
+        Fiume[] fiumi = Fiume.getFiumi(conn);
+        Lago[] laghi = Lago.getLaghi(conn);
+        
+        int DIM_CARATTERISTICHE = paesi.length 
+                + monti.length 
+                + fiumi.length
+                + laghi.length;
+        Caratteristica[] caratteristiche = new Caratteristica[DIM_CARATTERISTICHE];
+        
+        int i=0;
+        for (int j=0; j< paesi.length; i++, j++) {
+            caratteristiche[i] = paesi[j];
+        }
+        for (int j=0; j< monti.length; i++, j++) {
+            caratteristiche[i] = monti[j];
+        }
+        for (int j=0; j< fiumi.length; i++, j++) {
+            caratteristiche[i] = fiumi[j];
+        }
+        for (int j=0; j< laghi.length; i++, j++) {
+            caratteristiche[i] = laghi[j];
+        }
+        
+        return caratteristiche;
+    }
+        
     @Override
     public String toString() {
         return this.getNome().trim();

@@ -52,6 +52,25 @@ public class Zona implements RemoteDBobject {
         return zone;
     }
     
+    static public Zona[] getSpecificZona(DatabaseConnection conn) throws SQLException {
+        Caratteristica[] caratteristiche = Caratteristica.getSpecificCaratteristiche(conn);
+        Struttura[] strutture = Struttura.getSpecificStruttura(conn);
+        
+        int DIM_ZONE = caratteristiche.length 
+                + strutture.length;
+        Zona[] zone = new Zona[DIM_ZONE];
+        
+        int i=0;
+        for (int j=0; j< caratteristiche.length; i++, j++) {
+            zone[i] = caratteristiche[j];
+        }
+        for (int j=0; j< strutture.length; i++, j++) {
+            zone[i] = strutture[j];
+        }
+        
+        return zone;
+    }
+    
     @Override
     public String toString(){
         return getNome().trim();
