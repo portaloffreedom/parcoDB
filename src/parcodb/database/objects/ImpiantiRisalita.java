@@ -48,7 +48,7 @@ public class ImpiantiRisalita extends Struttura {
     }
     
     static public ImpiantiRisalita[] getImpiantiRisalita(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, tipologia, capacita FROM Albergo");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, tipologia, capacita FROM ImpiantiRisalita");
         
         ResultSet result = preparedStatement.executeQuery();
         
@@ -78,7 +78,7 @@ public class ImpiantiRisalita extends Struttura {
     
     static public ImpiantiRisalita getImpiantiRisalita(DatabaseConnection conn, String nome) throws SQLException {
         String nome_funzione = "getImpiantiRisalita(nome)";
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, tipologia, capacita FROM Albergo WHERE nome = ? ");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, tipologia, capacita FROM ImpiantiRisalita WHERE nome = ? ");
         preparedStatement.setString(1, nome);
         
         ResultSet result = preparedStatement.executeQuery();
