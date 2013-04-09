@@ -19,11 +19,11 @@ import parcodb.gui.builders.Ui_widget_museo;
  * @author stengun
  */
 public class Macro_widget_struttura extends Ui_struttura_common implements Insertor{
-    private Ui_widget_albergo albergo;
-    private Ui_widget_museo museo;
-    private Ui_widget_monumento monumento;
-    private Ui_widget_infopoint infopoint;
-    private Ui_widget_impianti impianti;
+    public Ui_widget_albergo albergo;
+    public Ui_widget_museo museo;
+    public Ui_widget_monumento monumento;
+    public Ui_widget_infopoint infopoint;
+    public Ui_widget_impianti impianti;
     
     public Macro_widget_struttura(){
         super();
@@ -37,14 +37,13 @@ public class Macro_widget_struttura extends Ui_struttura_common implements Inser
         this.combo_tipo.addItem("Monumento");
         this.combo_tipo.addItem("Infopoint");
         this.combo_tipo.addItem("Impianto di risalita");
-        this.combo_tipo.currentIndexChanged.connect(this, "select_struttura_specific()");
-        this.combo_tipo.setCurrentIndex(0);
-        
         albergo = new Ui_widget_albergo();
         museo = new Ui_widget_museo();
         monumento = new Ui_widget_monumento();
         infopoint = new Ui_widget_infopoint();
         impianti = new Micro_widget_impianti();
+        this.combo_tipo.setCurrentIndex(0);
+        this.combo_tipo.currentIndexChanged.connect(this, "select_struttura_specific()");
     }
     
     private void set_strut_widget(QUiForm _special){
@@ -140,7 +139,7 @@ public class Macro_widget_struttura extends Ui_struttura_common implements Inser
     
     private RemoteDBobject constructAlbergo(){
         return new Albergo(lineEdit_nome.text(),
-                        Integer.toString(albergo.spinBox_stelle.value()),
+                        albergo.spinBox_stelle.value(),
                         Integer.decode(albergo.lineEdit_posti.text()),
                         albergo.lineEdit_telefono.text(),
                         lineEdit_indirizzo.text(),

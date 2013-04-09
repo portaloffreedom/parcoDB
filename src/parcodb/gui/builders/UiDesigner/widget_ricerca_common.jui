@@ -50,13 +50,26 @@
     <widget class="QWidget" name="widget" native="true">
      <layout class="QVBoxLayout" name="layout_special">
       <property name="spacing">
-       <number>0</number>
+       <number>6</number>
       </property>
       <property name="margin">
        <number>0</number>
       </property>
       <item>
        <widget class="QWidget" name="widget_common" native="true"/>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>com.trolltech.qt.core.Qt.Orientation.Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item>
        <widget class="QWidget" name="widget_2" native="true">

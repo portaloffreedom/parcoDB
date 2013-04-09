@@ -167,7 +167,7 @@ public class MainGUI {
     }
     
     public void popolaListaStrutture(QListWidget lista) throws SQLException{
-        Struttura[] strutture = Struttura.getStrutture(conn);
+        Struttura[] strutture = Struttura.getSpecificStruttura(conn);
         for(Struttura struttura:strutture){
             QListWidgetItem list = new QListWidgetItem();
             list.setData(0, struttura);
@@ -185,7 +185,7 @@ public class MainGUI {
     }
     
     public void popolaListaCaratt(QListWidget where) throws SQLException{
-        Caratteristica[] caratteristiche = Caratteristica.getCaratteristiche(conn);
+        Caratteristica[] caratteristiche = Caratteristica.getSpecificCaratteristiche(conn);
         for (Caratteristica caratteristica : caratteristiche) {
             QListWidgetItem list = new QListWidgetItem();
             list.setData(0, caratteristica);

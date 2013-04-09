@@ -22,25 +22,24 @@ import parcodb.gui.builders.Ui_widget_paese;
  */
 public class Macro_widget_caratteristica extends Ui_caratteristica_common implements Insertor{
     
-    private Ui_widget_paese paese_wdg;
-    private Ui_widget_fiume fiume_wdg;
-    private Ui_widget_monte monte_wdg;
-    private Ui_widget_lago lago_wdg;
+    public Ui_widget_paese paese_wdg;
+    public Ui_widget_fiume fiume_wdg;
+    public Ui_widget_monte monte_wdg;
+    public Ui_widget_lago lago_wdg;
     
     
     
     public Macro_widget_caratteristica(){
         super();
-    }
-    
-    @Override
-    public void setupUi(QWidget caratteristica_common){
-        super.setupUi(caratteristica_common);
         paese_wdg = new Ui_widget_paese();
         fiume_wdg = new Ui_widget_fiume();
         lago_wdg = new Ui_widget_lago();
         monte_wdg = new Ui_widget_monte();
-        
+    }
+    
+    @Override
+    public void setupUi(QWidget caratteristica_common){
+        super.setupUi(caratteristica_common);        
         this.combo_tipo.addItem("Monte");
         this.combo_tipo.addItem("Fiume");
         this.combo_tipo.addItem("Lago");
@@ -90,7 +89,7 @@ public class Macro_widget_caratteristica extends Ui_caratteristica_common implem
         Monte monte = null;
         try {
             monte = new Monte(lineEdit_nome.text(),
-                    monte_wdg.spinBox_altitudine.value(),
+                    (float) monte_wdg.spinBox_altitudine.value(),
                     getComuni());
         } catch (Exception ex) {
             Logger.getLogger(Macro_widget_caratteristica.class.getName()).log(Level.SEVERE, null, ex);
@@ -134,6 +133,7 @@ public class Macro_widget_caratteristica extends Ui_caratteristica_common implem
         }
         return comuni;
     }
+    
     public void select_car_specific(){        
         if(widget_special != null) widget_special.dispose();
         
