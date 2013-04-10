@@ -62,7 +62,7 @@ public class Widget_Ricerca extends Widget_Centrale{
         ric_com.widget_common.dispose();
         ric_com.listWidget_trovati.itemClicked.disconnect();
         ric_com.listWidget_trovati.itemClicked.connect(this, "setupCar()");
-        car_com.combo_tipo.setEnabled(false);
+
         try {
             maiunui.popolaListaCaratt(ric_com.listWidget_trovati);
         } catch (SQLException ex) {
@@ -81,7 +81,7 @@ public class Widget_Ricerca extends Widget_Centrale{
         ric_com.widget_common.dispose();
         ric_com.listWidget_trovati.itemClicked.disconnect();
         ric_com.listWidget_trovati.itemClicked.connect(this, "setupStrut()");
-        strut_com.combo_tipo.setEnabled(false);        
+        
         try {
             maiunui.popolaListaStrutture(ric_com.listWidget_trovati);
         } catch (SQLException ex) {
@@ -203,6 +203,7 @@ public class Widget_Ricerca extends Widget_Centrale{
         int index = strut_com.combo_situato.findText(paese.getNome());
         strut_com.combo_situato.setCurrentIndex(index);
         enable_common(false,0);
+        strut_com.combo_tipo.setEnabled(false);
         selectStruttura(selezionato);
    }
     
@@ -212,6 +213,7 @@ public class Widget_Ricerca extends Widget_Centrale{
         car_com.lineEdit_nome.setText(selezionato.getNome());
         selectCaratteristica(selezionato);
         enable_common(false, 2);
+        car_com.combo_tipo.setEnabled(false);
     }
     
     private void setupIniz(){
