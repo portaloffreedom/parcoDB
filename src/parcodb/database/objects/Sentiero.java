@@ -41,6 +41,18 @@ public class Sentiero implements RemoteDBobject {
     public float getLunghezza() {
         return lunghezza;
     }
+
+    public Tappa[] getTappe() throws Exception {
+        if (tappe == null)
+            throw new Exception("connessione al database richiesta");
+        return tappe;
+    }
+    
+    public Tappa[] getTappe(DatabaseConnection conn) throws Exception {
+        if (tappe == null)
+            tappe = Tappa.getTappeDiSentiero(conn, this);
+        return tappe;
+    }
     
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {

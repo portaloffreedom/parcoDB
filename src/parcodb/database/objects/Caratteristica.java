@@ -114,6 +114,32 @@ public class Caratteristica extends Zona {
         
         return caratteristiche;
     }
+    
+    static public Caratteristica[] getInteressati(DatabaseConnection conn, Tappa tappa) throws SQLException {
+        String nomeFunzione = "getInteressati(tappa)";
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT caratteristica"
+                + "FROM Interesse"
+                + "WHERE Interesse.tappa_inizio = ? "
+                + "AND Interesse.tappa_fine = ? ");
+        
+        preparedStatement.setString(1, tappa.getInizio().getNome());
+        preparedStatement.setString(2, tappa.getFine().getNome());
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Caratteristica[] caratteristiche = new Caratteristica[DIM];
+        int i;
+        for (i=0; result.next(); i++) {
+            caratteristiche[i] = new Caratteristica(result.getString(1));
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
+        
+        return caratteristiche;
+    }
 
     static public Caratteristica[] getSpecificCaratteristiche(DatabaseConnection conn) throws SQLException {
         

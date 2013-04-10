@@ -33,6 +33,10 @@ public class Tappa implements RemoteDBobject {
     public float getLunghezza() {
         return lunghezza;
     }
+    
+    public Caratteristica[] getInteressati(DatabaseConnection conn) throws SQLException {
+        return Caratteristica.getInteressati(conn, this);
+    }
 
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
@@ -45,23 +49,32 @@ public class Tappa implements RemoteDBobject {
         insertStatement.execute();
     }
     
-    static public Tappa[] getTappe(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement(
-                "SELECT inizio,fine,lunghezza FROM Tappa ");
-        
-        ResultSet result = preparedStatement.executeQuery();
+    static private Tappa[] populateTappe(PreparedStatement statement,String nomeFunzione,int posInizio, int posFine, int posLunghezza) throws SQLException {
+        ResultSet result = statement.executeQuery();
         
         int DIM = DatabaseConnection.getResultDim(result);
         Tappa[] tappe = new Tappa[DIM];
         int i;
         for (i=0; result.next(); i++) {
-            tappe[i] = new Tappa(new Zona(result.getString(1)),new Zona(result.getString(2)),result.getFloat(3));
+            tappe[i] = new Tappa(
+                    new Zona(result.getString(posInizio)),
+                    new Zona(result.getString(posFine)),
+                    result.getFloat(posLunghezza)
+                );
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getTappe() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
         
         return tappe;
+    }
+    
+    static public Tappa[] getTappe(DatabaseConnection conn) throws SQLException {
+        String nomeFunzione = "getTappeInteresseCaratteristica(caratteristica)";
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT inizio,fine,lunghezza FROM Tappa ");
+        return populateTappe(preparedStatement, nomeFunzione,1,2,3);
+
     }
     
     static public Tappa[] getTappeInteresseCaratteristica(DatabaseConnection conn, Caratteristica caratteristica) throws SQLException {
@@ -79,23 +92,26 @@ public class Tappa implements RemoteDBobject {
         
         preparedStatement.setString(1, caratteristica);
         
-        ResultSet result = preparedStatement.executeQuery();
-        
-        int DIM = DatabaseConnection.getResultDim(result);
-        Tappa[] tappe = new Tappa[DIM];
-        int i;
-        for (i=0; result.next(); i++) {
-            tappe[i] = new Tappa(new Zona(result.getString(1)),
-                    new Zona(result.getString(2)),
-                    result.getFloat(3));
-        }
-        
-        if (i != DIM)
-            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
-        
-        return tappe;
+        return populateTappe(preparedStatement, nomeFunzione, 1, 2, 3);
+    }
+    
+    static public Tappa[] getTappeDiSentiero(DatabaseConnection conn, Sentiero sentiero) throws SQLException {
+        return getTappeDiSentiero(conn, sentiero.getNumero_sentiero());
     }
         
+    static public Tappa[] getTappeDiSentiero(DatabaseConnection conn, int sentiero) throws SQLException {
+        String nomeFunzione = "getTappeDiSentiero(sentiero)";
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT T.inizio,T.fine,T.lunghezza "
+                + "FROM Composto AS C, Tappa as T"
+                + "WHERE C.sentiero = ? "
+                + "AND I.tappa_inizio = T.inizio "
+                + "AND I.tappa_fine = T.fine");
+        
+        preparedStatement.setInt(1, sentiero);
+        
+        return populateTappe(preparedStatement, nomeFunzione, 1, 2, 3);
+    }
 
     @Override
     public String toString() {
