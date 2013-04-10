@@ -98,7 +98,7 @@ public class Clima implements RemoteDBobject {
         int i;
         for (i=0; result.next(); i++) {
             int mese =  result.getInt(3);
-            if (i != mese)
+            if (i+1 != mese)
                 throw new SQLException("i mesi di "+comune+" nella funzione "+nomeFunzione+" sono incongrui ("+i+','+mese+')');
             try {
                 climi[i] = new Clima(
