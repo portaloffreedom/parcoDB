@@ -95,6 +95,31 @@ public class Comune implements RemoteDBobject {
         return comuni;
     }
     
+    static public Comune[] getComuniDiCaratteristica(DatabaseConnection conn, String caratteristica) throws SQLException {
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT Comune.nome, Comune.provincia, Comune.superficie "
+                + "FROM Comune,Appartiene "
+                + "WHERE Comune.nome = Appartiene.comune AND Comune.provincia = Appartiene.provincia AND Appartiene.caratteristica = ? ");
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Comune[] comuni = new Comune[DIM];
+        int i;
+        for (i=0; result.next(); i++) {
+            comuni[i] = new Comune(result.getString(1), result.getString(2), result.getFloat(3));
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di getComuniDiCaratteristica() è incongruo ("+i+','+DIM+')');
+        
+        return comuni;
+    }
+    
+    static public Comune[] getComuniDiCaratteristica(DatabaseConnection conn, Caratteristica caratteristica) throws SQLException {
+        return Comune.getComuniDiCaratteristica(conn, caratteristica.getNome());
+    }
+    
     @Override
     public String toString(){
         return getNome().trim();

@@ -81,4 +81,12 @@ public class Paese extends Caratteristica {
         
         return paese;
     }
+    
+    public Iniziativa[] getIniziative(DatabaseConnection conn) throws SQLException {
+        return Iniziativa.getIniziative(conn, this);
+    }
+    
+    public Struttura[] getStrutture(DatabaseConnection conn) throws SQLException {
+        return Struttura.getStruttureInPaese(conn, this);
+    }
 }

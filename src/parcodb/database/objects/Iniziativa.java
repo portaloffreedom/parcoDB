@@ -92,7 +92,7 @@ public class Iniziativa implements RemoteDBobject {
         static public Iniziativa[] getIniziative(DatabaseConnection conn, Paese paese) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
                 "SELECT paese, settimana, tipo, nome, dettagli "
-                + "FROM Iniziativa"
+                + "FROM Iniziativa "
                 + "WHERE paese = ? ");
         preparedStatement.setString(1, paese.getNome());
         

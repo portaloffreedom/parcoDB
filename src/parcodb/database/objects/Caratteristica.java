@@ -27,12 +27,16 @@ public class Caratteristica extends Zona {
         this.comuni = null;
     }
 
-    public Comune[] getComuni() throws SQLException {
-        if (comuni == null)
-            throw new SQLException("operazione non ancora supportata");
+    public Comune[] getComuni() {
         return comuni;
     }
-
+    
+    public Comune[] getComuni(DatabaseConnection conn) throws SQLException {
+        if (comuni == null)
+            comuni = Comune.getComuniDiCaratteristica(conn, this);
+        return comuni;
+    }
+        
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
@@ -96,7 +100,7 @@ public class Caratteristica extends Zona {
         
         return caratteristiche;
     }
-        
+    
     @Override
     public String toString() {
         return this.getNome().trim();

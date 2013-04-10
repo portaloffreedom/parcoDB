@@ -175,4 +175,35 @@ public class Struttura extends Zona {
         return struttura;
     }
     
+    static public Struttura[] getStruttureInPaese(DatabaseConnection conn, Paese paese) throws SQLException {
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione FROM Struttura WHERE localizzazione = ? ");
+        preparedStatement.setString(1, paese.nome);
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Struttura[] strutture = new Struttura[DIM];
+        int i;
+    
+        for (i=0; result.next(); i++) {
+            strutture[i] = new Struttura(
+                    result.getString(1), 
+                    result.getString(2), 
+                    result.getString(3),
+                    result.getDate(4),
+                    result.getDate(5),
+                    paese
+                    );
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di getStruttureInPaese(paese) è incongruo ("+i+','+DIM+')');
+        
+        return strutture;
+    }
+    
+    static public Struttura[] getStruttureInPaese(DatabaseConnection conn, String paese) throws SQLException {
+        return Struttura.getStruttureInPaese(conn, Paese.getPaese(conn, paese));
+    }
+    
 }
