@@ -107,6 +107,8 @@ public class Comune implements RemoteDBobject {
                 + "FROM Comune,Appartiene "
                 + "WHERE Comune.nome = Appartiene.comune AND Comune.provincia = Appartiene.provincia AND Appartiene.caratteristica = ? ");
         
+        preparedStatement.setString(1, caratteristica);
+        
         ResultSet result = preparedStatement.executeQuery();
         
         int DIM = DatabaseConnection.getResultDim(result);
