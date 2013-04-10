@@ -1,7 +1,6 @@
 package parcodb.gui;
 
-import com.trolltech.qt.QUiForm;
-import com.trolltech.qt.gui.QWidget;
+import java.util.List;
 import parcodb.database.objects.RemoteDBobject;
 
 /**
@@ -10,5 +9,5 @@ import parcodb.database.objects.RemoteDBobject;
  */
 public interface Insertor{
     
-    abstract RemoteDBobject getInsertor();
+    abstract List<RemoteDBobject> getInsertor();
 }

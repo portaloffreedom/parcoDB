@@ -4,10 +4,7 @@ import com.trolltech.qt.gui.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import parcodb.database.objects.Caratteristica;
-import parcodb.database.objects.Comune;
-import parcodb.database.objects.Paese;
-import parcodb.database.objects.Tappa;
+import parcodb.database.objects.RemoteDBobject;
 import parcodb.database.objects.Zona;
 import parcodb.gui.builders.*;
 
@@ -94,11 +91,8 @@ public class Widget_Inserimento extends Widget_Centrale
         toggle_button(bottone_tappa);
         set_central_widget(tappa_com);
         try {
-            Zona[] zone = Zona.getZone(maiunui.conn);
-            for(Zona zona:zone){
-                tappa_com.comboBox_inizio.addItem(zona.getNome(), zona);
-                tappa_com.comboBox_fine.addItem(zona.getNome(), zona);
-            }
+            maiunui.popolaComboZone(tappa_com.comboBox_fine);
+            maiunui.popolaComboZone(tappa_com.comboBox_inizio);
             maiunui.popolaListaCaratt(tappa_com.list_interesse);
         } catch (SQLException ex) {
             Logger.getLogger(Widget_Inserimento.class.getName()).log(Level.SEVERE, null, ex);
@@ -131,7 +125,9 @@ public class Widget_Inserimento extends Widget_Centrale
         String messaggio = "Inserito con successo!";
         insertor = active.getInsertor();
         try {
-            insertor.insertIntoDB(maiunui.conn);
+            for(RemoteDBobject oggetto:insertor){
+                oggetto.insertIntoDB(maiunui.conn);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
             messaggio = "Errore nell'inserimento dei dati. Forse manca qualcosa?";

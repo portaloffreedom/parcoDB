@@ -2,6 +2,7 @@ package parcodb.gui;
 import com.trolltech.qt.QUiForm;
 import com.trolltech.qt.gui.QListWidgetItem;
 import com.trolltech.qt.gui.QWidget;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,21 +57,24 @@ public class Macro_widget_caratteristica extends Ui_caratteristica_common implem
     }
     
     @Override
-    public RemoteDBobject getInsertor(){
+    public List<RemoteDBobject> getInsertor(){
+        ArrayList<RemoteDBobject> lista = new ArrayList<>();
         switch(combo_tipo.currentIndex()){
             case 0:
-                return constructMonte();
+                lista.add(constructMonte());
+                break;
             case 1:
-                return constructFiume();
+                lista.add(constructFiume());
+                break;
             case 2:
-                return constructLago();
+                lista.add(constructLago());
+                break;
             case 3:
-                return constructPaese();
+                lista.add(constructPaese());
             default:
                 break;
-            
         }
-        return null;
+        return lista;
     }
     
     private RemoteDBobject constructLago(){

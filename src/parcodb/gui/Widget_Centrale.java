@@ -2,13 +2,14 @@ package parcodb.gui;
 
 import com.trolltech.qt.QUiForm;
 import com.trolltech.qt.gui.*;
+import java.util.List;
 import parcodb.database.objects.RemoteDBobject;
 
 public abstract class Widget_Centrale extends parcodb.gui.builders.Ui_widget_inserimento
 {
     protected QMainWindow qMainWindow;
     protected MainGUI maiunui;
-    protected RemoteDBobject insertor;
+    protected List<RemoteDBobject> insertor;
     
     public Widget_Centrale(MainGUI mainui)
     {

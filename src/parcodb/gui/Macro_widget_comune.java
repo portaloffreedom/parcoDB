@@ -3,6 +3,7 @@ package parcodb.gui;
 import com.trolltech.qt.gui.QLineEdit;
 import com.trolltech.qt.gui.QWidget;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import parcodb.database.objects.Clima;
@@ -62,7 +63,7 @@ public class Macro_widget_comune extends Ui_widget_comune implements Insertor{
     }
     
     @Override
-    public RemoteDBobject getInsertor() {
+    public List<RemoteDBobject> getInsertor() {
         Comune comune = null;
         try {
             comune = new Comune(lineEdit_nome.text(), 
@@ -72,13 +73,16 @@ public class Macro_widget_comune extends Ui_widget_comune implements Insertor{
         } catch (Exception ex) {
             Logger.getLogger(Macro_widget_comune.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return comune;
+        ArrayList<RemoteDBobject> lista = new ArrayList<>();
+        lista.add(comune);
+        return lista;
     }
     
     private Clima[] creaClimi() throws Exception {
         Clima[] climi = new Clima[12];
         for(int i = 0;i<12;i++){
-        climi[i] = new Clima(i+1, Float.parseFloat(((QLineEdit)listawidget[i].get(0)).text()), 
+        climi[i] = new Clima(i+1,
+                Float.parseFloat(((QLineEdit)listawidget[i].get(0)).text()), 
                 Float.parseFloat(((QLineEdit)listawidget[i].get(1)).text()), 
                 Float.parseFloat(((QLineEdit)listawidget[i].get(2)).text()));
         }

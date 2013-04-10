@@ -1,6 +1,8 @@
 package parcodb.gui;
 
 import com.trolltech.qt.gui.QWidget;
+import java.util.ArrayList;
+import java.util.List;
 import parcodb.database.objects.Iniziativa;
 import parcodb.database.objects.Paese;
 import parcodb.database.objects.RemoteDBobject;
@@ -25,11 +27,13 @@ public class Macro_widget_iniziativa extends Ui_iniziativa_common implements Ins
     }
 
     @Override
-    public RemoteDBobject getInsertor() {
-        return new Iniziativa((Paese)combo_paese.itemData(combo_paese.currentIndex()),
+    public List<RemoteDBobject> getInsertor() {
+        ArrayList<RemoteDBobject> lista = new ArrayList<>();
+        lista.add(new Iniziativa((Paese)combo_paese.itemData(combo_paese.currentIndex()),
                 spinBox.value(),
                 combo_iniziativa.currentText(),
                 lineEdit_nome.text(),
-                plainText_descrizione.toPlainText());
+                plainText_descrizione.toPlainText()));
+        return lista;
     }
 }

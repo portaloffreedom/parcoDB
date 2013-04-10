@@ -1,6 +1,8 @@
 package parcodb.gui;
 import com.trolltech.qt.QUiForm;
 import com.trolltech.qt.gui.QWidget;
+import java.util.ArrayList;
+import java.util.List;
 import parcodb.database.objects.Albergo;
 import parcodb.database.objects.ImpiantiRisalita;
 import parcodb.database.objects.Monumento;
@@ -54,25 +56,33 @@ public class Macro_widget_struttura extends Ui_struttura_common implements Inser
     }
     
     @Override
-    public RemoteDBobject getInsertor(){
+    public List<RemoteDBobject> getInsertor(){
+        ArrayList<RemoteDBobject> lista = new ArrayList<>();
         switch(combo_tipo.currentIndex()){
             case 0:
-                return constructAlbergo();
+                lista.add(constructAlbergo());
+                break;
             case 1:
-                return constructMuseo();
+                lista.add(constructMuseo());
+                break;
             case 2:
-                return constructMonumento();
+                lista.add(constructMonumento());
+                break;
             case 3:
-                return constructInfopoint();
+                lista.add(constructInfopoint());
+                break;
             case 4:
-                return constructImpianti();
+                lista.add(constructImpianti());
+                break;
             default:
                 return null;
         }
+        return lista;
     }
     
     public void select_struttura_specific(){
         if(widget_special != null) widget_special.dispose();
+        
         switch(combo_tipo.currentIndex()){
             case 0:
                 set_strut_widget(albergo); 

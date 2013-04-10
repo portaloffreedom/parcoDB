@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import parcodb.database.objects.Comune;
 import parcodb.database.objects.RemoteDBobject;
 import parcodb.database.objects.Sentiero;
 import parcodb.database.objects.Tappa;
@@ -17,20 +18,27 @@ import parcodb.gui.builders.Ui_widget_sentieri;
 public class Macro_widget_sentieri extends Ui_widget_sentieri implements Insertor{
 
     @Override
-    public RemoteDBobject getInsertor() {
+    public List<RemoteDBobject> getInsertor() {
         Sentiero sentiero = null;
-        QListWidgetItem[] listatappe = (QListWidgetItem[])listWidget.selectedItems().toArray();
-        List<Tappa> tappe = new ArrayList<>();
-        for(QListWidgetItem item:listatappe){
-            tappe.add((Tappa)item.data(0));
-        }
         try {
             sentiero = new Sentiero(spinBox.value(),
-                    (Tappa[])tappe.toArray());
+                    getTappe());
         } catch (Exception ex) {
             Logger.getLogger(Macro_widget_sentieri.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return sentiero;
+        ArrayList<RemoteDBobject> lista = new ArrayList<>();
+        lista.add(sentiero);
+        return lista;
+    }
+    
+    private Tappa[] getTappe(){
+        List<QListWidgetItem> arritem = listWidget.selectedItems();
+        Tappa[] tappe = new Tappa[arritem.size()];
+        int i = 0;
+        for(QListWidgetItem ogg : arritem){
+            tappe[i++] = (Tappa)ogg.data(0);
+        }
+        return tappe;
     }
     
 }

@@ -15,7 +15,9 @@ import parcodb.database.objects.Monte;
 import parcodb.database.objects.Monumento;
 import parcodb.database.objects.Museo;
 import parcodb.database.objects.Paese;
+import parcodb.database.objects.Sentiero;
 import parcodb.database.objects.Struttura;
+import parcodb.database.objects.Tappa;
 import parcodb.database.objects.UfficioInformazioni;
 import parcodb.database.objects.Zona;
 import parcodb.gui.builders.Ui_widget_ricerca_common;
@@ -51,7 +53,8 @@ public class Widget_Ricerca extends Widget_Centrale{
     public void setupUi(QWidget widget_ricerca){
         super.setupUi(widget_ricerca);
         ric_com.setupUi(this.widget_common);
-        ric_com.widget_3.hide();
+        ric_com.widget_special_2.hide();
+        ric_com.widget_special.hide();
     }
     
     @Override
@@ -62,7 +65,6 @@ public class Widget_Ricerca extends Widget_Centrale{
         ric_com.widget_common.dispose();
         ric_com.listWidget_trovati.itemClicked.disconnect();
         ric_com.listWidget_trovati.itemClicked.connect(this, "setupCar()");
-
         try {
             maiunui.popolaListaCaratt(ric_com.listWidget_trovati);
         } catch (SQLException ex) {
@@ -212,6 +214,13 @@ public class Widget_Ricerca extends Widget_Centrale{
         Caratteristica selezionato = (Caratteristica)ric_com.listWidget_trovati.currentItem().data(0);
         car_com.lineEdit_nome.setText(selezionato.getNome());
         selectCaratteristica(selezionato);
+        try {
+            maiunui.popolaComuniVicino(selezionato,car_com.listWidget_comune);
+            maiunui.popolaTappeVicino(selezionato,car_com.listWidget_tappe);
+            maiunui.popolaCaratVicino(selezionato,car_com.lista_vicinanza);
+        } catch (SQLException ex) {
+            Logger.getLogger(Widget_Ricerca.class.getName()).log(Level.SEVERE, null, ex);
+        }
         enable_common(false, 2);
         car_com.combo_tipo.setEnabled(false);
     }
@@ -223,6 +232,12 @@ public class Widget_Ricerca extends Widget_Centrale{
         ini_com.combo_iniziativa.setCurrentIndex(index);
         ini_com.lineEdit_nome.setText(selezionato.getNome());
         ini_com.plainText_descrizione.setPlainText(selezionato.getDettagli());
+        ini_com.spinBox.setValue(selezionato.getSettimana());
+        try {
+            maiunui.popolaComboPaesi(ini_com.combo_paese);
+        } catch (SQLException ex) {
+            Logger.getLogger(Widget_Ricerca.class.getName()).log(Level.SEVERE, null, ex);
+        }
         index = ini_com.combo_paese.findText(selezionato.getPaese().getNome());
         ini_com.combo_paese.setCurrentIndex(index);
         enable_common(false, 1);
@@ -230,11 +245,32 @@ public class Widget_Ricerca extends Widget_Centrale{
 
     private void setupTappa(){
         setup_common(tappa_com);
+        Tappa selezionato = (Tappa)ric_com.listWidget_trovati.currentItem().data(0);
+        try {
+            maiunui.popolaComboZone(tappa_com.comboBox_inizio);
+            maiunui.popolaComboZone(tappa_com.comboBox_fine);
+            maiunui.popolaListaInteresse(selezionato,tappa_com.list_interesse);
+        } catch (SQLException ex) {
+            Logger.getLogger(Widget_Ricerca.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int index = tappa_com.comboBox_inizio.findText(selezionato.getInizio().getNome());
+        tappa_com.comboBox_fine.setCurrentIndex(index);
+        index = tappa_com.comboBox_fine.findText(selezionato.getFine().getNome());
+        tappa_com.comboBox_fine.setCurrentIndex(index);
+        tappa_com.lineEdit_lunghezza.setText(Float.toString(selezionato.getLunghezza()));
+        
         enable_common(false, 3);
     }
     
     private void setupSent(){
         setup_common(sent_com);
+        Sentiero selezionato = (Sentiero)ric_com.listWidget_trovati.currentItem().data(0);
+        try {
+            maiunui.popolaListaTappediSentiero(selezionato,sent_com.listWidget);
+        } catch (SQLException ex) {
+            Logger.getLogger(Widget_Ricerca.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        sent_com.spinBox.setValue(selezionato.getNumero_sentiero());
         enable_common(false, 4);
     }
     
@@ -264,6 +300,7 @@ public class Widget_Ricerca extends Widget_Centrale{
         }
         if(selezione.getClass() == Museo.class){
             Museo mus = (Museo)selezione;
+            strut_com.combo_tipo.setCurrentIndex(1);
             strut_com.museo.lineEdit_telefono.setText(mus.getTelefono());
             strut_com.museo.plainTextEdit_descrizione.setPlainText(mus.getDescrizione());
             enable_strut_specific(false, 1);
@@ -271,6 +308,7 @@ public class Widget_Ricerca extends Widget_Centrale{
         }
         if(selezione.getClass() == Monumento.class){
             Monumento mon = (Monumento)selezione;
+            strut_com.combo_tipo.setCurrentIndex(2);
             strut_com.monumento.lineEdit_anno.setText(Integer.toString(mon.getAnno()));
             strut_com.monumento.plainTextEdit.setPlainText(mon.getDescrizione());
             enable_strut_specific(false, 2);
@@ -278,6 +316,7 @@ public class Widget_Ricerca extends Widget_Centrale{
         }
         if(selezione.getClass() == ImpiantiRisalita.class){
             ImpiantiRisalita impi = (ImpiantiRisalita)selezione;
+            strut_com.combo_tipo.setCurrentIndex(4);
             strut_com.impianti.spinBox_capacita.setValue(impi.getCapacita());
             int index = strut_com.impianti.comboBox_tipologia.findText(impi.getTipologia());
             strut_com.impianti.comboBox_tipologia.setCurrentIndex(index);
@@ -288,6 +327,7 @@ public class Widget_Ricerca extends Widget_Centrale{
     
     private void selectCaratteristica(Caratteristica selezione){
         if(selezione.getClass() == Monte.class){
+            ric_com.widget_special.hide();
             Monte monte = (Monte)selezione;
             car_com.combo_tipo.setCurrentIndex(0);
             car_com.combo_tipo.currentIndexChanged.emit(car_com.combo_tipo.currentIndex());
@@ -296,6 +336,7 @@ public class Widget_Ricerca extends Widget_Centrale{
             return;
         }
         if(selezione.getClass() == Fiume.class){
+            ric_com.widget_special.hide();
             Fiume fiume = (Fiume)selezione;
             car_com.combo_tipo.setCurrentIndex(1);
             car_com.fiume_wdg.checkBox_navigabile.setChecked(fiume.getNavigabile());
@@ -304,6 +345,7 @@ public class Widget_Ricerca extends Widget_Centrale{
             return;
         }
         if(selezione.getClass() == Lago.class){
+            ric_com.widget_special.hide();
             Lago lago = (Lago)selezione;
             car_com.combo_tipo.setCurrentIndex(2);
             car_com.lago_wdg.lineEdit.setText(Float.toString(lago.getEstensione()));
@@ -315,6 +357,15 @@ public class Widget_Ricerca extends Widget_Centrale{
             car_com.combo_tipo.setCurrentIndex(3);
             car_com.paese_wdg.lineEdit_cap.setText(Integer.toString(paese.getCAP()));
             car_com.paese_wdg.spinBox_abitanti.setValue(paese.getAbitanti());
+            ric_com.label_special.setText("Iniziative: ");
+            ric_com.listWidget_special.clear();
+            try {
+                maiunui.popolaIinizativeVicine(paese,ric_com.listWidget_special);
+            } catch (SQLException ex) {
+                Logger.getLogger(Widget_Ricerca.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ric_com.listWidget_special.setEnabled(false);
+            ric_com.widget_special.show();
             enable_car_specific(false, 3);
         }
     }

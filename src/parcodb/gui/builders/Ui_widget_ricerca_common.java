@@ -24,7 +24,10 @@ public class Ui_widget_ricerca_common implements com.trolltech.qt.QUiForm<QWidge
     public QWidget widget_2;
     public QHBoxLayout layout_special_2;
     public QWidget widget_special;
-    public QWidget widget_3;
+    public QVBoxLayout verticalLayout_3;
+    public QLabel label_special;
+    public QListWidget listWidget_special;
+    public QWidget widget_special_2;
     public QVBoxLayout verticalLayout_2;
     public QLabel label_special_2;
     public QListWidget listWidget_special_2;
@@ -83,40 +86,61 @@ public class Ui_widget_ricerca_common implements com.trolltech.qt.QUiForm<QWidge
         widget_2 = new QWidget(widget);
         widget_2.setObjectName("widget_2");
         layout_special_2 = new QHBoxLayout(widget_2);
-        layout_special_2.setSpacing(0);
+        layout_special_2.setSpacing(6);
         layout_special_2.setMargin(0);
         layout_special_2.setObjectName("layout_special_2");
         widget_special = new QWidget(widget_2);
         widget_special.setObjectName("widget_special");
+        verticalLayout_3 = new QVBoxLayout(widget_special);
+        verticalLayout_3.setSpacing(6);
+        verticalLayout_3.setMargin(0);
+        verticalLayout_3.setObjectName("verticalLayout_3");
+        label_special = new QLabel(widget_special);
+        label_special.setObjectName("label_special");
+
+        verticalLayout_3.addWidget(label_special);
+
+        listWidget_special = new QListWidget(widget_special);
+        listWidget_special.setObjectName("listWidget_special");
+        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Preferred, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy2.setHorizontalStretch((byte)0);
+        sizePolicy2.setVerticalStretch((byte)0);
+        sizePolicy2.setHeightForWidth(listWidget_special.sizePolicy().hasHeightForWidth());
+        listWidget_special.setSizePolicy(sizePolicy2);
+
+        verticalLayout_3.addWidget(listWidget_special);
+
 
         layout_special_2.addWidget(widget_special);
 
-        widget_3 = new QWidget(widget_2);
-        widget_3.setObjectName("widget_3");
-        verticalLayout_2 = new QVBoxLayout(widget_3);
+        widget_special_2 = new QWidget(widget_2);
+        widget_special_2.setObjectName("widget_special_2");
+        verticalLayout_2 = new QVBoxLayout(widget_special_2);
+        verticalLayout_2.setSpacing(6);
+        verticalLayout_2.setMargin(0);
         verticalLayout_2.setObjectName("verticalLayout_2");
-        label_special_2 = new QLabel(widget_3);
+        label_special_2 = new QLabel(widget_special_2);
         label_special_2.setObjectName("label_special_2");
-        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Preferred, com.trolltech.qt.gui.QSizePolicy.Policy.Maximum);
-        sizePolicy2.setHorizontalStretch((byte)0);
-        sizePolicy2.setVerticalStretch((byte)0);
-        sizePolicy2.setHeightForWidth(label_special_2.sizePolicy().hasHeightForWidth());
-        label_special_2.setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Preferred, com.trolltech.qt.gui.QSizePolicy.Policy.Maximum);
+        sizePolicy3.setHorizontalStretch((byte)0);
+        sizePolicy3.setVerticalStretch((byte)0);
+        sizePolicy3.setHeightForWidth(label_special_2.sizePolicy().hasHeightForWidth());
+        label_special_2.setSizePolicy(sizePolicy3);
 
         verticalLayout_2.addWidget(label_special_2);
 
-        listWidget_special_2 = new QListWidget(widget_3);
+        listWidget_special_2 = new QListWidget(widget_special_2);
         listWidget_special_2.setObjectName("listWidget_special_2");
-        QSizePolicy sizePolicy3 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Preferred, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
-        sizePolicy3.setHorizontalStretch((byte)0);
-        sizePolicy3.setVerticalStretch((byte)0);
-        sizePolicy3.setHeightForWidth(listWidget_special_2.sizePolicy().hasHeightForWidth());
-        listWidget_special_2.setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy4 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Preferred, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy4.setHorizontalStretch((byte)0);
+        sizePolicy4.setVerticalStretch((byte)0);
+        sizePolicy4.setHeightForWidth(listWidget_special_2.sizePolicy().hasHeightForWidth());
+        listWidget_special_2.setSizePolicy(sizePolicy4);
 
         verticalLayout_2.addWidget(listWidget_special_2);
 
 
-        layout_special_2.addWidget(widget_3);
+        layout_special_2.addWidget(widget_special_2);
 
 
         layout_special.addWidget(widget_2);
@@ -133,7 +157,8 @@ public class Ui_widget_ricerca_common implements com.trolltech.qt.QUiForm<QWidge
     {
         widget_ricerca_common.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("widget_ricerca_common", "Form", null));
         label.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_ricerca_common", "Risultati", null));
-        label_special_2.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_ricerca_common", "Iniziative", null));
+        label_special.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_ricerca_common", "special_1", null));
+        label_special_2.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_ricerca_common", "special_2", null));
     } // retranslateUi
 
 }
