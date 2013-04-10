@@ -52,7 +52,7 @@ public class Caratteristica extends Zona {
         }
     }
     
-        static public Caratteristica[] getCaratteristiche(DatabaseConnection conn) throws SQLException {
+    static public Caratteristica[] getCaratteristiche(DatabaseConnection conn) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
                 "SELECT nome FROM  Caratteristica ");
         
@@ -67,6 +67,40 @@ public class Caratteristica extends Zona {
         
         if (i != DIM)
             throw new SQLException("il numero di risultati di getCaratteristiche() è incongruo ("+i+','+DIM+')');
+        
+        return caratteristiche;
+    }
+    
+    static public Caratteristica[] getCaratteristicheVicine(DatabaseConnection conn, Caratteristica caratteristica) throws SQLException {
+        String nomeFunzione = "getCaratteristicheVicine(caratteristica)";
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT nomea,nomeb "
+                + "FROM Vicino "
+                + "WHERE nomea = ? OR nomeb = ? ");
+        
+        String nome = caratteristica.getNome();
+        preparedStatement.setString(1, nome);
+        preparedStatement.setString(2, nome);
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Caratteristica[] caratteristiche = new Caratteristica[DIM];
+        int i;
+        for (i=0; result.next(); i++) {
+            String nomea,nomeb;
+            nomea = result.getString(1);
+            nomeb = result.getString(2);
+            if (nomea.equals(nome))
+                caratteristiche[i] = new Caratteristica(nomeb);
+            else if (nomeb.equals(nome))
+                caratteristiche[i] = new Caratteristica(nomeb);
+            else
+                throw new SQLException("Errore nella costruzione di array in "+nomeFunzione);
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
         
         return caratteristiche;
     }
