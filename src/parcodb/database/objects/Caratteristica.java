@@ -62,23 +62,28 @@ public class Caratteristica extends Zona {
         }
     }
     
-    static public Caratteristica[] getCaratteristiche(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement(
-                "SELECT nome FROM  Caratteristica ");
-        
-        ResultSet result = preparedStatement.executeQuery();
+    static private Caratteristica[] populateCaratteristiche(PreparedStatement smt, String nomeFunzione, int posNome) throws SQLException {
+        ResultSet result = smt.executeQuery();
         
         int DIM = DatabaseConnection.getResultDim(result);
         Caratteristica[] caratteristiche = new Caratteristica[DIM];
         int i;
         for (i=0; result.next(); i++) {
-            caratteristiche[i] = new Caratteristica(result.getString(1));
+            caratteristiche[i] = new Caratteristica(result.getString(posNome));
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getCaratteristiche() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
         
         return caratteristiche;
+    }
+    
+    static public Caratteristica[] getCaratteristiche(DatabaseConnection conn) throws SQLException {
+        String nomeFunzione = "getCaratteristiche()";
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT nome FROM  Caratteristica ");
+
+        return populateCaratteristiche(preparedStatement, nomeFunzione, 1);
     }
     
     static public Caratteristica[] getCaratteristicheVicine(DatabaseConnection conn, Caratteristica caratteristica) throws SQLException {
@@ -118,27 +123,15 @@ public class Caratteristica extends Zona {
     static public Caratteristica[] getInteressati(DatabaseConnection conn, Tappa tappa) throws SQLException {
         String nomeFunzione = "getInteressati(tappa)";
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
-                "SELECT caratteristica"
-                + "FROM Interesse"
+                "SELECT caratteristica "
+                + "FROM Interesse "
                 + "WHERE Interesse.tappa_inizio = ? "
                 + "AND Interesse.tappa_fine = ? ");
         
         preparedStatement.setString(1, tappa.getInizio().getNome());
         preparedStatement.setString(2, tappa.getFine().getNome());
         
-        ResultSet result = preparedStatement.executeQuery();
-        
-        int DIM = DatabaseConnection.getResultDim(result);
-        Caratteristica[] caratteristiche = new Caratteristica[DIM];
-        int i;
-        for (i=0; result.next(); i++) {
-            caratteristiche[i] = new Caratteristica(result.getString(1));
-        }
-        
-        if (i != DIM)
-            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
-        
-        return caratteristiche;
+        return populateCaratteristiche(preparedStatement, nomeFunzione, 1);
     }
 
     static public Caratteristica[] getSpecificCaratteristiche(DatabaseConnection conn) throws SQLException {
@@ -173,7 +166,7 @@ public class Caratteristica extends Zona {
     
     @Override
     public String toString() {
-        return this.getNome().trim();
+        return this.getNome();
     }
         
         
