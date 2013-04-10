@@ -4,7 +4,10 @@
 package parcodb.gui;
 
 import com.trolltech.qt.gui.QApplication;
+import com.trolltech.qt.gui.QComboBox;
 import com.trolltech.qt.gui.QDialog;
+import com.trolltech.qt.gui.QListWidget;
+import com.trolltech.qt.gui.QListWidgetItem;
 import com.trolltech.qt.gui.QMainWindow;
 import com.trolltech.qt.gui.QWidget;
 import java.sql.SQLException;
@@ -14,6 +17,13 @@ import parcodb.ParcoDB;
 import parcodb.database.DatabaseConnection;
 import parcodb.database.DatabaseConnector;
 import parcodb.database.PostgreSQLconnector;
+import parcodb.database.objects.Caratteristica;
+import parcodb.database.objects.Comune;
+import parcodb.database.objects.Iniziativa;
+import parcodb.database.objects.Paese;
+import parcodb.database.objects.Sentiero;
+import parcodb.database.objects.Struttura;
+import parcodb.database.objects.Tappa;
 import parcodb.gui.builders.Ui_Dialog_connetti;
 import parcodb.gui.builders.Ui_MainWindow;
 
@@ -129,6 +139,68 @@ public class MainGUI {
         qMainWindow.setWindowTitle(titolo);
 
     }
+        //popolatori di widget
+    
+    public void popolaListaSentieri(QListWidget lista) throws SQLException{
+        Sentiero[] sentieri = Sentiero.getSentieri(conn);
+        for(Sentiero sentiero:sentieri){
+            QListWidgetItem list = new QListWidgetItem();
+            list.setData(0, sentiero);
+            lista.addItem(list);
+        }
+    }
+    
+    public void popolaListaIniziative(QListWidget lista) throws SQLException{
+        Iniziativa[] iniziative = Iniziativa.getIniziative(conn);
+        for(Iniziativa iniziativa:iniziative){
+            QListWidgetItem list = new QListWidgetItem();
+            list.setData(0, iniziativa);
+            lista.addItem(list);
+        }
+    }
+    
+    public void popolaComboPaesi(QComboBox where) throws SQLException{
+        Paese[] paesi = Paese.getPaesi(conn);
+        for (Paese paese : paesi) {
+           where.addItem(paese.toString(), paese);
+        }
+    }
+    
+    public void popolaListaStrutture(QListWidget lista) throws SQLException{
+        Struttura[] strutture = Struttura.getSpecificStruttura(conn);
+        for(Struttura struttura:strutture){
+            QListWidgetItem list = new QListWidgetItem();
+            list.setData(0, struttura);
+            lista.addItem(list);
+        }
+    }
+    
+    public void popolaListaTappe(QListWidget where) throws SQLException{
+        Tappa[] tappe = Tappa.getTappe(conn);
+        for(Tappa tappa:tappe){
+            QListWidgetItem list = new QListWidgetItem();
+            list.setData(0, tappa);
+            where.addItem(list);
+        }
+    }
+    
+    public void popolaListaCaratt(QListWidget where) throws SQLException{
+        Caratteristica[] caratteristiche = Caratteristica.getSpecificCaratteristiche(conn);
+        for (Caratteristica caratteristica : caratteristiche) {
+            QListWidgetItem list = new QListWidgetItem();
+            list.setData(0, caratteristica);
+            where.addItem(list);
+        }
+    }
+    
+    public void popolaListaComune(QListWidget where) throws SQLException{
+        Comune[] comuni = Comune.getComuni(conn);
+        for(Comune comune:comuni){
+            QListWidgetItem list = new QListWidgetItem();
+            list.setData(0, comune);
+            where.addItem(list);
+        }
+    }
     
     public void exec() {
         QApplication.exec();
@@ -137,5 +209,7 @@ public class MainGUI {
     public static void statusMessage(String messaggio){
         MAINUI.statusbar.showMessage(messaggio);
     }
+    
+
     
 }

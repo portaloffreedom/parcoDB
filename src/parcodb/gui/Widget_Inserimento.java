@@ -54,9 +54,9 @@ public class Widget_Inserimento extends Widget_Centrale
         set_central_widget(car_com);
         car_com.select_car_specific();
         try {
-            popolaListaComune(car_com.listWidget_comune);
-            popolaListaTappe(car_com.listWidget_tappe);
-            popolaListaCaratt(car_com.lista_vicinanza);
+            maiunui.popolaListaComune(car_com.listWidget_comune);
+            maiunui.popolaListaTappe(car_com.listWidget_tappe);
+            maiunui.popolaListaCaratt(car_com.lista_vicinanza);
         } catch (SQLException ex) {
             Logger.getLogger(Widget_Inserimento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -69,7 +69,7 @@ public class Widget_Inserimento extends Widget_Centrale
         toggle_button(bottone_struttura);
         set_central_widget(strut_com);
         try {
-            popolaComboPaesi(strut_com.combo_situato);
+            maiunui.popolaComboPaesi(strut_com.combo_situato);
         } catch (SQLException ex) {
             Logger.getLogger(Widget_Inserimento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -82,7 +82,7 @@ public class Widget_Inserimento extends Widget_Centrale
         toggle_button(bottone_iniziativa);
         set_central_widget(ini_com);
         try {
-            popolaComboPaesi(ini_com.combo_paese);
+            maiunui.popolaComboPaesi(ini_com.combo_paese);
         } catch (SQLException ex) {
             Logger.getLogger(Widget_Inserimento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -99,7 +99,7 @@ public class Widget_Inserimento extends Widget_Centrale
                 tappa_com.comboBox_inizio.addItem(zona.getNome(), zona);
                 tappa_com.comboBox_fine.addItem(zona.getNome(), zona);
             }
-            popolaListaCaratt(tappa_com.list_interesse);
+            maiunui.popolaListaCaratt(tappa_com.list_interesse);
         } catch (SQLException ex) {
             Logger.getLogger(Widget_Inserimento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -112,7 +112,7 @@ public class Widget_Inserimento extends Widget_Centrale
         toggle_button(bottone_sentiero);
         set_central_widget(sentiero_com);
         try {
-            popolaListaTappe(sentiero_com.listWidget);
+            maiunui.popolaListaTappe(sentiero_com.listWidget);
         } catch (SQLException ex) {
             Logger.getLogger(Widget_Inserimento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -139,42 +139,6 @@ public class Widget_Inserimento extends Widget_Centrale
             MainGUI.statusMessage(messaggio);
         }
         
-    }
-    
-    //popolatori di widget
-    
-    private void popolaListaTappe(QListWidget where) throws SQLException{
-        Tappa[] tappe = Tappa.getTappe(maiunui.conn);
-        for(Tappa tappa:tappe){
-            QListWidgetItem list = new QListWidgetItem();
-            list.setData(0, tappa);
-            where.addItem(list);
-        }
-    }
-    
-    private void popolaListaCaratt(QListWidget where) throws SQLException{
-        Caratteristica[] caratteristiche = Caratteristica.getCaratteristiche(maiunui.conn);
-        for (Caratteristica caratteristica : caratteristiche) {
-            QListWidgetItem list = new QListWidgetItem();
-            list.setData(0, caratteristica);
-            where.addItem(list);
-        }
-    }
-    
-    private void popolaListaComune(QListWidget where) throws SQLException{
-        Comune[] comuni = Comune.getComuni(this.maiunui.conn);
-        for(Comune comune:comuni){
-            QListWidgetItem list = new QListWidgetItem();
-            list.setData(0, comune);
-            where.addItem(list);
-        }
-    }
-    
-    private void popolaComboPaesi(QComboBox where) throws SQLException{
-        Paese[] paesi = Paese.getPaesi(this.maiunui.conn);
-        for (Paese paese : paesi) {
-           where.addItem(paese.toString(), paese);
-        }
     }
     
 }

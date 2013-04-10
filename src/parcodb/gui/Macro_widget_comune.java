@@ -3,7 +3,6 @@ package parcodb.gui;
 import com.trolltech.qt.gui.QLineEdit;
 import com.trolltech.qt.gui.QWidget;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import parcodb.database.objects.Clima;

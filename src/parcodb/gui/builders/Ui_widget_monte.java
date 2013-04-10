@@ -16,7 +16,7 @@ public class Ui_widget_monte implements com.trolltech.qt.QUiForm<QWidget>
     public QWidget widget;
     public QHBoxLayout horizontalLayout_2;
     public QLabel label_altitudine;
-    public QSpinBox spinBox_altitudine;
+    public QDoubleSpinBox spinBox_altitudine;
     public QSpacerItem verticalSpacer;
 
     public Ui_widget_monte() { super(); }
@@ -48,15 +48,8 @@ public class Ui_widget_monte implements com.trolltech.qt.QUiForm<QWidget>
 
         horizontalLayout_2.addWidget(label_altitudine);
 
-        spinBox_altitudine = new QSpinBox(widget);
+        spinBox_altitudine = new QDoubleSpinBox(widget);
         spinBox_altitudine.setObjectName("spinBox_altitudine");
-        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
-        sizePolicy2.setHorizontalStretch((byte)0);
-        sizePolicy2.setVerticalStretch((byte)0);
-        sizePolicy2.setHeightForWidth(spinBox_altitudine.sizePolicy().hasHeightForWidth());
-        spinBox_altitudine.setSizePolicy(sizePolicy2);
-        spinBox_altitudine.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.LeftToRight);
-        spinBox_altitudine.setMaximum(9999999);
 
         horizontalLayout_2.addWidget(spinBox_altitudine);
 

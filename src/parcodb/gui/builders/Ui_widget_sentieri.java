@@ -83,6 +83,7 @@ public class Ui_widget_sentieri implements com.trolltech.qt.QUiForm<QWidget>
 
         listWidget = new QListWidget(widget_2);
         listWidget.setObjectName("listWidget");
+        listWidget.setSelectionMode(com.trolltech.qt.gui.QAbstractItemView.SelectionMode.MultiSelection);
 
         verticalLayout.addWidget(listWidget);
 
