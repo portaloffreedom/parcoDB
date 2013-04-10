@@ -38,7 +38,7 @@ public class Museo extends Struttura {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Fiume (nome, descrizione, telefono) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Museo (nome, descrizione, telefono) VALUES ( ? , ? , ? );");
         
         insertStatement.setString(1, nome);
         insertStatement.setString(2, descrizione);

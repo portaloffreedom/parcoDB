@@ -27,7 +27,9 @@ public class Caratteristica extends Zona {
         this.comuni = null;
     }
 
-    public Comune[] getComuni() {
+    public Comune[] getComuni() throws Exception {
+        if (comuni == null)
+            throw new Exception("connessione al database richiesta");
         return comuni;
     }
     
