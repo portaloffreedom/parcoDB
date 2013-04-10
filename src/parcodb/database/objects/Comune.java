@@ -55,7 +55,13 @@ public class Comune implements RemoteDBobject {
 
     public Clima[] getClima() throws SQLException {
         if (climaArray == null)
-            throw new SQLException("operazione non ancora supportata");
+            throw new SQLException("connessione al database richiesta");
+        return climaArray;
+    }
+    
+    public Clima[] getClima(DatabaseConnection conn) throws SQLException {
+        if (climaArray == null)
+            climaArray = Clima.getClimaDiComune(conn, this);
         return climaArray;
     }
 

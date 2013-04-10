@@ -5,7 +5,10 @@
 package parcodb.database.objects;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import parcodb.database.DatabaseConnection;
 
 
@@ -69,6 +72,51 @@ public class Clima implements RemoteDBobject {
         insertIntoZonaStatement.setFloat(6, umidita);
         
         insertIntoZonaStatement.execute();
+    }
+    
+    static public Clima[] getClimaDiComune(DatabaseConnection conn, String comune, String provincia) throws SQLException {
+        //TODO return Clima.getClimaDiComune(conn, Comune.);
+        return null;
+    }
+    
+    
+    static public Clima[] getClimaDiComune(DatabaseConnection conn, Comune comune) throws SQLException {
+        String nomeFunzione = "getClimaDiComune(comune)";
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT comune,provincia,mese,pioggia,temperatura,umidita "
+                + "FROM Clima "
+                + "WHERE comune = ? AND provincia = ? "
+                + "ORDER BY mese ASC");
+        
+        preparedStatement.setString(1, comune.getNome());
+        preparedStatement.setString(2, comune.getProvincia());
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Clima[] climi = new Clima[DIM];
+        int i;
+        for (i=0; result.next(); i++) {
+            int mese =  result.getInt(3);
+            if (i != mese)
+                throw new SQLException("i mesi di "+comune+" nella funzione "+nomeFunzione+" sono incongrui ("+i+','+mese+')');
+            try {
+                climi[i] = new Clima(
+                        mese,
+                        result.getFloat(5), 
+                        result.getFloat(6), 
+                        result.getFloat(4)
+                    );            
+                climi[i].setComune(comune);
+            } catch (Exception ex) {
+                Logger.getLogger(Clima.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
+        
+        return climi;
     }
     
 }

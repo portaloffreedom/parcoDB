@@ -36,6 +36,10 @@ public class Caratteristica extends Zona {
             comuni = Comune.getComuniDiCaratteristica(conn, this);
         return comuni;
     }
+    
+    public Caratteristica[] getCaratteristicheVicine(DatabaseConnection conn) throws SQLException {
+        return Caratteristica.getCaratteristicheVicine(conn, this);
+    }
         
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
