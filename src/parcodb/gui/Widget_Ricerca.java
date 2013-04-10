@@ -7,6 +7,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import parcodb.database.objects.Albergo;
 import parcodb.database.objects.Caratteristica;
+import parcodb.database.objects.Clima;
+import parcodb.database.objects.Comune;
 import parcodb.database.objects.Fiume;
 import parcodb.database.objects.ImpiantiRisalita;
 import parcodb.database.objects.Iniziativa;
@@ -53,18 +55,27 @@ public class Widget_Ricerca extends Widget_Centrale{
     public void setupUi(QWidget widget_ricerca){
         super.setupUi(widget_ricerca);
         ric_com.setupUi(this.widget_common);
+        hideSpecial();
+        
+    }
+    
+    private void hideSpecial(){
         ric_com.widget_special_2.hide();
         ric_com.widget_special.hide();
+    }
+    
+    private void refreshConnect(String funzione){
+        ric_com.listWidget_trovati.currentItemChanged.disconnect();
+        ric_com.listWidget_trovati.clear();
+        ric_com.widget_common.dispose();
+        ric_com.listWidget_trovati.currentItemChanged.connect(this, funzione);
     }
     
     @Override
     protected void set_caratteristica() {
         String messaggio = "Ricerca terminata.";
         toggle_button(bottone_terreno);
-        ric_com.listWidget_trovati.clear();
-        ric_com.widget_common.dispose();
-        ric_com.listWidget_trovati.itemClicked.disconnect();
-        ric_com.listWidget_trovati.itemClicked.connect(this, "setupCar()");
+        refreshConnect("setupCar()");
         try {
             maiunui.popolaListaCaratt(ric_com.listWidget_trovati);
         } catch (SQLException ex) {
@@ -72,18 +83,15 @@ public class Widget_Ricerca extends Widget_Centrale{
             messaggio = "Errore nella ricezione dei terreni dal Database";
         } finally {
             MainGUI.statusMessage(messaggio);
-        }        
+        }
+        hideSpecial();
     }
 
     @Override
     protected void set_struttura() {
         String messaggio = "Ricerca terminata.";
         toggle_button(bottone_struttura);
-        ric_com.listWidget_trovati.clear();
-        ric_com.widget_common.dispose();
-        ric_com.listWidget_trovati.itemClicked.disconnect();
-        ric_com.listWidget_trovati.itemClicked.connect(this, "setupStrut()");
-        
+        refreshConnect("setupStrut()");
         try {
             maiunui.popolaListaStrutture(ric_com.listWidget_trovati);
         } catch (SQLException ex) {
@@ -92,16 +100,14 @@ public class Widget_Ricerca extends Widget_Centrale{
         } finally {
             MainGUI.statusMessage(messaggio);
         }
+        hideSpecial();
     }
 
     @Override
     protected void set_iniziativa() {
         String messaggio = "Ricerca terminata.";
         toggle_button(bottone_iniziativa);
-        ric_com.listWidget_trovati.clear();
-        ric_com.widget_common.dispose();
-        ric_com.listWidget_trovati.itemClicked.disconnect();
-        ric_com.listWidget_trovati.itemClicked.connect(this, "setupIniz()");
+        refreshConnect("setupIniz()");
         try {
             maiunui.popolaListaIniziative(ric_com.listWidget_trovati);
         } catch (SQLException ex) {
@@ -110,16 +116,14 @@ public class Widget_Ricerca extends Widget_Centrale{
         } finally {
             MainGUI.statusMessage(messaggio);
         }
+        hideSpecial();
     }
 
     @Override
     protected void set_tappa() {
         String messaggio = "Ricerca terminata.";
         toggle_button(bottone_tappa);
-        ric_com.listWidget_trovati.clear();
-        ric_com.widget_common.dispose();
-        ric_com.listWidget_trovati.itemClicked.disconnect();
-        ric_com.listWidget_trovati.itemClicked.connect(this, "setupTappa()");
+        refreshConnect("setupTappa()");
         try {
             maiunui.popolaListaTappe(ric_com.listWidget_trovati);
         } catch (SQLException ex) {
@@ -128,16 +132,14 @@ public class Widget_Ricerca extends Widget_Centrale{
         } finally {
             MainGUI.statusMessage(messaggio);
         }
+        hideSpecial();
     }
 
     @Override
     protected void set_sentiero() {
         String messaggio = "Ricerca terminata.";
         toggle_button(bottone_sentiero);
-        ric_com.listWidget_trovati.clear();
-        ric_com.widget_common.dispose();
-        ric_com.listWidget_trovati.itemClicked.disconnect();
-        ric_com.listWidget_trovati.itemClicked.connect(this, "setupSent()");
+        refreshConnect("setupSent()");
         try {
             maiunui.popolaListaSentieri(ric_com.listWidget_trovati);
         } catch (SQLException ex) {
@@ -146,16 +148,14 @@ public class Widget_Ricerca extends Widget_Centrale{
         } finally {
             MainGUI.statusMessage(messaggio);
         }
+        hideSpecial();
     }
 
     @Override
     protected void set_comune() {
         String messaggio = "Ricerca terminata.";
         toggle_button(bottone_comune);
-        ric_com.listWidget_trovati.clear();
-        ric_com.widget_common.dispose();
-        ric_com.listWidget_trovati.itemClicked.disconnect();
-        ric_com.listWidget_trovati.itemClicked.connect(this, "setupCom()");
+        refreshConnect("setupCom()");
         try {
             maiunui.popolaListaComune(ric_com.listWidget_trovati);
         } catch (SQLException ex) {
@@ -164,6 +164,7 @@ public class Widget_Ricerca extends Widget_Centrale{
         } finally {
             MainGUI.statusMessage(messaggio);
         }
+        hideSpecial();
     }
 
     @Override
@@ -277,6 +278,22 @@ public class Widget_Ricerca extends Widget_Centrale{
     private void setupCom(){
         setup_common(comune_com);
         enable_common(false, 5);
+        Comune selezionato = (Comune)ric_com.listWidget_trovati.currentItem().data(0);
+        comune_com.lineEdit__provincia.setText(selezionato.getProvincia());
+        comune_com.lineEdit_nome.setText(selezionato.getNome());
+        comune_com.lineEdit_superficie.setText(Float.toString(selezionato.getSuperficie()));
+        try {
+            Clima[] climi = selezionato.getClima(maiunui.conn);
+            //int i = 0;
+            for(Clima clima:climi){
+                comune_com.listawidget[clima.getMese()-1].get(0).setText(Float.toString(clima.getTemperatura()));
+                comune_com.listawidget[clima.getMese()-1].get(1).setText(Float.toString(clima.getUmidita()));
+                comune_com.listawidget[clima.getMese()-1].get(2).setText(Float.toString(clima.getPioggia()));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Widget_Ricerca.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     private void selectStruttura(Struttura selezione){
