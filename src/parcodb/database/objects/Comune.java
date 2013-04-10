@@ -83,25 +83,35 @@ public class Comune implements RemoteDBobject {
         }
     }
     
-    static public Comune[] getComuni(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, provincia, superficie FROM Comune");
-        
-        ResultSet result = preparedStatement.executeQuery();
+    static private Comune[] populateComuni(PreparedStatement smt, String nomeFunzione, int posNome, int posProvincia, int posSuperficie) throws SQLException {
+        ResultSet result = smt.executeQuery();
         
         int DIM = DatabaseConnection.getResultDim(result);
         Comune[] comuni = new Comune[DIM];
         int i;
         for (i=0; result.next(); i++) {
-            comuni[i] = new Comune(result.getString(1), result.getString(2), result.getFloat(3));
+            comuni[i] = new Comune(
+                    result.getString(posNome), 
+                    result.getString(posProvincia), 
+                    result.getFloat(posSuperficie)
+                );
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getComuni() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
         
         return comuni;
     }
     
+    static public Comune[] getComuni(DatabaseConnection conn) throws SQLException {
+        String nomeFunzione = "getComuni()";
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, provincia, superficie FROM Comune");
+        
+        return populateComuni(preparedStatement, nomeFunzione, 1, 2, 3);
+    }
+    
     static public Comune[] getComuniDiCaratteristica(DatabaseConnection conn, String caratteristica) throws SQLException {
+        String nomeFunzione = "getComuniDiCaratteristica()";
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
                 "SELECT Comune.nome, Comune.provincia, Comune.superficie "
                 + "FROM Comune,Appartiene "
@@ -109,19 +119,7 @@ public class Comune implements RemoteDBobject {
         
         preparedStatement.setString(1, caratteristica);
         
-        ResultSet result = preparedStatement.executeQuery();
-        
-        int DIM = DatabaseConnection.getResultDim(result);
-        Comune[] comuni = new Comune[DIM];
-        int i;
-        for (i=0; result.next(); i++) {
-            comuni[i] = new Comune(result.getString(1), result.getString(2), result.getFloat(3));
-        }
-        
-        if (i != DIM)
-            throw new SQLException("il numero di risultati di getComuniDiCaratteristica() è incongruo ("+i+','+DIM+')');
-        
-        return comuni;
+        return populateComuni(preparedStatement, nomeFunzione, 1, 2, 3);
     }
     
     static public Comune[] getComuniDiCaratteristica(DatabaseConnection conn, Caratteristica caratteristica) throws SQLException {
