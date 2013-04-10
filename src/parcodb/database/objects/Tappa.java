@@ -105,8 +105,8 @@ public class Tappa implements RemoteDBobject {
                 "SELECT T.inizio,T.fine,T.lunghezza "
                 + "FROM Composto AS C, Tappa as T "
                 + "WHERE C.sentiero = ? "
-                + "AND C.tappa_inizio = T.inizio "
-                + "AND C.tappa_fine = T.fine");
+                + "AND C.inizio = T.inizio "
+                + "AND C.fine = T.fine");
         
         preparedStatement.setInt(1, sentiero);
         
