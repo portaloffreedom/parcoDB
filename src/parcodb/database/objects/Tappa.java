@@ -63,6 +63,39 @@ public class Tappa implements RemoteDBobject {
         
         return tappe;
     }
+    
+    static public Tappa[] getTappeInteresseCaratteristica(DatabaseConnection conn, Caratteristica caratteristica) throws SQLException {
+        return Tappa.getTappeInteresseCaratteristica(conn, caratteristica.getNome());
+    }
+    
+    static public Tappa[] getTappeInteresseCaratteristica(DatabaseConnection conn, String caratteristica) throws SQLException {
+        String nomeFunzione = "getTappeInteresseCaratteristica(caratteristica)";
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT T.inizio,T.fine,T.lunghezza "
+                + "FROM Interesse AS I,Tappa AS T "
+                + "WHERE I.caratteristica = ? "
+                + "AND I.tappa_inizio = T.inizio "
+                + "AND I.tappa_fine = T.fine");
+        
+        preparedStatement.setString(1, caratteristica);
+        
+        ResultSet result = preparedStatement.executeQuery();
+        
+        int DIM = DatabaseConnection.getResultDim(result);
+        Tappa[] tappe = new Tappa[DIM];
+        int i;
+        for (i=0; result.next(); i++) {
+            tappe[i] = new Tappa(new Zona(result.getString(1)),
+                    new Zona(result.getString(2)),
+                    result.getFloat(3));
+        }
+        
+        if (i != DIM)
+            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
+        
+        return tappe;
+    }
+        
 
     @Override
     public String toString() {

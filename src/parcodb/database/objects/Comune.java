@@ -128,6 +128,6 @@ public class Comune implements RemoteDBobject {
     
     @Override
     public String toString(){
-        return getNome().trim();
+        return getNome() + " ("+getProvincia()+')';
     }
 }

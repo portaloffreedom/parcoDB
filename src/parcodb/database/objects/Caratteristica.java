@@ -40,6 +40,10 @@ public class Caratteristica extends Zona {
     public Caratteristica[] getCaratteristicheVicine(DatabaseConnection conn) throws SQLException {
         return Caratteristica.getCaratteristicheVicine(conn, this);
     }
+    
+    public Tappa[] getTappeInteressate(DatabaseConnection conn) throws SQLException {
+        return Tappa.getTappeInteresseCaratteristica(conn, this);
+    }
         
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
