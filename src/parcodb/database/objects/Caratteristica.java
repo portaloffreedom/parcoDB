@@ -104,12 +104,12 @@ public class Caratteristica extends Zona {
         int i;
         for (i=0; result.next(); i++) {
             String nomea,nomeb;
-            nomea = result.getString(1);
-            nomeb = result.getString(2);
+            nomea = result.getString(1).trim();
+            nomeb = result.getString(2).trim();
             if (nomea.equals(nome))
                 caratteristiche[i] = new Caratteristica(nomeb);
             else if (nomeb.equals(nome))
-                caratteristiche[i] = new Caratteristica(nomeb);
+                caratteristiche[i] = new Caratteristica(nomea);
             else
                 throw new SQLException("Errore nella costruzione di array in "+nomeFunzione);
         }

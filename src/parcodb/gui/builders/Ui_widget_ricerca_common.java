@@ -107,6 +107,7 @@ public class Ui_widget_ricerca_common implements com.trolltech.qt.QUiForm<QWidge
         sizePolicy2.setVerticalStretch((byte)0);
         sizePolicy2.setHeightForWidth(listWidget_special.sizePolicy().hasHeightForWidth());
         listWidget_special.setSizePolicy(sizePolicy2);
+        listWidget_special.setSelectionMode(com.trolltech.qt.gui.QAbstractItemView.SelectionMode.NoSelection);
 
         verticalLayout_3.addWidget(listWidget_special);
 
@@ -136,6 +137,7 @@ public class Ui_widget_ricerca_common implements com.trolltech.qt.QUiForm<QWidge
         sizePolicy4.setVerticalStretch((byte)0);
         sizePolicy4.setHeightForWidth(listWidget_special_2.sizePolicy().hasHeightForWidth());
         listWidget_special_2.setSizePolicy(sizePolicy4);
+        listWidget_special_2.setSelectionMode(com.trolltech.qt.gui.QAbstractItemView.SelectionMode.NoSelection);
 
         verticalLayout_2.addWidget(listWidget_special_2);
 

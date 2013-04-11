@@ -19,19 +19,17 @@ public class Ui_widget_sentieri implements com.trolltech.qt.QUiForm<QWidget>
     public QHBoxLayout horizontalLayout_2;
     public QLabel label;
     public QSpinBox spinBox;
-    public QSpacerItem verticalSpacer;
-    public QFrame line;
-    public QWidget widget_2;
-    public QVBoxLayout verticalLayout;
     public QLabel label_2;
     public QListWidget listWidget;
+    public QWidget widget_special;
+    public QVBoxLayout verticalLayout;
 
     public Ui_widget_sentieri() { super(); }
 
     public void setupUi(QWidget widget_sentieri)
     {
         widget_sentieri.setObjectName("widget_sentieri");
-        widget_sentieri.resize(new QSize(759, 517).expandedTo(widget_sentieri.minimumSizeHint()));
+        widget_sentieri.resize(new QSize(793, 581).expandedTo(widget_sentieri.minimumSizeHint()));
         horizontalLayout = new QHBoxLayout(widget_sentieri);
         horizontalLayout.setObjectName("horizontalLayout");
         widget_3 = new QWidget(widget_sentieri);
@@ -51,6 +49,11 @@ public class Ui_widget_sentieri implements com.trolltech.qt.QUiForm<QWidget>
 
         spinBox = new QSpinBox(widget);
         spinBox.setObjectName("spinBox");
+        QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy.setHorizontalStretch((byte)0);
+        sizePolicy.setVerticalStretch((byte)0);
+        sizePolicy.setHeightForWidth(spinBox.sizePolicy().hasHeightForWidth());
+        spinBox.setSizePolicy(sizePolicy);
         spinBox.setMaximum(999999);
 
         horizontalLayout_2.addWidget(spinBox);
@@ -58,37 +61,32 @@ public class Ui_widget_sentieri implements com.trolltech.qt.QUiForm<QWidget>
 
         verticalLayout_2.addWidget(widget);
 
-        verticalSpacer = new QSpacerItem(20, 450, com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding);
+        label_2 = new QLabel(widget_3);
+        label_2.setObjectName("label_2");
 
-        verticalLayout_2.addItem(verticalSpacer);
+        verticalLayout_2.addWidget(label_2);
+
+        listWidget = new QListWidget(widget_3);
+        listWidget.setObjectName("listWidget");
+        QSizePolicy sizePolicy1 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Preferred, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding);
+        sizePolicy1.setHorizontalStretch((byte)0);
+        sizePolicy1.setVerticalStretch((byte)0);
+        sizePolicy1.setHeightForWidth(listWidget.sizePolicy().hasHeightForWidth());
+        listWidget.setSizePolicy(sizePolicy1);
+        listWidget.setSelectionMode(com.trolltech.qt.gui.QAbstractItemView.SelectionMode.MultiSelection);
+
+        verticalLayout_2.addWidget(listWidget);
 
 
         horizontalLayout.addWidget(widget_3);
 
-        line = new QFrame(widget_sentieri);
-        line.setObjectName("line");
-        line.setFrameShape(QFrame.Shape.HLine);
-
-        horizontalLayout.addWidget(line);
-
-        widget_2 = new QWidget(widget_sentieri);
-        widget_2.setObjectName("widget_2");
-        verticalLayout = new QVBoxLayout(widget_2);
+        widget_special = new QWidget(widget_sentieri);
+        widget_special.setObjectName("widget_special");
+        verticalLayout = new QVBoxLayout(widget_special);
         verticalLayout.setMargin(0);
         verticalLayout.setObjectName("verticalLayout");
-        label_2 = new QLabel(widget_2);
-        label_2.setObjectName("label_2");
 
-        verticalLayout.addWidget(label_2);
-
-        listWidget = new QListWidget(widget_2);
-        listWidget.setObjectName("listWidget");
-        listWidget.setSelectionMode(com.trolltech.qt.gui.QAbstractItemView.SelectionMode.MultiSelection);
-
-        verticalLayout.addWidget(listWidget);
-
-
-        horizontalLayout.addWidget(widget_2);
+        horizontalLayout.addWidget(widget_special);
 
         retranslateUi(widget_sentieri);
 

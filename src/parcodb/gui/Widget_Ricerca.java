@@ -1,6 +1,7 @@
 package parcodb.gui;
 
 import com.trolltech.qt.QUiForm;
+import com.trolltech.qt.gui.QAbstractItemView;
 import com.trolltech.qt.gui.QWidget;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -271,6 +272,7 @@ public class Widget_Ricerca extends Widget_Centrale{
         } catch (SQLException ex) {
             Logger.getLogger(Widget_Ricerca.class.getName()).log(Level.SEVERE, null, ex);
         }
+        sent_com.label_2.setText("Tappe:");
         sent_com.spinBox.setValue(selezionato.getNumero_sentiero());
         enable_common(false, 4);
     }
@@ -374,14 +376,14 @@ public class Widget_Ricerca extends Widget_Centrale{
             car_com.combo_tipo.setCurrentIndex(3);
             car_com.paese_wdg.lineEdit_cap.setText(Integer.toString(paese.getCAP()));
             car_com.paese_wdg.spinBox_abitanti.setValue(paese.getAbitanti());
-            ric_com.label_special.setText("Iniziative: ");
-            ric_com.listWidget_special.clear();
             try {
                 maiunui.popolaIinizativeVicine(paese,ric_com.listWidget_special);
             } catch (SQLException ex) {
                 Logger.getLogger(Widget_Ricerca.class.getName()).log(Level.SEVERE, null, ex);
             }
-            ric_com.listWidget_special.setEnabled(false);
+            ric_com.label_special.setText("Iniziative: ");
+            ric_com.listWidget_special.clear();
+            ric_com.listWidget_special.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection);
             ric_com.widget_special.show();
             enable_car_specific(false, 3);
         }
@@ -453,18 +455,19 @@ public class Widget_Ricerca extends Widget_Centrale{
                 return;
             case 2:
                 car_com.lineEdit_nome.setEnabled(_bool);
-                car_com.listWidget_comune.setEnabled(_bool);
-                car_com.listWidget_tappe.setEnabled(_bool);
-                car_com.lista_vicinanza.setEnabled(_bool);
+                car_com.listWidget_comune.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection);
+                car_com.listWidget_tappe.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection);
+                car_com.lista_vicinanza.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection);
                 return;
             case 3:
                 tappa_com.comboBox_fine.setEnabled(_bool);
                 tappa_com.comboBox_inizio.setEnabled(_bool);
                 tappa_com.lineEdit_lunghezza.setEnabled(_bool);
-                tappa_com.list_interesse.setEnabled(_bool);
+                tappa_com.list_interesse.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection);
                 return;
             case 4:
-                sent_com.listWidget.setEnabled(_bool);
+                //sent_com.listWidget.setEnabled(_bool);
+                sent_com.listWidget.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection);
                 sent_com.spinBox.setEnabled(_bool);
                 return;
             case 5:

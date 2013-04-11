@@ -6,12 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import parcodb.database.objects.Caratteristica;
 import parcodb.database.objects.Comune;
 import parcodb.database.objects.Fiume;
+import parcodb.database.objects.Interesse;
 import parcodb.database.objects.Lago;
 import parcodb.database.objects.Monte;
 import parcodb.database.objects.Paese;
 import parcodb.database.objects.RemoteDBobject;
+import parcodb.database.objects.Tappa;
+import parcodb.database.objects.Vicino;
 import parcodb.gui.builders.Ui_caratteristica_common;
 import parcodb.gui.builders.Ui_widget_fiume;
 import parcodb.gui.builders.Ui_widget_lago;
@@ -59,25 +63,38 @@ public class Macro_widget_caratteristica extends Ui_caratteristica_common implem
     @Override
     public List<RemoteDBobject> getInsertor(){
         ArrayList<RemoteDBobject> lista = new ArrayList<>();
+        Caratteristica questo = null;
         switch(combo_tipo.currentIndex()){
             case 0:
-                lista.add(constructMonte());
+                questo = constructMonte();
                 break;
             case 1:
-                lista.add(constructFiume());
+                questo = constructFiume();
                 break;
             case 2:
-                lista.add(constructLago());
+                questo = constructLago();
                 break;
             case 3:
-                lista.add(constructPaese());
+                questo = constructPaese();
             default:
                 break;
         }
+        lista.add(questo);
+        //Tutte le caratteristiche vicine
+        List<QListWidgetItem> items = lista_vicinanza.selectedItems();                
+        for(QListWidgetItem item:items){
+            lista.add(new Vicino(questo,(Caratteristica)item.data(0)));
+        }
+        //Tutte le tappe interessate
+        items = listWidget_tappe.selectedItems();
+        for(QListWidgetItem item:items){
+            lista.add(new Interesse(questo,(Tappa)item.data(0)));
+        }
+        
         return lista;
     }
     
-    private RemoteDBobject constructLago(){
+    private Caratteristica constructLago(){
         Lago lago = null;
         try {
             lago = new Lago(lineEdit_nome.text(), 
@@ -89,7 +106,7 @@ public class Macro_widget_caratteristica extends Ui_caratteristica_common implem
         return lago;
     }
     
-    private RemoteDBobject constructMonte(){
+    private Caratteristica constructMonte(){
         Monte monte = null;
         try {
             monte = new Monte(lineEdit_nome.text(),
@@ -101,7 +118,7 @@ public class Macro_widget_caratteristica extends Ui_caratteristica_common implem
         return monte;
     }
     
-    private RemoteDBobject constructFiume(){
+    private Caratteristica constructFiume(){
         Fiume fiume = null;
         try {
             fiume = new Fiume(lineEdit_nome.text(), 
@@ -114,7 +131,7 @@ public class Macro_widget_caratteristica extends Ui_caratteristica_common implem
         return fiume;
     }
     
-    private RemoteDBobject constructPaese(){
+    private Caratteristica constructPaese(){
         Paese paese = null;
         
         try {
