@@ -98,6 +98,17 @@ public class Tappa implements RemoteDBobject {
     static public Tappa[] getTappeDiSentiero(DatabaseConnection conn, Sentiero sentiero) throws SQLException {
         return getTappeDiSentiero(conn, sentiero.getNumero_sentiero());
     }
+    
+    public Tappa[] getTappeSequenzialiPlausibili(DatabaseConnection conn) throws SQLException {
+        String nomeFunzione = "getTappeSequenzialiPlausibili(tappa)";
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT inzio,fine,lunghezza "
+                + "FROM Tappa "
+                + "WHERE inizio = ? ");
+        preparedStatement.setString(1, this.getFine().getNome());
+        
+        return populateTappe(preparedStatement, nomeFunzione, 1, 2, 3);
+    }
         
     static public Tappa[] getTappeDiSentiero(DatabaseConnection conn, int sentiero) throws SQLException {
         String nomeFunzione = "getTappeDiSentiero(sentiero)";
