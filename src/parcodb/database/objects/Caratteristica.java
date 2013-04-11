@@ -50,7 +50,9 @@ public class Caratteristica extends Zona {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Caratteristica (nome) VALUES ( ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement(
+                "INSERT INTO Caratteristica (nome) "
+                + "VALUES ( ? );");
         
         insertStatement.setString(1, nome);
         
@@ -81,7 +83,9 @@ public class Caratteristica extends Zona {
     static public Caratteristica[] getCaratteristiche(DatabaseConnection conn) throws SQLException {
         String nomeFunzione = "getCaratteristiche()";
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
-                "SELECT nome FROM  Caratteristica ");
+                "SELECT nome "
+                + "FROM  Caratteristica "
+                + "ORDER BY nome");
 
         return populateCaratteristiche(preparedStatement, nomeFunzione, 1);
     }
@@ -126,7 +130,8 @@ public class Caratteristica extends Zona {
                 "SELECT caratteristica "
                 + "FROM Interesse "
                 + "WHERE Interesse.tappa_inizio = ? "
-                + "AND Interesse.tappa_fine = ? ");
+                + "AND Interesse.tappa_fine = ? "
+                + "ORDER BY caratteristica ");
         
         preparedStatement.setString(1, tappa.getInizio().getNome());
         preparedStatement.setString(2, tappa.getFine().getNome());

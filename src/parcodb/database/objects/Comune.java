@@ -105,7 +105,10 @@ public class Comune implements RemoteDBobject {
     
     static public Comune[] getComuni(DatabaseConnection conn) throws SQLException {
         String nomeFunzione = "getComuni()";
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, provincia, superficie FROM Comune");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT nome, provincia, superficie "
+                + "FROM Comune "
+                + "ORDER BY provincia,nome ");
         
         return populateComuni(preparedStatement, nomeFunzione, 1, 2, 3);
     }
@@ -115,7 +118,10 @@ public class Comune implements RemoteDBobject {
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
                 "SELECT Comune.nome, Comune.provincia, Comune.superficie "
                 + "FROM Comune,Appartiene "
-                + "WHERE Comune.nome = Appartiene.comune AND Comune.provincia = Appartiene.provincia AND Appartiene.caratteristica = ? ");
+                + "WHERE Comune.nome = Appartiene.comune "
+                + "AND Comune.provincia = Appartiene.provincia "
+                + "AND Appartiene.caratteristica = ? "
+                + "ORDER BY Comune.provincia,Comune.nome ");
         
         preparedStatement.setString(1, caratteristica);
         

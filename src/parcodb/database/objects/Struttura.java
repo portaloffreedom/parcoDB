@@ -92,7 +92,10 @@ public class Struttura extends Zona {
     }
     
         static public Struttura[] getStrutture(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione FROM Struttura");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione "
+                + "FROM Struttura "
+                + "ORDER BY nome ");
         
         ResultSet result = preparedStatement.executeQuery();
         
@@ -153,7 +156,10 @@ public class Struttura extends Zona {
     }
         
     static public Struttura getStruttura(DatabaseConnection conn, String nome) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione FROM Struttura WHERE nome = ? ");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione "
+                + "FROM Struttura "
+                + "WHERE nome = ? ");
         preparedStatement.setString(1, nome);
         
         ResultSet result = preparedStatement.executeQuery();

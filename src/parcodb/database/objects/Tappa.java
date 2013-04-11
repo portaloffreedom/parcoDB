@@ -72,7 +72,9 @@ public class Tappa implements RemoteDBobject {
     static public Tappa[] getTappe(DatabaseConnection conn) throws SQLException {
         String nomeFunzione = "getTappeInteresseCaratteristica(caratteristica)";
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
-                "SELECT inizio,fine,lunghezza FROM Tappa ");
+                "SELECT inizio,fine,lunghezza "
+                + "FROM Tappa "
+                + "ORDER BY inizio,fine ");
         return populateTappe(preparedStatement, nomeFunzione,1,2,3);
 
     }
@@ -88,7 +90,8 @@ public class Tappa implements RemoteDBobject {
                 + "FROM Interesse AS I,Tappa AS T "
                 + "WHERE I.caratteristica = ? "
                 + "AND I.tappa_inizio = T.inizio "
-                + "AND I.tappa_fine = T.fine");
+                + "AND I.tappa_fine = T.fine "
+                + "ORDER BY T.inizio,T.fine");
         
         preparedStatement.setString(1, caratteristica);
         

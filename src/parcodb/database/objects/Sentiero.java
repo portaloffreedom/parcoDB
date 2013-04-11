@@ -71,7 +71,10 @@ public class Sentiero implements RemoteDBobject {
     }
     
     static public Sentiero[] getSentieri(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT * FROM Sentiero;");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT numero_sentiero,lunghezza "
+                + "FROM Sentiero "
+                + "ORDER BY numero_sentiero ");
         
         ResultSet result = preparedStatement.executeQuery();
         

@@ -49,7 +49,10 @@ public class Paese extends Caratteristica {
     
     
     static public Paese[] getPaesi(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, abitanti, cap FROM Paese");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT nome, abitanti, cap "
+                + "FROM Paese "
+                + "ORDER BY nome");
         
         ResultSet result = preparedStatement.executeQuery();
         

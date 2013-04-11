@@ -47,7 +47,7 @@ public class Monumento extends Struttura {
     }
     
     static public Monumento[] getMonumenti(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, anno, descrizione FROM Monumento");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, anno, descrizione FROM Monumento ORDER BY nome");
         
         ResultSet result = preparedStatement.executeQuery();
         

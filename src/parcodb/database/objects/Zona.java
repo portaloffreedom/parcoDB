@@ -35,7 +35,9 @@ public class Zona implements RemoteDBobject {
     
     static public Zona[] getZone(DatabaseConnection conn) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
-                "SELECT nome FROM  Zona ");
+                "SELECT nome "
+                + "FROM  Zona "
+                + "ORDER BY nome");
         
         ResultSet result = preparedStatement.executeQuery();
         
