@@ -64,7 +64,7 @@ public class Sentiero implements RemoteDBobject {
         insertStatement.execute();
         
         for (int i=0; i<tappe.length; i++) {
-            Composto composto = new Composto(tappe[i], this, i);
+            Composto composto = new Composto(tappe[i], this, i+1);
             composto.insertIntoDB(conn);
         }
         

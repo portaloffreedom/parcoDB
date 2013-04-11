@@ -102,7 +102,7 @@ public class Tappa implements RemoteDBobject {
     public Tappa[] getTappeSequenzialiPlausibili(DatabaseConnection conn) throws SQLException {
         String nomeFunzione = "getTappeSequenzialiPlausibili(tappa)";
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
-                "SELECT inzio,fine,lunghezza "
+                "SELECT inizio,fine,lunghezza "
                 + "FROM Tappa "
                 + "WHERE inizio = ? ");
         preparedStatement.setString(1, this.getFine().getNome());
