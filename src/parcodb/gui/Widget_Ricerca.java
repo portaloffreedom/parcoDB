@@ -268,7 +268,7 @@ public class Widget_Ricerca extends Widget_Centrale{
         setup_common(sent_com);
         Sentiero selezionato = (Sentiero)ric_com.listWidget_trovati.currentItem().data(0);
         try {
-            maiunui.popolaListaTappediSentiero(selezionato,sent_com.listWidget);
+            maiunui.popolaListaTappediSentiero(selezionato,sent_com.listWidget_tappa);
         } catch (SQLException ex) {
             Logger.getLogger(Widget_Ricerca.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -279,6 +279,10 @@ public class Widget_Ricerca extends Widget_Centrale{
     
     private void setupCom(){
         setup_common(comune_com);
+        comune_com.comboBox_mesi.show();
+        comune_com.scrollArea.hide();
+        comune_com.collegaSegnali(true);
+        comune_com.comboBox_mesi.currentIndexChanged.emit(0);
         enable_common(false, 5);
         Comune selezionato = (Comune)ric_com.listWidget_trovati.currentItem().data(0);
         comune_com.lineEdit__provincia.setText(selezionato.getProvincia());
@@ -467,7 +471,7 @@ public class Widget_Ricerca extends Widget_Centrale{
                 return;
             case 4:
                 //sent_com.listWidget.setEnabled(_bool);
-                sent_com.listWidget.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection);
+                sent_com.listWidget_tappa.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection);
                 sent_com.spinBox.setEnabled(_bool);
                 return;
             case 5:

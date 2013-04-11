@@ -112,17 +112,39 @@
     </widget>
    </item>
    <item>
-    <widget class="QWidget" name="widget_56" native="true">
-     <layout class="QVBoxLayout" name="verticalLayout_16">
+    <widget class="QWidget" name="widget_scroll" native="true">
+     <layout class="QVBoxLayout" name="layout_mesi">
       <property name="margin">
        <number>0</number>
       </property>
       <item>
-       <widget class="QLabel" name="label_55">
-        <property name="text">
-         <string>Medie climatiche mensili</string>
-        </property>
+       <widget class="QWidget" name="widget_medie" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Medie Climatiche Mensili</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_mesi">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_special" native="true"/>
       </item>
       <item>
        <widget class="QScrollArea" name="scrollArea">
@@ -133,14 +155,14 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-553</y>
+           <y>0</y>
            <width>387</width>
            <height>1419</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_15">
           <item>
-           <widget class="QWidget" name="widget_16" native="true">
+           <widget class="QWidget" name="widget_GEN" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_5">
              <property name="margin">
               <number>0</number>
@@ -228,7 +250,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="widget_24" native="true">
+           <widget class="QWidget" name="widget_FEB" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_7">
              <property name="margin">
               <number>0</number>
@@ -316,7 +338,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="widget_4" native="true">
+           <widget class="QWidget" name="widget_MAR" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_2">
              <property name="margin">
               <number>0</number>
@@ -404,7 +426,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="widget_48" native="true">
+           <widget class="QWidget" name="widget_APR" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_13">
              <property name="margin">
               <number>0</number>
@@ -492,7 +514,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="widget_40" native="true">
+           <widget class="QWidget" name="widget_MAG" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_11">
              <property name="margin">
               <number>0</number>
@@ -580,7 +602,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="widget_52" native="true">
+           <widget class="QWidget" name="widget_GIU" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_14">
              <property name="margin">
               <number>0</number>
@@ -668,7 +690,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="widget_44" native="true">
+           <widget class="QWidget" name="widget_LUG" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_12">
              <property name="margin">
               <number>0</number>
@@ -756,7 +778,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="widget_32" native="true">
+           <widget class="QWidget" name="widget_AGO" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_9">
              <property name="margin">
               <number>0</number>
@@ -844,7 +866,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="widget_36" native="true">
+           <widget class="QWidget" name="widget_SET" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_10">
              <property name="margin">
               <number>0</number>
@@ -932,7 +954,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="widget_12" native="true">
+           <widget class="QWidget" name="widget_OTT" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_4">
              <property name="margin">
               <number>0</number>
@@ -1020,7 +1042,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="widget_28" native="true">
+           <widget class="QWidget" name="widget_NOV" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_8">
              <property name="margin">
               <number>0</number>
@@ -1108,7 +1130,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="widget_20" native="true">
+           <widget class="QWidget" name="widget_DIC" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_6">
              <property name="margin">
               <number>0</number>
@@ -1191,6 +1213,19 @@
          </layout>
         </widget>
        </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>com.trolltech.qt.core.Qt.Orientation.Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>

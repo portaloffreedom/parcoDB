@@ -17,7 +17,20 @@ import parcodb.gui.builders.Ui_widget_comune;
  */
 public class Macro_widget_comune extends Ui_widget_comune implements Insertor{
 
-    ArrayList<QLineEdit>[] listawidget;
+    public ArrayList<QLineEdit>[] listawidget;
+    private String[] listamesi = {
+        "Gennaio",
+        "Febbraio",
+        "Marzo",
+        "Aprile",
+        "Maggio",
+        "Giugno",
+        "Luglio",
+        "Agosto",
+        "Settembre",
+        "Ottobre",
+        "Novembre",
+        "Dicembre"};
     
     @Override
     public void setupUi(QWidget widget_comune){
@@ -60,6 +73,10 @@ public class Macro_widget_comune extends Ui_widget_comune implements Insertor{
         listawidget[11].add(lineEdit_tempDIC);
         listawidget[11].add(lineEdit_umiDIC);
         listawidget[11].add(lineEdit_pioDIC);
+        for(String mese:listamesi){
+            comboBox_mesi.addItem(mese);
+        }
+        comboBox_mesi.hide();
     }
     
     @Override
@@ -78,6 +95,76 @@ public class Macro_widget_comune extends Ui_widget_comune implements Insertor{
         return lista;
     }
     
+    public void collegaSegnali(boolean _bool)
+    {
+        if(_bool)
+        {
+            comboBox_mesi.currentIndexChanged.connect(this, "cambiaWidget()");
+        }
+        else
+        {
+            comboBox_mesi.currentIndexChanged.disconnect();
+        }
+    }
+    
+    private void cambiaWidget(){
+        
+        widget_special.hide();
+        switch(comboBox_mesi.currentIndex()){
+            case 0:
+                widget_special = widget_GEN;
+                layout_mesi.insertWidget(1, widget_special);
+                break;
+            case 1:
+                widget_special = widget_FEB;
+                layout_mesi.insertWidget(1, widget_special);
+                break;
+            case 2:
+                widget_special = widget_MAR;
+                layout_mesi.insertWidget(1, widget_special);
+                break;
+            case 3:
+                widget_special = widget_APR;
+                layout_mesi.insertWidget(1, widget_special);
+                break;
+            case 4:
+                widget_special = widget_MAG;
+                layout_mesi.insertWidget(1, widget_special);
+                break;
+            case 5:
+                widget_special = widget_GIU;
+                layout_mesi.insertWidget(1, widget_special);
+                break;
+            case 6:
+                widget_special = widget_LUG;
+                layout_mesi.insertWidget(1, widget_special);
+                break;
+            case 7:
+                widget_special = widget_AGO;
+                layout_mesi.insertWidget(1, widget_special);
+                break;
+            case 8:
+                widget_special = widget_SET;
+                layout_mesi.insertWidget(1, widget_special);
+                break;
+            case 9:
+                widget_special = widget_OTT;
+                layout_mesi.insertWidget(1, widget_special);
+                break;
+            case 10:
+                widget_special = widget_NOV;
+                layout_mesi.insertWidget(1, widget_special);
+                break;
+            case 11:
+                widget_special = widget_DIC;
+                layout_mesi.insertWidget(1, widget_special);
+                break;
+            default:
+                break;
+        }
+        widget_special.setEnabled(false);
+        widget_special.show();
+    }
     private Clima[] creaClimi() throws Exception {
         Clima[] climi = new Clima[12];
         for(int i = 0;i<12;i++){

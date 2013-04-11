@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import parcodb.database.objects.RemoteDBobject;
-import parcodb.database.objects.Zona;
 import parcodb.gui.builders.*;
 
 public class Widget_Inserimento extends Widget_Centrale
@@ -105,8 +104,10 @@ public class Widget_Inserimento extends Widget_Centrale
     protected void set_sentiero(){
         toggle_button(bottone_sentiero);
         set_central_widget(sentiero_com);
+        sentiero_com.setDatabaseConnection(maiunui.conn);
+        sentiero_com.setConnectors();
         try {
-            maiunui.popolaListaTappe(sentiero_com.listWidget);
+            maiunui.popolaListaTappe(sentiero_com.listWidget_tappa);
         } catch (SQLException ex) {
             Logger.getLogger(Widget_Inserimento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -136,6 +137,8 @@ public class Widget_Inserimento extends Widget_Centrale
         }
         
     }
+    
+    
     
 }
 
