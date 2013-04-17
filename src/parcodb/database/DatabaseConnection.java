@@ -5,7 +5,6 @@
 package parcodb.database;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,17 +17,10 @@ public class DatabaseConnection {
     
     protected Connection conn;
     
-    private final PreparedStatement getCaratteristicheStatement;
-    
 
     DatabaseConnection(Connection conn) throws SQLException {
         this.conn = conn;
-        this.getCaratteristicheStatement = this.conn.prepareStatement("SELECT `nome` FROM `Caratteristica` ");
         
-    }
-
-    private Connection getConn() {
-        return conn;
     }
     
     public void close() throws SQLException {
