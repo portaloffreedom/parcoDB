@@ -57,6 +57,14 @@ public class Sentiero implements RemoteDBobject {
         return lunghezza;
     }
 
+    public float getTempo() {
+        return tempo;
+    }
+
+    public int getDifficolta() {
+        return difficolta;
+    }
+
     public Tappa[] getTappe() throws Exception {
         if (tappe == null)
             throw new Exception("connessione al database richiesta");

@@ -49,6 +49,14 @@ public class Tappa implements RemoteDBobject {
     public float getLunghezza() {
         return lunghezza;
     }
+
+    public float getTempo() {
+        return tempo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
     
     public Caratteristica[] getInteressati(DatabaseConnection conn) throws SQLException {
         return Caratteristica.getInteressati(conn, this);
