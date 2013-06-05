@@ -51,17 +51,6 @@ CREATE OR REPLACE FUNCTION seq_sent_proc_trig() RETURNS trigger AS $seq_sent_pro
             END IF;
             END;
         END IF;
-        SELECT INTO test_ripetizione COUNT(*)
-            FROM Composto as C
-            WHERE C.sentiero = NEW.sentiero
-            AND C.inizio= NEW.inzio
-            AND C.fine = NEW.fine;
-        IF(test_ripetizione > 0) THEN
-            BEGIN
-            raise exception 'Sentiero non inseribile: tappa (% - %) ripetuta',NEW.inzio,NEW.fine;
-            return null;
-            END;
-        END IF;
         END;
     ELSEIF (TG_OP = 'UPDATE') THEN
         raise exception 'sostituzione impossibile';
@@ -93,6 +82,7 @@ CREATE OR REPLACE FUNCTION lunghezza_sentiero_ins_upd() RETURNS trigger AS $lung
     value boolean;
   BEGIN
     value = update_sentiero(NEW.sentiero);
+    RETURN NEW;
   END;
 $lunghezza_sentiero_ins_upd$ LANGUAGE plpgsql;
 
@@ -106,6 +96,7 @@ CREATE OR REPLACE FUNCTION lunghezza_sentiero_del() RETURNS trigger AS $lunghezz
     value boolean;
   BEGIN
     value = update_sentiero(OLD.sentiero);
+    RETURN NEW;
   END;
 $lunghezza_sentiero_del$ LANGUAGE plpgsql;
 
