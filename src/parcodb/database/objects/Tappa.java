@@ -12,14 +12,30 @@ import parcodb.database.DatabaseConnection;
 
 public class Tappa implements RemoteDBobject {
     
+    /* CREATE TABLE Tappa (
+     *   inizio char(64),
+     *   fine   char(64),
+     *   lunghezza float,
+     *   tempo float,
+     *   tipo char(64),
+     * 
+     *   PRIMARY KEY(inizio,fine),
+     *   FOREIGN KEY(inizio) REFERENCES Zona(nome),
+     *   FOREIGN KEY(fine) REFERENCES Zona(nome)
+     * );
+     */
     protected Zona inizio;
     protected Zona fine;
     protected float lunghezza;
+    protected float tempo;
+    protected String tipo;
 
-    public Tappa(Zona inizio, Zona fine, float lunghezza) {
+    public Tappa(Zona inizio, Zona fine, float lunghezza, float tempo, String tipo) {
         this.inizio = inizio;
         this.fine = fine;
         this.lunghezza = lunghezza;
+        this.tempo = tempo;
+        this.tipo = tipo;
     }
 
     public Zona getInizio() {
@@ -40,16 +56,21 @@ public class Tappa implements RemoteDBobject {
 
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Tappa (inizio, fine, lunghezza) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement(
+                "INSERT INTO Tappa (inizio, fine, lunghezza, tempo, tipo) "
+                + "VALUES ( ? , ? , ? , ? , ? );"
+                );
         
         insertStatement.setString(1, inizio.getNome());
         insertStatement.setString(2, fine.getNome());
         insertStatement.setFloat(3, lunghezza);
+        insertStatement.setFloat(4, tempo);
+        insertStatement.setString(5, tipo);
         
         insertStatement.execute();
     }
     
-    static private Tappa[] populateTappe(PreparedStatement statement,String nomeFunzione,int posInizio, int posFine, int posLunghezza) throws SQLException {
+    static private Tappa[] populateTappe(PreparedStatement statement,String nomeFunzione,int posInizio, int posFine, int posLunghezza, int posTempo, int posTipo) throws SQLException {
         ResultSet result = statement.executeQuery();
         
         int DIM = DatabaseConnection.getResultDim(result);
@@ -59,7 +80,9 @@ public class Tappa implements RemoteDBobject {
             tappe[i] = new Tappa(
                     new Zona(result.getString(posInizio)),
                     new Zona(result.getString(posFine)),
-                    result.getFloat(posLunghezza)
+                    result.getFloat(posLunghezza),
+                    result.getFloat(posTempo),
+                    result.getString(posTipo).trim()
                 );
         }
         
@@ -72,8 +95,8 @@ public class Tappa implements RemoteDBobject {
     static public Tappa[] getTappe(DatabaseConnection conn) throws SQLException {
         String nomeFunzione = "getTappeInteresseCaratteristica(caratteristica)";
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
-                "SELECT inizio,fine,lunghezza FROM Tappa ");
-        return populateTappe(preparedStatement, nomeFunzione,1,2,3);
+                "SELECT inizio,fine,lunghezza,tempo,tipo FROM Tappa ");
+        return populateTappe(preparedStatement, nomeFunzione, 1, 2, 3, 4, 5);
 
     }
     
@@ -84,7 +107,7 @@ public class Tappa implements RemoteDBobject {
     static public Tappa[] getTappeInteresseCaratteristica(DatabaseConnection conn, String caratteristica) throws SQLException {
         String nomeFunzione = "getTappeInteresseCaratteristica(caratteristica)";
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
-                "SELECT T.inizio,T.fine,T.lunghezza "
+                "SELECT T.inizio,T.fine,T.lunghezza,T.tempo,T.tipo "
                 + "FROM Interesse AS I,Tappa AS T "
                 + "WHERE I.caratteristica = ? "
                 + "AND I.tappa_inizio = T.inizio "
@@ -92,7 +115,7 @@ public class Tappa implements RemoteDBobject {
         
         preparedStatement.setString(1, caratteristica);
         
-        return populateTappe(preparedStatement, nomeFunzione, 1, 2, 3);
+        return populateTappe(preparedStatement, nomeFunzione, 1, 2, 3, 4, 5);
     }
     
     static public Tappa[] getTappeDiSentiero(DatabaseConnection conn, Sentiero sentiero) throws SQLException {
@@ -102,18 +125,18 @@ public class Tappa implements RemoteDBobject {
     public Tappa[] getTappeSequenzialiPlausibili(DatabaseConnection conn) throws SQLException {
         String nomeFunzione = "getTappeSequenzialiPlausibili(tappa)";
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
-                "SELECT inizio,fine,lunghezza "
+                "SELECT inizio,fine,lunghezza,tempo,tipo "
                 + "FROM Tappa "
                 + "WHERE inizio = ? ");
         preparedStatement.setString(1, this.getFine().getNome());
         
-        return populateTappe(preparedStatement, nomeFunzione, 1, 2, 3);
+        return populateTappe(preparedStatement, nomeFunzione, 1, 2, 3, 4, 5);
     }
         
     static public Tappa[] getTappeDiSentiero(DatabaseConnection conn, int sentiero) throws SQLException {
         String nomeFunzione = "getTappeDiSentiero(sentiero)";
         PreparedStatement preparedStatement = conn.prepareQueryStatement(
-                "SELECT T.inizio,T.fine,T.lunghezza "
+                "SELECT T.inizio,T.fine,T.lunghezza,T.tempo,T.tipo "
                 + "FROM Composto AS C, Tappa as T "
                 + "WHERE C.sentiero = ? "
                 + "AND C.inizio = T.inizio "
@@ -122,7 +145,7 @@ public class Tappa implements RemoteDBobject {
         
         preparedStatement.setInt(1, sentiero);
         
-        return populateTappe(preparedStatement, nomeFunzione, 1, 2, 3);
+        return populateTappe(preparedStatement, nomeFunzione, 1, 2, 3, 4, 5);
     }
 
     @Override
