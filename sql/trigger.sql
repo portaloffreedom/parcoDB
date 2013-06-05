@@ -26,6 +26,7 @@ CREATE OR REPLACE FUNCTION seq_sent_proc_trig() RETURNS trigger AS $seq_sent_pro
   DECLARE
     _fine CHARACTER(64) := 0;
     contatoreTappe INTEGER :=0;
+    test_ripetizione INTEGER :=0;
   BEGIN
     IF (TG_OP = 'INSERT') THEN
         BEGIN
@@ -44,10 +45,21 @@ CREATE OR REPLACE FUNCTION seq_sent_proc_trig() RETURNS trigger AS $seq_sent_pro
                 BEGIN
                 raise exception 'Sentiero non inseribile: fine (%) e inizio (%) non coincidono',_fine,New.inizio;
                 return null;
-                end;
+                END;
             ELSE
                 return NEW;
             END IF;
+            END;
+        END IF;
+        SELECT INTO test_ripetizione COUNT(*)
+            FROM Composto as C
+            WHERE C.sentiero = NEW.sentiero
+            AND C.inizio= NEW.inzio
+            AND C.fine = NEW.fine;
+        IF(test_ripetizione > 0) THEN
+            BEGIN
+            raise exception 'Sentiero non inseribile: tappa (% - %) ripetuta',NEW.inzio,NEW.fine;
+            return null;
             END;
         END IF;
         END;
@@ -79,10 +91,14 @@ CREATE TRIGGER sequenza_sentiero after INSERT OR DELETE OR UPDATE ON Composto
 CREATE OR REPLACE FUNCTION lunghezza_sentiero_ins_upd() RETURNS trigger AS $lun_sent_proc_trig$
   BEGIN
     UPDATE Sentiero
-    SET lunghezza= (SELECT SUM(Tappa.lunghezza) FROM Tappa,Composto,Sentiero
+    SET (lunghezza,tempo) = ((SELECT SUM(Tappa.lunghezza) FROM Tappa,Composto,Sentiero
                     WHERE Composto.sentiero = Sentiero.numero_sentiero AND
                           Composto.inizio = Tappa.inizio AND
-                          Composto.fine = Tappa.fine)
+                          Composto.fine = Tappa.fine),
+                             (SELECT SUM(Tappa.tempo) FROM Tappa,Composto,Sentiero
+                    WHERE Composto.sentiero = Sentiero.numero_sentiero AND
+                          Composto.inizio = Tappa.inizio AND
+                          Composto.fine = Tappa.fine))
     WHERE NEW.sentiero=numero_sentiero;
     RETURN NEW;
   END;
@@ -96,10 +112,14 @@ CREATE TRIGGER lunghezza_sentiero after INSERT OR UPDATE ON Composto
 CREATE OR REPLACE FUNCTION lunghezza_sentiero_del() RETURNS trigger AS $lun_sent_proc_trig$
   BEGIN
     UPDATE Sentiero
-    SET lunghezza= (SELECT SUM(Tappa.lunghezza) FROM Tappa,Composto,Sentiero
+    SET (lunghezza,tempo) = ((SELECT SUM(Tappa.lunghezza) FROM Tappa,Composto,Sentiero
                     WHERE Composto.sentiero = Sentiero.numero_sentiero AND
                           Composto.inizio = Tappa.inizio AND
-                          Composto.fine = Tappa.fine)
+                          Composto.fine = Tappa.fine),
+                             (SELECT SUM(Tappa.tempo) FROM Tappa,Composto,Sentiero
+                    WHERE Composto.sentiero = Sentiero.numero_sentiero AND
+                          Composto.inizio = Tappa.inizio AND
+                          Composto.fine = Tappa.fine))
     WHERE OLD.sentiero=numero_sentiero;
     RETURN OLD;
   END;
