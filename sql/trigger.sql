@@ -88,7 +88,7 @@ CREATE TRIGGER sequenza_sentiero after INSERT OR DELETE OR UPDATE ON Composto
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 -- Trigger che aggiorna la lunghezza del sentiero ogni aggiornamento sulla
 --  tabella `Composto` 
-CREATE OR REPLACE FUNCTION lunghezza_sentiero_ins_upd() RETURNS trigger AS $lun_sent_proc_trig$
+CREATE OR REPLACE FUNCTION lunghezza_sentiero_ins_upd() RETURNS trigger AS $lunghezza_sentiero_ins_upd$
   BEGIN
     UPDATE Sentiero
     SET (lunghezza,tempo) = ((SELECT SUM(Tappa.lunghezza) FROM Tappa,Composto,Sentiero
@@ -102,14 +102,14 @@ CREATE OR REPLACE FUNCTION lunghezza_sentiero_ins_upd() RETURNS trigger AS $lun_
     WHERE NEW.sentiero=numero_sentiero;
     RETURN NEW;
   END;
-$lun_sent_proc_trig$ LANGUAGE plpgsql;
+$lunghezza_sentiero_ins_upd$ LANGUAGE plpgsql;
 
 CREATE TRIGGER lunghezza_sentiero after INSERT OR UPDATE ON Composto
   FOR each ROW EXECUTE PROCEDURE lunghezza_sentiero_ins_upd();
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-CREATE OR REPLACE FUNCTION lunghezza_sentiero_del() RETURNS trigger AS $lun_sent_proc_trig$
+CREATE OR REPLACE FUNCTION lunghezza_sentiero_del() RETURNS trigger AS $lunghezza_sentiero_del$
   BEGIN
     UPDATE Sentiero
     SET (lunghezza,tempo) = ((SELECT SUM(Tappa.lunghezza) FROM Tappa,Composto,Sentiero
@@ -123,9 +123,27 @@ CREATE OR REPLACE FUNCTION lunghezza_sentiero_del() RETURNS trigger AS $lun_sent
     WHERE OLD.sentiero=numero_sentiero;
     RETURN OLD;
   END;
-$lun_sent_proc_trig$ LANGUAGE plpgsql;
+$lunghezza_sentiero_del$ LANGUAGE plpgsql;
 
 CREATE TRIGGER lunghezza_sentiero_del after DELETE ON Composto
   FOR each ROW EXECUTE PROCEDURE lunghezza_sentiero_del();
--- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+-- Trigger che controlla che il valore di difficoltà del sentiero sia compreso
+-- tra 1 e 5
+CREATE OR REPLACE FUNCTION difficolta_sentiero_ins_upd() RETURNS trigger AS $difficolta_sentiero_ins_upd$
+  BEGIN
+    IF ( NEW.difficolta < 1 OR NEW.difficolta >5 ) THEN
+      BEGIN
+      raise exception 'Sentiero non inseribile: valore di difficolta (%) non valido',NEW.difficolta;
+      return null;
+      END;
+    END IF;
+    RETURN NEW;
+  END;
+$difficolta_sentiero_ins_upd$ LANGUAGE plpgsql;
+
+CREATE TRIGGER difficolta_sentiero AFTER INSERT OR UPDATE ON sentiero 
+  FOR EACH ROW EXECUTE PROCEDURE difficolta_sentiero_ins_upd()
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
