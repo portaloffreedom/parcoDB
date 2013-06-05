@@ -89,18 +89,10 @@ CREATE TRIGGER sequenza_sentiero after INSERT OR DELETE OR UPDATE ON Composto
 -- Trigger che aggiorna la lunghezza del sentiero ogni aggiornamento sulla
 --  tabella `Composto` 
 CREATE OR REPLACE FUNCTION lunghezza_sentiero_ins_upd() RETURNS trigger AS $lunghezza_sentiero_ins_upd$
+  DECLARE
+    value boolean;
   BEGIN
-    UPDATE Sentiero
-    SET (lunghezza,tempo) = ((SELECT SUM(Tappa.lunghezza) FROM Tappa,Composto,Sentiero
-                    WHERE Composto.sentiero = Sentiero.numero_sentiero AND
-                          Composto.inizio = Tappa.inizio AND
-                          Composto.fine = Tappa.fine),
-                             (SELECT SUM(Tappa.tempo) FROM Tappa,Composto,Sentiero
-                    WHERE Composto.sentiero = Sentiero.numero_sentiero AND
-                          Composto.inizio = Tappa.inizio AND
-                          Composto.fine = Tappa.fine))
-    WHERE NEW.sentiero=numero_sentiero;
-    RETURN NEW;
+    value = update_sentiero(NEW.sentiero);
   END;
 $lunghezza_sentiero_ins_upd$ LANGUAGE plpgsql;
 
@@ -110,23 +102,63 @@ CREATE TRIGGER lunghezza_sentiero after INSERT OR UPDATE ON Composto
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 CREATE OR REPLACE FUNCTION lunghezza_sentiero_del() RETURNS trigger AS $lunghezza_sentiero_del$
+  DECLARE
+    value boolean;
   BEGIN
-    UPDATE Sentiero
-    SET (lunghezza,tempo) = ((SELECT SUM(Tappa.lunghezza) FROM Tappa,Composto,Sentiero
-                    WHERE Composto.sentiero = Sentiero.numero_sentiero AND
-                          Composto.inizio = Tappa.inizio AND
-                          Composto.fine = Tappa.fine),
-                             (SELECT SUM(Tappa.tempo) FROM Tappa,Composto,Sentiero
-                    WHERE Composto.sentiero = Sentiero.numero_sentiero AND
-                          Composto.inizio = Tappa.inizio AND
-                          Composto.fine = Tappa.fine))
-    WHERE OLD.sentiero=numero_sentiero;
-    RETURN OLD;
+    value = update_sentiero(OLD.sentiero);
   END;
 $lunghezza_sentiero_del$ LANGUAGE plpgsql;
 
 CREATE TRIGGER lunghezza_sentiero_del after DELETE ON Composto
   FOR each ROW EXECUTE PROCEDURE lunghezza_sentiero_del();
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+-- Trigger che aggiorna la lunghezza del sentiero ogni aggiornamento sulla
+--  tabella `Tappa` 
+CREATE OR REPLACE FUNCTION lunghezza_sentiero_ins_upd_tappa() RETURNS trigger 
+AS $lunghezza_sentiero_ins_upd_tappa$
+  DECLARE
+    value boolean;
+    sentiero_mod RECORD;
+  BEGIN
+
+    FOR sentiero_mod in 
+        SELECT * FROM Composto
+        WHERE inizio = NEW.inizio 
+        AND fine = NEW.fine
+    LOOP 
+        BEGIN
+        value = update_sentiero(sentiero_mod.sentiero);
+        END;
+    END LOOP;
+
+    RETURN NEW;
+  END;
+$lunghezza_sentiero_ins_upd_tappa$ LANGUAGE plpgsql;
+
+CREATE TRIGGER lunghezza_sentiero_tappa after INSERT OR UPDATE ON Tappa
+  FOR each ROW EXECUTE PROCEDURE lunghezza_sentiero_ins_upd_tappa();
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+CREATE OR REPLACE FUNCTION update_sentiero(_sentiero int) RETURNS boolean
+AS $update_sentiero$
+  BEGIN
+    UPDATE Sentiero
+    SET (lunghezza,tempo) = (
+        (SELECT SUM(Tappa.lunghezza) FROM Tappa,Composto
+            WHERE Composto.sentiero = _sentiero 
+            AND Composto.inizio = Tappa.inizio
+            AND Composto.fine = Tappa.fine),
+        (SELECT SUM(Tappa.tempo) FROM Tappa,Composto
+            WHERE Composto.sentiero = _sentiero
+            AND Composto.inizio = Tappa.inizio
+            AND Composto.fine = Tappa.fine)
+        )
+    WHERE Sentiero.numero_sentiero=_sentiero;
+    RETURN TRUE;
+  END;
+$update_sentiero$ LANGUAGE plpgsql
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 -- Trigger che controlla che il valore di difficoltà del sentiero sia compreso

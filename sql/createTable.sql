@@ -7,6 +7,8 @@ CREATE TABLE Tappa (
  	inizio char(64),
  	fine   char(64),
  	lunghezza float,
+    	tempo float,
+	tipo char(64),
 PRIMARY KEY(inizio,fine),
 FOREIGN KEY(inizio) REFERENCES Zona(nome),
 FOREIGN KEY(fine) REFERENCES Zona(nome)
@@ -15,6 +17,8 @@ FOREIGN KEY(fine) REFERENCES Zona(nome)
 CREATE TABLE Sentiero (
 	numero_sentiero int,
 	lunghezza float,
+	tempo float,
+	difficolta int,
 PRIMARY KEY (numero_sentiero)
 );
 
@@ -112,7 +116,7 @@ FOREIGN KEY (nome) REFERENCES Struttura(nome)
 
 CREATE TABLE Albergo (
 	nome char(64),
-	categoria int,
+	categoria char(64),
 	numero_posti int,
 	telefono char(16),
 PRIMARY KEY (nome),
@@ -176,5 +180,4 @@ CREATE TABLE Clima (
 	FOREIGN KEY (comune,provincia) REFERENCES Comune(nome,provincia),
 	PRIMARY KEY (comune,provincia,mese)
 );
-
 
