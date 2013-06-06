@@ -27,7 +27,9 @@ public class Macro_widget_sentieri extends Ui_widget_sentieri implements Inserto
     public void setupUi(QWidget widget){
         super.setupUi(widget);
         listewidget = new ArrayList<>();
-        hideWidgets(0);
+        hideLists(0);
+        widget_tempo.hide();
+        widget_lunghezza.hide();
     }
     public void setDatabaseConnection(DatabaseConnection conn){
         this.conn = conn;
@@ -52,7 +54,7 @@ public class Macro_widget_sentieri extends Ui_widget_sentieri implements Inserto
         }
     }
     
-    private void hideWidgets(int from){
+    private void hideLists(int from){
         switch(from){
             default:
             case 2:
@@ -80,7 +82,7 @@ public class Macro_widget_sentieri extends Ui_widget_sentieri implements Inserto
         int posizione = 0;
         disconnettiRimuovi(posizione);
         listWidget_tappa.itemSelectionChanged.connect(this, "selezionaTappa2()");
-        hideWidgets(2);
+        hideLists(2);
         try {
             Tappa[] prossime = ((Tappa)listWidget_tappa.currentItem().data(0)).getTappeSequenzialiPlausibili(conn);
             listWidget_tappa2.clear();
@@ -101,7 +103,7 @@ public class Macro_widget_sentieri extends Ui_widget_sentieri implements Inserto
         int posizione = 1;
         disconnettiRimuovi(posizione);
         listWidget_tappa2.itemSelectionChanged.connect(this, "selezionaTappa3()");
-        hideWidgets(3);
+        hideLists(3);
         try {
             Tappa[] prossime = ((Tappa)listWidget_tappa2.currentItem().data(0)).getTappeSequenzialiPlausibili(conn);
             listWidget_tappa3.clear();
@@ -122,7 +124,7 @@ public class Macro_widget_sentieri extends Ui_widget_sentieri implements Inserto
         int posizione = 2;
         disconnettiRimuovi(posizione);
         listWidget_tappa3.itemSelectionChanged.connect(this, "selezionaTappa4()");
-        hideWidgets(4);
+        hideLists(4);
         try {
             Tappa[] prossime = ((Tappa)listWidget_tappa3.currentItem().data(0)).getTappeSequenzialiPlausibili(conn);
             listWidget_tappa4.clear();
@@ -143,7 +145,7 @@ public class Macro_widget_sentieri extends Ui_widget_sentieri implements Inserto
         int posizione = 3;
         disconnettiRimuovi(posizione);
         listWidget_tappa4.itemSelectionChanged.connect(this, "selezionaTappa5()");
-        hideWidgets(5);
+        hideLists(5);
         try {
             Tappa[] prossime = ((Tappa)listWidget_tappa4.currentItem().data(0)).getTappeSequenzialiPlausibili(conn);
             listWidget_tappa5.clear();
@@ -165,7 +167,7 @@ public class Macro_widget_sentieri extends Ui_widget_sentieri implements Inserto
         int posizione = 4;
         disconnettiRimuovi(posizione);
         listWidget_tappa5.itemSelectionChanged.connect(this, "selezionaTappa6()");
-        hideWidgets(6);
+        hideLists(6);
         try {
             Tappa[] prossime = ((Tappa)listWidget_tappa5.currentItem().data(0)).getTappeSequenzialiPlausibili(conn);
             listWidget_tappa6.clear();
@@ -186,7 +188,7 @@ public class Macro_widget_sentieri extends Ui_widget_sentieri implements Inserto
         int posizione = 5;
         disconnettiRimuovi(posizione);
         listWidget_tappa6.itemSelectionChanged.connect(this, "selezionaTappa7()");
-        hideWidgets(7);
+        hideLists(7);
         try {
             Tappa[] prossime = ((Tappa)listWidget_tappa6.currentItem().data(0)).getTappeSequenzialiPlausibili(conn);
             listWidget_tappa7.clear();
@@ -207,7 +209,7 @@ public class Macro_widget_sentieri extends Ui_widget_sentieri implements Inserto
         int posizione = 6;
         disconnettiRimuovi(posizione);
         listWidget_tappa7.itemSelectionChanged.connect(this, "selezionaTappa8()");
-        hideWidgets(8);
+        hideLists(8);
         try {
             Tappa[] prossime = ((Tappa)listWidget_tappa7.currentItem().data(0)).getTappeSequenzialiPlausibili(conn);
             listWidget_tappa8.clear();
@@ -228,7 +230,7 @@ public class Macro_widget_sentieri extends Ui_widget_sentieri implements Inserto
         int posizione = 7;
         disconnettiRimuovi(posizione);
         listWidget_tappa8.itemSelectionChanged.connect(this, "selezionaTappa9()");
-        hideWidgets(9);
+        hideLists(9);
         try {
             Tappa[] prossime = ((Tappa)listWidget_tappa8.currentItem().data(0)).getTappeSequenzialiPlausibili(conn);
             listWidget_tappa9.clear();
@@ -249,7 +251,7 @@ public class Macro_widget_sentieri extends Ui_widget_sentieri implements Inserto
         int posizione = 8;
         disconnettiRimuovi(posizione);
         listWidget_tappa9.itemSelectionChanged.connect(this, "selezionaTappa10()");
-        hideWidgets(10);
+        hideLists(10);
         try {
             Tappa[] prossime = ((Tappa)listWidget_tappa9.currentItem().data(0)).getTappeSequenzialiPlausibili(conn);
             listWidget_tappa10.clear();
@@ -277,7 +279,8 @@ public class Macro_widget_sentieri extends Ui_widget_sentieri implements Inserto
     public List<RemoteDBobject> getInsertor() {
         Sentiero sentiero = null;
         try {
-            sentiero = new Sentiero(spinBox.value(),
+            sentiero = new Sentiero(spinbox_numero.value(),
+                    spindbox_difficolta.value(),
                     getTappe());
         } catch (Exception ex) {
             Logger.getLogger(Macro_widget_sentieri.class.getName()).log(Level.SEVERE, null, ex);

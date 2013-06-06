@@ -19,6 +19,14 @@ public class Ui_widget_tappa implements com.trolltech.qt.QUiForm<QWidget>
     public QHBoxLayout horizontalLayout;
     public QLabel label_lunghezza;
     public QLineEdit lineEdit_lunghezza;
+    public QWidget widget_7;
+    public QHBoxLayout horizontalLayout_5;
+    public QLabel label_tempo;
+    public QDoubleSpinBox spinBox_tempo;
+    public QWidget widget_8;
+    public QHBoxLayout horizontalLayout_6;
+    public QLabel label;
+    public QLineEdit lineEdit_tipologia;
     public QWidget widget_4;
     public QVBoxLayout verticalLayout;
     public QWidget widget_2;
@@ -40,7 +48,7 @@ public class Ui_widget_tappa implements com.trolltech.qt.QUiForm<QWidget>
     public void setupUi(QWidget widget_tappa)
     {
         widget_tappa.setObjectName("widget_tappa");
-        widget_tappa.resize(new QSize(935, 461).expandedTo(widget_tappa.minimumSizeHint()));
+        widget_tappa.resize(new QSize(846, 665).expandedTo(widget_tappa.minimumSizeHint()));
         horizontalLayout_4 = new QHBoxLayout(widget_tappa);
         horizontalLayout_4.setObjectName("horizontalLayout_4");
         widget_5 = new QWidget(widget_tappa);
@@ -55,6 +63,11 @@ public class Ui_widget_tappa implements com.trolltech.qt.QUiForm<QWidget>
         horizontalLayout.setObjectName("horizontalLayout");
         label_lunghezza = new QLabel(widget);
         label_lunghezza.setObjectName("label_lunghezza");
+        QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy.setHorizontalStretch((byte)0);
+        sizePolicy.setVerticalStretch((byte)0);
+        sizePolicy.setHeightForWidth(label_lunghezza.sizePolicy().hasHeightForWidth());
+        label_lunghezza.setSizePolicy(sizePolicy);
 
         horizontalLayout.addWidget(label_lunghezza);
 
@@ -65,6 +78,61 @@ public class Ui_widget_tappa implements com.trolltech.qt.QUiForm<QWidget>
 
 
         verticalLayout_2.addWidget(widget);
+
+        widget_7 = new QWidget(widget_5);
+        widget_7.setObjectName("widget_7");
+        horizontalLayout_5 = new QHBoxLayout(widget_7);
+        horizontalLayout_5.setSpacing(6);
+        horizontalLayout_5.setMargin(0);
+        horizontalLayout_5.setObjectName("horizontalLayout_5");
+        label_tempo = new QLabel(widget_7);
+        label_tempo.setObjectName("label_tempo");
+        QSizePolicy sizePolicy1 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy1.setHorizontalStretch((byte)0);
+        sizePolicy1.setVerticalStretch((byte)0);
+        sizePolicy1.setHeightForWidth(label_tempo.sizePolicy().hasHeightForWidth());
+        label_tempo.setSizePolicy(sizePolicy1);
+
+        horizontalLayout_5.addWidget(label_tempo);
+
+        spinBox_tempo = new QDoubleSpinBox(widget_7);
+        spinBox_tempo.setObjectName("spinBox_tempo");
+        QSizePolicy sizePolicy2 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy2.setHorizontalStretch((byte)0);
+        sizePolicy2.setVerticalStretch((byte)0);
+        sizePolicy2.setHeightForWidth(spinBox_tempo.sizePolicy().hasHeightForWidth());
+        spinBox_tempo.setSizePolicy(sizePolicy2);
+        spinBox_tempo.setMinimum(1);
+        spinBox_tempo.setMaximum(1000);
+        spinBox_tempo.setValue(1);
+
+        horizontalLayout_5.addWidget(spinBox_tempo);
+
+
+        verticalLayout_2.addWidget(widget_7);
+
+        widget_8 = new QWidget(widget_5);
+        widget_8.setObjectName("widget_8");
+        horizontalLayout_6 = new QHBoxLayout(widget_8);
+        horizontalLayout_6.setMargin(0);
+        horizontalLayout_6.setObjectName("horizontalLayout_6");
+        label = new QLabel(widget_8);
+        label.setObjectName("label");
+        QSizePolicy sizePolicy3 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy3.setHorizontalStretch((byte)0);
+        sizePolicy3.setVerticalStretch((byte)0);
+        sizePolicy3.setHeightForWidth(label.sizePolicy().hasHeightForWidth());
+        label.setSizePolicy(sizePolicy3);
+
+        horizontalLayout_6.addWidget(label);
+
+        lineEdit_tipologia = new QLineEdit(widget_8);
+        lineEdit_tipologia.setObjectName("lineEdit_tipologia");
+
+        horizontalLayout_6.addWidget(lineEdit_tipologia);
+
+
+        verticalLayout_2.addWidget(widget_8);
 
         widget_4 = new QWidget(widget_5);
         widget_4.setObjectName("widget_4");
@@ -145,6 +213,8 @@ public class Ui_widget_tappa implements com.trolltech.qt.QUiForm<QWidget>
     {
         widget_tappa.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Form", null));
         label_lunghezza.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Lunghezza tappa", null));
+        label_tempo.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Tempo di percorrenza", null));
+        label.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Tipologia", null));
         label_inizio.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Inizio", null));
         label_fine.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Fine", null));
         label_interesse.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Aree interessate", null));

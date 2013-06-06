@@ -260,7 +260,8 @@ public class Widget_Ricerca extends Widget_Centrale{
         index = tappa_com.comboBox_fine.findText(selezionato.getFine().getNome());
         tappa_com.comboBox_fine.setCurrentIndex(index);
         tappa_com.lineEdit_lunghezza.setText(Float.toString(selezionato.getLunghezza()));
-        
+        tappa_com.spinBox_tempo.setValue(selezionato.getTempo());
+        tappa_com.lineEdit_tipologia.setText(selezionato.getTipo());
         enable_common(false, 3);
     }
     
@@ -273,7 +274,12 @@ public class Widget_Ricerca extends Widget_Centrale{
             Logger.getLogger(Widget_Ricerca.class.getName()).log(Level.SEVERE, null, ex);
         }
         sent_com.label_2.setText("Tappe:");
-        sent_com.spinBox.setValue(selezionato.getNumero_sentiero());
+        sent_com.spinbox_numero.setValue(selezionato.getNumero_sentiero());
+        sent_com.spindbox_difficolta.setValue(selezionato.getDifficolta());
+        sent_com.doubleSpinBox.setValue(selezionato.getTempo());
+        sent_com.lineEdit.setText(Float.toString(selezionato.getLunghezza()));
+        sent_com.widget_tempo.show();
+        sent_com.widget_lunghezza.show();
         enable_common(false, 4);
     }
     
@@ -468,11 +474,16 @@ public class Widget_Ricerca extends Widget_Centrale{
                 tappa_com.comboBox_inizio.setEnabled(_bool);
                 tappa_com.lineEdit_lunghezza.setEnabled(_bool);
                 tappa_com.list_interesse.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection);
+                tappa_com.spinBox_tempo.setEnabled(_bool);
+                tappa_com.lineEdit_tipologia.setEnabled(_bool);
                 return;
             case 4:
                 //sent_com.listWidget.setEnabled(_bool);
                 sent_com.listWidget_tappa.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection);
-                sent_com.spinBox.setEnabled(_bool);
+                sent_com.spinbox_numero.setEnabled(_bool);
+                sent_com.spindbox_difficolta.setEnabled(_bool);
+                sent_com.doubleSpinBox.setEnabled(_bool);
+                sent_com.lineEdit.setEnabled(_bool);
                 return;
             case 5:
                 comune_com.scrollAreaWidgetContents.setEnabled(_bool);
