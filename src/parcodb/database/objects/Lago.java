@@ -31,7 +31,9 @@ public class Lago extends Caratteristica {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn); 
-        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Lago (nome, estensione) VALUES ( ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement(
+                "INSERT INTO Lago (nome, estensione) "
+                + "VALUES ( ? , ? );");
     
         insertStatement.setString(1, nome);
         insertStatement.setFloat(2, estensione);
@@ -40,7 +42,9 @@ public class Lago extends Caratteristica {
     }
     
     static public Lago[] getLaghi(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, estensione FROM Lago");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT nome, estensione "
+                + "FROM Lago");
         
         ResultSet result = preparedStatement.executeQuery();
         
@@ -52,7 +56,8 @@ public class Lago extends Caratteristica {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getLaghi() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getLaghi() "
+                    + "è incongruo ("+i+','+DIM+')');
         
         return laghi;
     }

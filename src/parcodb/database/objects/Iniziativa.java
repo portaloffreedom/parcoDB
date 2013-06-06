@@ -49,8 +49,8 @@ public class Iniziativa implements RemoteDBobject {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         PreparedStatement insertStatement = conn.prepareInsertStatement(
-                "INSERT INTO Iniziativa (paese, settimana, tipo, nome, dettagli)"
-                + " VALUES ( ? , ? , ? , ? , ? );");
+               "INSERT INTO Iniziativa (paese, settimana, tipo, nome, dettagli)"
+               + " VALUES ( ? , ? , ? , ? , ? );");
         
         insertStatement.setString(1, paese.getNome());
         insertStatement.setInt(2, settimana);
@@ -84,7 +84,8 @@ public class Iniziativa implements RemoteDBobject {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getMonumento() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getMonumento() "
+                    + "è incongruo ("+i+','+DIM+')');
         
         return iniziative;
     }
@@ -112,7 +113,8 @@ public class Iniziativa implements RemoteDBobject {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getMonumento() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getMonumento() "
+                    + "è incongruo ("+i+','+DIM+')');
         
         return iniziative;
     }

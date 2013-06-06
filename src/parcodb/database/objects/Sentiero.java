@@ -120,7 +120,8 @@ public class Sentiero implements RemoteDBobject {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getMonti() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getMonti() "
+                    + "è incongruo ("+i+','+DIM+')');
         
         return sentieri;
     }

@@ -67,7 +67,9 @@ public class Comune implements RemoteDBobject {
 
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Comune (nome, provincia, superficie) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement(
+                "INSERT INTO Comune (nome, provincia, superficie) "
+                + "VALUES ( ? , ? , ? );");
         
         insertStatement.setString(1, nome);
         insertStatement.setString(2, provincia);
@@ -98,7 +100,8 @@ public class Comune implements RemoteDBobject {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di " + nomeFunzione
+                    + " è incongruo ("+i+','+DIM+')');
         
         return comuni;
     }

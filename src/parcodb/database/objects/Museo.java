@@ -38,7 +38,9 @@ public class Museo extends Struttura {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Museo (nome, descrizione, telefono) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement(
+                "INSERT INTO Museo (nome, descrizione, telefono) "
+                + "VALUES ( ? , ? , ? );");
         
         insertStatement.setString(1, nome);
         insertStatement.setString(2, descrizione);
@@ -47,7 +49,9 @@ public class Museo extends Struttura {
     }
     
     static public Museo[] getMusei(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, descrizione, telefono FROM Museo");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT nome, descrizione, telefono "
+                + "FROM Museo");
         
         ResultSet result = preparedStatement.executeQuery();
         
@@ -70,7 +74,8 @@ public class Museo extends Struttura {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getMusei() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getMusei() "
+                    + "è incongruo ("+i+','+DIM+')');
         
         return musei;
     }

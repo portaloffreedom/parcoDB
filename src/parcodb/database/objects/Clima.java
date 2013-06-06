@@ -56,13 +56,16 @@ public class Clima implements RemoteDBobject {
 
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        throw new UnsupportedOperationException("Will never be supported. It is can be called only from inside the package");
+        throw new UnsupportedOperationException("Will never be supported. "
+                + "It is can be called only from inside the package");
     }
         
     void insertIntoDBpackage(DatabaseConnection conn) throws SQLException {
         if (comune == null)
             throw new SQLException("Comune non impostato nel clima");
-        PreparedStatement insertIntoZonaStatement = conn.prepareInsertStatement("INSERT INTO Clima (comune, provincia, mese, pioggia, temperatura, umidita) VALUES ( ? , ? , ? , ? , ? , ? );");
+        PreparedStatement insertIntoZonaStatement = conn.prepareInsertStatement(
+   "INSERT INTO Clima (comune, provincia, mese, pioggia, temperatura, umidita) "
+        + "VALUES ( ? , ? , ? , ? , ? , ? );");
         
         insertIntoZonaStatement.setString(1, comune.getNome());
         insertIntoZonaStatement.setString(2, comune.getProvincia());
@@ -99,7 +102,8 @@ public class Clima implements RemoteDBobject {
         for (i=0; result.next(); i++) {
             int mese =  result.getInt(3);
             if (i+1 != mese)
-                throw new SQLException("i mesi di "+comune+" nella funzione "+nomeFunzione+" sono incongrui ("+i+','+mese+')');
+                throw new SQLException("i mesi di "+comune+" nella funzione "
+                        + nomeFunzione + " sono incongrui ("+i+','+mese+')');
             try {
                 climi[i] = new Clima(
                         mese,
@@ -114,7 +118,8 @@ public class Clima implements RemoteDBobject {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di " + nomeFunzione
+                    + " è incongruo ("+i+','+DIM+')');
         
         return climi;
     }

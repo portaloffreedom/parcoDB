@@ -18,7 +18,8 @@ public class Caratteristica extends Zona {
         this(nome);
         this.comuni = comuni;
         if (this.comuni.length < 1)
-            throw new Exception("Almeno in un comune questa caratteristica si deve trovare");
+            throw new Exception("Almeno in un comune questa caratteristica "
+                    + "si deve trovare");
         
     }
     
@@ -75,7 +76,8 @@ public class Caratteristica extends Zona {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di " + nomeFunzione
+                    + " è incongruo ("+i+','+DIM+')');
         
         return caratteristiche;
     }
@@ -115,11 +117,13 @@ public class Caratteristica extends Zona {
             else if (nomeb.equals(nome))
                 caratteristiche[i] = new Caratteristica(nomea);
             else
-                throw new SQLException("Errore nella costruzione di array in "+nomeFunzione);
+                throw new SQLException("Errore nella costruzione di array in "
+                        + nomeFunzione);
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di " + nomeFunzione
+                    + " è incongruo ("+i+','+DIM+')');
         
         return caratteristiche;
     }
