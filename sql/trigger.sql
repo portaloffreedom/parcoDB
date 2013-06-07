@@ -33,23 +33,22 @@ CREATE OR REPLACE FUNCTION seq_sent_proc_trig() RETURNS trigger AS $seq_sent_pro
         SELECT INTO contatoreTappe COUNT(*)
             FROM Composto
             WHERE sentiero = NEW.sentiero;
+        contatoreTappe = contatoreTappe+1;
         IF(contatoreTappe != NEW.numero_tappa) THEN
-            raise exception 'nuova tappa non sequenziale alle precedenti ( % <> % )', contatoreTappe+1, New.numero_tappa;
-        ELSE
+            --raise exception 'nuova tappa non sequenziale alle precedenti ( % <> % )', contatoreTappe, New.numero_tappa;
+            NEW.numero_tappa = contatoreTappe;
+        END IF;
+        SELECT INTO _fine fine 
+            FROM Composto 
+            WHERE sentiero = NEW.sentiero 
+            AND numero_tappa+1 = NEW.numero_tappa;
+        IF (_fine = null OR NEW.inizio != _fine) THEN
             BEGIN
-            SELECT INTO _fine fine 
-                FROM Composto 
-                WHERE sentiero = NEW.sentiero 
-                AND numero_tappa+1 = NEW.numero_tappa;
-            IF (_fine = null OR NEW.inizio != _fine) THEN
-                BEGIN
-                raise exception 'Sentiero non inseribile: fine (%) e inizio (%) non coincidono',_fine,New.inizio;
-                return null;
-                END;
-            ELSE
-                return NEW;
-            END IF;
+            raise exception 'Sentiero non inseribile: fine (%) e inizio (%) non coincidono',_fine,New.inizio;
+            return null;
             END;
+        ELSE
+            return NEW;
         END IF;
         END;
     ELSEIF (TG_OP = 'UPDATE') THEN
@@ -71,7 +70,7 @@ CREATE OR REPLACE FUNCTION seq_sent_proc_trig() RETURNS trigger AS $seq_sent_pro
 $seq_sent_proc_trig$ LANGUAGE plpgsql;
 
 
-CREATE TRIGGER sequenza_sentiero after INSERT OR DELETE OR UPDATE ON Composto
+CREATE TRIGGER sequenza_sentiero before INSERT OR DELETE OR UPDATE ON Composto
   FOR each ROW EXECUTE PROCEDURE seq_sent_proc_trig();
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
