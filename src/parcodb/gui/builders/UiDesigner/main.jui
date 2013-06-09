@@ -37,7 +37,7 @@
      <x>0</x>
      <y>0</y>
      <width>951</width>
-     <height>20</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -47,12 +47,6 @@
     <addaction name="actionCollega_a_database"/>
     <addaction name="actionEsci"/>
    </widget>
-   <widget class="QMenu" name="menuHelp">
-    <property name="title">
-     <string>Aiuto</string>
-    </property>
-    <addaction name="actionInformazioni_su"/>
-   </widget>
    <widget class="QMenu" name="menuModalit">
     <property name="title">
      <string>Modalità</string>
@@ -61,7 +55,6 @@
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuModalit"/>
-   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionEsci">
@@ -69,7 +62,7 @@
     <string>Esci</string>
    </property>
   </action>
-  <action name="actionInformazioni_su">
+  <action name="action">
    <property name="text">
     <string>Informazioni su</string>
    </property>

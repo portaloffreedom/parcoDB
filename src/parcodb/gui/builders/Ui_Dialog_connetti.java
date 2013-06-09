@@ -25,6 +25,10 @@ public class Ui_Dialog_connetti implements com.trolltech.qt.QUiForm<QDialog>
     public QLineEdit lineEdit_username;
     public QLabel label_password;
     public QLineEdit lineEdit_password;
+    public QWidget widget_4;
+    public QHBoxLayout horizontalLayout_4;
+    public QLabel label_3;
+    public QLineEdit lineEdit_nomeDB;
     public QSpacerItem verticalSpacer;
     public QWidget widget_2;
     public QHBoxLayout horizontalLayout_2;
@@ -37,7 +41,7 @@ public class Ui_Dialog_connetti implements com.trolltech.qt.QUiForm<QDialog>
     public void setupUi(QDialog Dialog_connetti)
     {
         Dialog_connetti.setObjectName("Dialog_connetti");
-        Dialog_connetti.resize(new QSize(548, 167).expandedTo(Dialog_connetti.minimumSizeHint()));
+        Dialog_connetti.resize(new QSize(594, 244).expandedTo(Dialog_connetti.minimumSizeHint()));
         QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Maximum);
         sizePolicy.setHorizontalStretch((byte)0);
         sizePolicy.setVerticalStretch((byte)0);
@@ -135,13 +139,44 @@ public class Ui_Dialog_connetti implements com.trolltech.qt.QUiForm<QDialog>
         sizePolicy8.setVerticalStretch((byte)0);
         sizePolicy8.setHeightForWidth(lineEdit_password.sizePolicy().hasHeightForWidth());
         lineEdit_password.setSizePolicy(sizePolicy8);
-        lineEdit_password.setInputMethodHints(com.trolltech.qt.core.Qt.InputMethodHint.createQFlags(com.trolltech.qt.core.Qt.InputMethodHint.ImhNone));
+        lineEdit_password.setInputMethodHints(com.trolltech.qt.core.Qt.InputMethodHint.createQFlags(com.trolltech.qt.core.Qt.InputMethodHint.ImhHiddenText));
         lineEdit_password.setEchoMode(com.trolltech.qt.gui.QLineEdit.EchoMode.Password);
 
         horizontalLayout.addWidget(lineEdit_password);
 
 
         verticalLayout.addWidget(widget_3);
+
+        widget_4 = new QWidget(Dialog_connetti);
+        widget_4.setObjectName("widget_4");
+        widget_4.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.LeftToRight);
+        horizontalLayout_4 = new QHBoxLayout(widget_4);
+        horizontalLayout_4.setObjectName("horizontalLayout_4");
+        label_3 = new QLabel(widget_4);
+        label_3.setObjectName("label_3");
+        QSizePolicy sizePolicy9 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Expanding, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
+        sizePolicy9.setHorizontalStretch((byte)0);
+        sizePolicy9.setVerticalStretch((byte)0);
+        sizePolicy9.setHeightForWidth(label_3.sizePolicy().hasHeightForWidth());
+        label_3.setSizePolicy(sizePolicy9);
+        label_3.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.RightToLeft);
+
+        horizontalLayout_4.addWidget(label_3);
+
+        lineEdit_nomeDB = new QLineEdit(widget_4);
+        lineEdit_nomeDB.setObjectName("lineEdit_nomeDB");
+        QSizePolicy sizePolicy10 = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Fixed);
+        sizePolicy10.setHorizontalStretch((byte)0);
+        sizePolicy10.setVerticalStretch((byte)0);
+        sizePolicy10.setHeightForWidth(lineEdit_nomeDB.sizePolicy().hasHeightForWidth());
+        lineEdit_nomeDB.setSizePolicy(sizePolicy10);
+        lineEdit_nomeDB.setInputMethodHints(com.trolltech.qt.core.Qt.InputMethodHint.createQFlags(com.trolltech.qt.core.Qt.InputMethodHint.ImhNone));
+        lineEdit_nomeDB.setEchoMode(com.trolltech.qt.gui.QLineEdit.EchoMode.Normal);
+
+        horizontalLayout_4.addWidget(lineEdit_nomeDB);
+
+
+        verticalLayout.addWidget(widget_4);
 
         verticalSpacer = new QSpacerItem(20, 40, com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Expanding);
 
@@ -180,6 +215,9 @@ public class Ui_Dialog_connetti implements com.trolltech.qt.QUiForm<QDialog>
         label_2.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog_connetti", "Porta", null));
         label_username.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog_connetti", "Username", null));
         label_password.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog_connetti", "Password", null));
+        label_3.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog_connetti", "Nome Database", null));
+        lineEdit_nomeDB.setToolTip("");
+        lineEdit_nomeDB.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog_connetti", "bdati", null));
         bottone_connetti.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog_connetti", "Connetti", null));
         bottone_annulla.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog_connetti", "Annulla", null));
     } // retranslateUi

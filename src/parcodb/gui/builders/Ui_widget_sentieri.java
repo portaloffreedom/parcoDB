@@ -151,7 +151,7 @@ public class Ui_widget_sentieri implements com.trolltech.qt.QUiForm<QWidget>
 
         doubleSpinBox = new QDoubleSpinBox(widget_tempo);
         doubleSpinBox.setObjectName("doubleSpinBox");
-        doubleSpinBox.setMaximum(1000);
+        doubleSpinBox.setMaximum(99999);
 
         horizontalLayout_4.addWidget(doubleSpinBox);
 
@@ -417,8 +417,8 @@ public class Ui_widget_sentieri implements com.trolltech.qt.QUiForm<QWidget>
         widget_sentieri.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("widget_sentieri", "Form", null));
         label.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_sentieri", "Numero Sentiero", null));
         label_12.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_sentieri", "Difficolt\u00e0", null));
-        label_13.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_sentieri", "Tempo", null));
-        label_14.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_sentieri", "Lunghezza", null));
+        label_13.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_sentieri", "Tempo (minuti)", null));
+        label_14.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_sentieri", "Lunghezza (m)", null));
         label_2.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_sentieri", "Seleziona tappe (almeno 4)", null));
         label_3.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_sentieri", "Tappa 2", null));
         label_4.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_sentieri", "Tappa 3", null));

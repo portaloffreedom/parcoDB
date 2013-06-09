@@ -103,7 +103,7 @@ public class Ui_widget_tappa implements com.trolltech.qt.QUiForm<QWidget>
         sizePolicy2.setHeightForWidth(spinBox_tempo.sizePolicy().hasHeightForWidth());
         spinBox_tempo.setSizePolicy(sizePolicy2);
         spinBox_tempo.setMinimum(1);
-        spinBox_tempo.setMaximum(1000);
+        spinBox_tempo.setMaximum(9999);
         spinBox_tempo.setValue(1);
 
         horizontalLayout_5.addWidget(spinBox_tempo);
@@ -212,8 +212,8 @@ public class Ui_widget_tappa implements com.trolltech.qt.QUiForm<QWidget>
     void retranslateUi(QWidget widget_tappa)
     {
         widget_tappa.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Form", null));
-        label_lunghezza.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Lunghezza tappa", null));
-        label_tempo.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Tempo di percorrenza", null));
+        label_lunghezza.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Lunghezza tappa (m)", null));
+        label_tempo.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Tempo di percorrenza (minuti)", null));
         label.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Tipologia", null));
         label_inizio.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Inizio", null));
         label_fine.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_tappa", "Fine", null));

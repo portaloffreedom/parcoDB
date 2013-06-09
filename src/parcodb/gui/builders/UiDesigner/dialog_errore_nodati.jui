@@ -11,19 +11,19 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Errore nell'immisione</string>
+   <string>Errore</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QWidget" name="widget" native="true">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="label_errore">
         <property name="layoutDirection">
          <enum>com.trolltech.qt.core.Qt.LayoutDirection.LeftToRight</enum>
         </property>
         <property name="text">
-         <string>Errore nell'immissione dei dati! Forse manca qualcosa?</string>
+         <string/>
         </property>
        </widget>
       </item>

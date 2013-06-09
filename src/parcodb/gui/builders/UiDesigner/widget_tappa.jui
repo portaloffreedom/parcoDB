@@ -35,7 +35,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Lunghezza tappa</string>
+            <string>Lunghezza tappa (m)</string>
            </property>
           </widget>
          </item>
@@ -63,7 +63,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Tempo di percorrenza</string>
+            <string>Tempo di percorrenza (minuti)</string>
            </property>
           </widget>
          </item>
@@ -79,7 +79,7 @@
             <double>1.000000000000000</double>
            </property>
            <property name="maximum">
-            <double>1000.000000000000000</double>
+            <double>9999.000000000000000</double>
            </property>
            <property name="value">
             <double>1.000000000000000</double>

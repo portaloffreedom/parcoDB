@@ -17,7 +17,7 @@ abstract public class DatabaseConnector {
     protected String databseIPAddress;
     protected String databseAddress;
     protected int port;
-    
+    protected String databaseName;
     protected Connection con;
     
     //public DatabaseConnector(String databaseAddress,int port) throws ClassNotFoundException
@@ -26,15 +26,23 @@ abstract public class DatabaseConnector {
         this.port = port;
     }
     
+    public void setDBName(String name){
+        this.databaseName = name;
+        databseAddress = databseAddress+"/"+databaseName;
+    }
+    
     public DatabaseConnection connect(String username, String password) throws SQLException {
+        if (databaseName == null || databaseName.equals("")) {
+            setDBName("bdati");
+        }
         con = DriverManager.getConnection(databseAddress,username,password);
         return new DatabaseConnection(con);
     }
     
     abstract public DatabaseConnection connect() throws SQLException;
     
-    protected String genereteAddr(String databaseName) {
-        this.databseAddress = "jdbc:"+databaseName+"://"+databseIPAddress+':'+port+"/bdati";
+    protected String genereteAddr(String databasetype) {
+        this.databseAddress = "jdbc:"+databasetype+"://"+databseIPAddress+':'+port;
         return this.databseAddress;
     }
     

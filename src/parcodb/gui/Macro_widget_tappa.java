@@ -1,7 +1,6 @@
 package parcodb.gui;
 
 import com.trolltech.qt.gui.QListWidgetItem;
-import com.trolltech.qt.gui.QWidget;
 import java.util.ArrayList;
 import java.util.List;
 import parcodb.database.objects.Caratteristica;
@@ -23,7 +22,7 @@ public class Macro_widget_tappa extends Ui_widget_tappa implements Insertor{
         Tappa tappa = new Tappa((Zona)comboBox_inizio.itemData(comboBox_inizio.currentIndex()),
                 (Zona)comboBox_fine.itemData(comboBox_fine.currentIndex()), 
                 Float.parseFloat(lineEdit_lunghezza.text()),
-                Float.parseFloat(spinBox_tempo.textFromValue(spinBox_tempo.value())),
+                (float) spinBox_tempo.value(),
                 lineEdit_tipologia.text());
         List<QListWidgetItem> selezionati = list_interesse.selectedItems();
         listaritorno.add(0,tappa);
