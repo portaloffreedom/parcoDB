@@ -31,7 +31,9 @@ public class Monte extends Caratteristica {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Monte (nome, altitudine) VALUES ( ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement(
+                "INSERT INTO Monte (nome, altitudine) "
+                + "VALUES ( ? , ? );");
         
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);
@@ -41,7 +43,9 @@ public class Monte extends Caratteristica {
     }
     
     static public Monte[] getMonti(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, altitudine FROM Monte");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT nome, altitudine "
+                + "FROM Monte");
         
         ResultSet result = preparedStatement.executeQuery();
         
@@ -53,7 +57,8 @@ public class Monte extends Caratteristica {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getMonti() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getMonti() "
+                    + "è incongruo ("+i+','+DIM+')');
         
         return monti;
     }

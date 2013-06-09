@@ -32,12 +32,18 @@ class Appartiene implements RemoteDBobject {
     
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        if (comune == null)
-            throw new SQLException("Comune non impostato in \"Appartiene\"");
-        if (caratteristica == null)
-            throw new SQLException("Caratteristica non impostata in \"Appartiene\"");
         
-        PreparedStatement insertIntoZonaStatement = conn.prepareInsertStatement("INSERT INTO Appartiene (caratteristica, comune, provincia) VALUES ( ? , ? , ? );");
+        if (comune == null)
+            throw new SQLException("Comune non impostato in "
+                    + "\"Appartiene\"");
+        
+        if (caratteristica == null)
+            throw new SQLException("Caratteristica non impostata in "
+                    + "\"Appartiene\"");
+        
+        PreparedStatement insertIntoZonaStatement = conn.prepareInsertStatement(
+                "INSERT INTO Appartiene (caratteristica, comune, provincia) "
+                + "VALUES ( ? , ? , ? );");
         
         insertIntoZonaStatement.setString(1, caratteristica.getNome());
         insertIntoZonaStatement.setString(2, comune.getNome());

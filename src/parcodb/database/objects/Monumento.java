@@ -38,7 +38,9 @@ public class Monumento extends Struttura {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Monumento (nome, anno, descrizione) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement(
+                "INSERT INTO Monumento (nome, anno, descrizione) "
+                + "VALUES ( ? , ? , ? );");
         
         insertStatement.setString(1, nome);
         insertStatement.setInt(2, anno);
@@ -47,7 +49,10 @@ public class Monumento extends Struttura {
     }
     
     static public Monumento[] getMonumenti(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, anno, descrizione FROM Monumento ORDER BY nome");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT nome, anno, descrizione "
+                + "FROM Monumento "
+                + "ORDER BY nome");
         
         ResultSet result = preparedStatement.executeQuery();
         
@@ -70,7 +75,8 @@ public class Monumento extends Struttura {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getMonumento() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getMonumento() "
+                    + "è incongruo ("+i+','+DIM+')');
         
         return monumenti;
     }

@@ -38,7 +38,9 @@ public class Fiume extends Caratteristica {
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn);
-        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Fiume (nome, lunghezza, navigabile) VALUES ( ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement(
+                "INSERT INTO Fiume (nome, lunghezza, navigabile) "
+                + "VALUES ( ? , ? , ? );");
         
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);
@@ -49,7 +51,9 @@ public class Fiume extends Caratteristica {
     }
     
     static public Fiume[] getFiumi(DatabaseConnection conn) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, lunghezza, navigabile FROM Fiume");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT nome, lunghezza, navigabile "
+                + "FROM Fiume");
         
         ResultSet result = preparedStatement.executeQuery();
         
@@ -61,7 +65,8 @@ public class Fiume extends Caratteristica {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getFiumi() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getFiumi() "
+                    + "è incongruo ("+i+','+DIM+')');
         
         return fiumi;
     }

@@ -79,7 +79,9 @@ public class Struttura extends Zona {
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
         super.insertIntoDB(conn); //To change body of generated methods, choose Tools | Templates.
     
-        PreparedStatement insertStatement = conn.prepareInsertStatement("INSERT INTO Struttura (nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione) VALUES ( ? , ? , ? , ? , ? , ? );");
+        PreparedStatement insertStatement = conn.prepareInsertStatement(
+                "INSERT INTO Struttura (nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione) "
+                + "VALUES ( ? , ? , ? , ? , ? , ? );");
             
         insertStatement.clearParameters();
         insertStatement.setString(1, nome);
@@ -166,7 +168,8 @@ public class Struttura extends Zona {
         
         int DIM = DatabaseConnection.getResultDim(result);
         if (DIM != 1)
-            throw new SQLException("il numero di risultati di getStruttura(nome) è incongruo ( dovrebbe essere 1 , invece è "+DIM+')');
+            throw new SQLException("il numero di risultati di getStruttura(nome)"
+                    + " è incongruo ( dovrebbe essere 1 , invece è "+DIM+')');
     
         result.next();
         Struttura struttura = new Struttura(
@@ -182,7 +185,11 @@ public class Struttura extends Zona {
     }
     
     static public Struttura[] getStruttureInPaese(DatabaseConnection conn, Paese paese) throws SQLException {
-        PreparedStatement preparedStatement = conn.prepareQueryStatement("SELECT nome, indirizzo, orario_apertura, periodo_inizio, periodo_fine, localizzazione FROM Struttura WHERE localizzazione = ? ");
+        PreparedStatement preparedStatement = conn.prepareQueryStatement(
+                "SELECT nome, indirizzo, orario_apertura, periodo_inizio, "
+                + "periodo_fine, localizzazione "
+                + "FROM Struttura "
+                + "WHERE localizzazione = ? ");
         preparedStatement.setString(1, paese.nome);
         
         ResultSet result = preparedStatement.executeQuery();
@@ -203,7 +210,8 @@ public class Struttura extends Zona {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getStruttureInPaese(paese) è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di "
+                    + "getStruttureInPaese(paese) è incongruo ("+i+','+DIM+')');
         
         return strutture;
     }

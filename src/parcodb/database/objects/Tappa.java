@@ -95,7 +95,8 @@ public class Tappa implements RemoteDBobject {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di "+nomeFunzione+" è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di " + nomeFunzione
+                    + " è incongruo ("+i+','+DIM+')');
         
         return tappe;
     }

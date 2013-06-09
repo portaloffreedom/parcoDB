@@ -26,7 +26,9 @@ public class Zona implements RemoteDBobject {
     
     @Override
     public void insertIntoDB(DatabaseConnection conn) throws SQLException {
-        PreparedStatement insertIntoZonaStatement = conn.prepareInsertStatement("INSERT INTO Zona (nome) VALUES ( ? );");
+        PreparedStatement insertIntoZonaStatement = conn.prepareInsertStatement(
+                "INSERT INTO Zona (nome) "
+                + "VALUES ( ? );");
         
         insertIntoZonaStatement.setString(1, nome);
         
@@ -49,7 +51,8 @@ public class Zona implements RemoteDBobject {
         }
         
         if (i != DIM)
-            throw new SQLException("il numero di risultati di getZone() è incongruo ("+i+','+DIM+')');
+            throw new SQLException("il numero di risultati di getZone() "
+                                 + "è incongruo ("+i+','+DIM+')');
         
         return zone;
     }
