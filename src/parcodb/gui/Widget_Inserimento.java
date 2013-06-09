@@ -69,7 +69,7 @@ public class Widget_Inserimento extends Widget_Centrale
         } catch (SQLException ex) {
             Logger.getLogger(Widget_Inserimento.class.getName()).log(Level.SEVERE, null, ex);
         }
-        strut_com.select_struttura_specific();
+        strut_com.combo_tipo.setCurrentIndex(0);
         active = strut_com;
     }
     

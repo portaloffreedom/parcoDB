@@ -34,7 +34,7 @@ public class Ui_widget_albergo implements com.trolltech.qt.QUiForm<QWidget>
     public void setupUi(QWidget widget_albergo)
     {
         widget_albergo.setObjectName("widget_albergo");
-        widget_albergo.resize(new QSize(543, 185).expandedTo(widget_albergo.minimumSizeHint()));
+        widget_albergo.resize(new QSize(543, 201).expandedTo(widget_albergo.minimumSizeHint()));
         QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Minimum, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
         sizePolicy.setHorizontalStretch((byte)0);
         sizePolicy.setVerticalStretch((byte)0);

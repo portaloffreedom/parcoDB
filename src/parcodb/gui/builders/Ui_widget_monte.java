@@ -50,6 +50,8 @@ public class Ui_widget_monte implements com.trolltech.qt.QUiForm<QWidget>
 
         spinBox_altitudine = new QDoubleSpinBox(widget);
         spinBox_altitudine.setObjectName("spinBox_altitudine");
+        spinBox_altitudine.setMinimum(1);
+        spinBox_altitudine.setMaximum(9999.99);
 
         horizontalLayout_2.addWidget(spinBox_altitudine);
 

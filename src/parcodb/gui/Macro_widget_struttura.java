@@ -44,7 +44,7 @@ public class Macro_widget_struttura extends Ui_struttura_common implements Inser
         monumento = new Ui_widget_monumento();
         infopoint = new Ui_widget_infopoint();
         impianti = new Micro_widget_impianti();
-        this.combo_tipo.setCurrentIndex(0);
+        this.combo_tipo.setCurrentIndex(-1);
         this.combo_tipo.currentIndexChanged.connect(this, "select_struttura_specific()");
     }
     
