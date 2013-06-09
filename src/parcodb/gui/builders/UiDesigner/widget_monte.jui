@@ -38,7 +38,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Altitudine</string>
+         <string>Altitudine (m)</string>
         </property>
        </widget>
       </item>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>548</width>
-    <height>167</height>
+    <width>594</width>
+    <height>244</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -126,10 +126,57 @@
          </sizepolicy>
         </property>
         <property name="inputMethodHints">
-         <set>com.trolltech.qt.core.Qt.InputMethodHint.ImhNone</set>
+         <set>com.trolltech.qt.core.Qt.InputMethodHint.ImhHiddenText</set>
         </property>
         <property name="echoMode">
          <enum>com.trolltech.qt.gui.QLineEdit.EchoMode.Password</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget_4" native="true">
+     <property name="layoutDirection">
+      <enum>com.trolltech.qt.core.Qt.LayoutDirection.LeftToRight</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="layoutDirection">
+         <enum>com.trolltech.qt.core.Qt.LayoutDirection.RightToLeft</enum>
+        </property>
+        <property name="text">
+         <string>Nome Database</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_nomeDB">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string/>
+        </property>
+        <property name="inputMethodHints">
+         <set>com.trolltech.qt.core.Qt.InputMethodHint.ImhNone</set>
+        </property>
+        <property name="text">
+         <string>bdati</string>
+        </property>
+        <property name="echoMode">
+         <enum>com.trolltech.qt.gui.QLineEdit.EchoMode.Normal</enum>
         </property>
        </widget>
       </item>

@@ -74,7 +74,7 @@ public class Ui_widget_lago implements com.trolltech.qt.QUiForm<QWidget>
     void retranslateUi(QWidget widget_lago)
     {
         widget_lago.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("widget_lago", "Form", null));
-        label.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_lago", "Estensione", null));
+        label.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_lago", "Estensione (km\u00b2)", null));
     } // retranslateUi
 
 }

@@ -26,6 +26,7 @@ import parcodb.database.objects.Struttura;
 import parcodb.database.objects.Tappa;
 import parcodb.database.objects.Zona;
 import parcodb.gui.builders.Ui_Dialog_connetti;
+import parcodb.gui.builders.Ui_Dialog_errore_nodati;
 import parcodb.gui.builders.Ui_MainWindow;
 
 /**
@@ -34,18 +35,23 @@ import parcodb.gui.builders.Ui_MainWindow;
  */
 public class MainGUI {
     static Ui_MainWindow MAINUI = new Ui_MainWindow();
-    private Widget_Centrale widget_centrale;
+    static String TITOLO_FINESTRA="Informaparchi";
+    
     public QMainWindow qMainWindow;
     public DatabaseConnection conn;
+    
+    private Widget_Centrale widget_centrale;
     private Ui_Dialog_connetti dial_conn;
-    private QDialog connector;
-    static String TITOLO_FINESTRA="Informaparchi";
+    private Ui_Dialog_errore_nodati dial_err = new Ui_Dialog_errore_nodati();
+    private QDialog connector,dial_err_dialog;
+    
     
     public MainGUI(String[] args) {
         QApplication.initialize(args);
         
         //inizilizzazione grafica dei widget personalizzati.
         dial_conn = new Ui_Dialog_connetti();
+        dial_err_dialog = new QDialog(qMainWindow);
         qMainWindow = new QMainWindow();
     }
     
@@ -81,12 +87,15 @@ public class MainGUI {
         dial_conn.bottone_connetti.setText("Connetti");
         dial_conn.bottone_connetti.clicked.disconnect();
         dial_conn.bottone_connetti.clicked.connect(this, "connect()");
-        dial_conn.lineEdit_indirizzo.setEnabled(true);
-        dial_conn.lineEdit_porta.setEnabled(true);
+        dial_conn.widget.setEnabled(true);
         statusMessage("Disconnesso");
     }
     
     private void connect(){
+        dial_conn.widget.setEnabled(false);
+        dial_conn.widget_2.setEnabled(false);
+        dial_conn.widget_3.setEnabled(false);
+        dial_conn.widget_4.setEnabled(false);
         String indirizzo = dial_conn.lineEdit_indirizzo.text();
         int porta = Integer.decode(dial_conn.lineEdit_porta.text());
         
@@ -98,19 +107,22 @@ public class MainGUI {
             
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[1] Driver Loaded");
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[2] Connecting...");
-            
+            database.setDBName(dial_conn.lineEdit_nomeDB.text());
             conn = database.connect(dial_conn.lineEdit_username.text(), dial_conn.lineEdit_password.text());
             
             Logger.getLogger(ParcoDB.class.getName()).log(Level.INFO,"[2] Connected");
         } catch (SQLException | ClassNotFoundException ex) {
+            dial_conn.widget.setEnabled(true);
+            showErrorDialog(ex.getMessage());
             databaseError();
             Logger.getLogger(ParcoDB.class.getName()).log(Level.SEVERE, null, ex);
             return;
+        } finally {
+            dial_conn.widget_2.setEnabled(true);
+            dial_conn.widget_3.setEnabled(true);
+            dial_conn.widget_4.setEnabled(true);
         }
-        
         dial_conn.bottone_connetti.setText("Disconnetti");
-        dial_conn.lineEdit_indirizzo.setEnabled(false);
-        dial_conn.lineEdit_porta.setEnabled(false);
         dial_conn.bottone_connetti.clicked.disconnect();
         dial_conn.bottone_connetti.clicked.connect(this, "disconnect()");
         dial_conn.bottone_annulla.clicked.emit(Boolean.TRUE);
@@ -266,6 +278,15 @@ public class MainGUI {
     
     public void exec() {
         QApplication.exec();
+    }
+    
+    public void showErrorDialog(String messaggio){
+        if(dial_err_dialog != null){
+            dial_err_dialog = new QDialog(qMainWindow);
+        }
+        dial_err.setupUi(dial_err_dialog);
+        dial_err.label_errore.setText(messaggio);
+        dial_err_dialog.show();
     }
     
     public static void statusMessage(String messaggio){

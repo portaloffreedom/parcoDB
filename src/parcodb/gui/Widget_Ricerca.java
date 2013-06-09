@@ -56,6 +56,7 @@ public class Widget_Ricerca extends Widget_Centrale{
     public void setupUi(QWidget widget_ricerca){
         super.setupUi(widget_ricerca);
         ric_com.setupUi(this.widget_common);
+        bottone_inserisci.hide();
         hideSpecial();
         
     }
@@ -166,11 +167,6 @@ public class Widget_Ricerca extends Widget_Centrale{
             MainGUI.statusMessage(messaggio);
         }
         hideSpecial();
-    }
-
-    @Override
-    protected void showdialog() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -386,13 +382,13 @@ public class Widget_Ricerca extends Widget_Centrale{
             car_com.combo_tipo.setCurrentIndex(3);
             car_com.paese_wdg.lineEdit_cap.setText(Integer.toString(paese.getCAP()));
             car_com.paese_wdg.spinBox_abitanti.setValue(paese.getAbitanti());
+            ric_com.listWidget_special.clear();
             try {
                 maiunui.popolaIinizativeVicine(paese,ric_com.listWidget_special);
             } catch (SQLException ex) {
                 Logger.getLogger(Widget_Ricerca.class.getName()).log(Level.SEVERE, null, ex);
             }
             ric_com.label_special.setText("Iniziative: ");
-            ric_com.listWidget_special.clear();
             ric_com.listWidget_special.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection);
             ric_com.widget_special.show();
             enable_car_specific(false, 3);

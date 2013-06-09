@@ -38,7 +38,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Estensione</string>
+         <string>Estensione (km²)</string>
         </property>
        </widget>
       </item>

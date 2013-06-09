@@ -63,7 +63,6 @@ public abstract class Widget_Centrale extends parcodb.gui.builders.Ui_widget_ins
      * Funzioni che vengono chiamate dai click di alcuni bottoni
      * Tutti segnali astratti da fare implementare poi ai widget specifici
      */
-    abstract void showdialog();
     
     abstract void set_caratteristica();
         

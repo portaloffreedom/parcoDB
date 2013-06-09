@@ -1,11 +1,9 @@
 package parcodb.gui;
 
-import com.trolltech.qt.gui.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import parcodb.database.objects.RemoteDBobject;
-import parcodb.gui.builders.*;
 
 public class Widget_Inserimento extends Widget_Centrale
 {
@@ -15,14 +13,11 @@ public class Widget_Inserimento extends Widget_Centrale
     private Macro_widget_tappa tappa_com;
     private Macro_widget_sentieri sentiero_com;
     private Macro_widget_comune comune_com;
-    
-    private Ui_Dialog_errore_nodati dialog_errore_nodati;
     private Insertor active;
     
     public Widget_Inserimento(MainGUI mainui)
     {
         super(mainui);
-        dialog_errore_nodati = new parcodb.gui.builders.Ui_Dialog_errore_nodati();
         strut_com = new Macro_widget_struttura();
         car_com = new Macro_widget_caratteristica();        
         ini_com = new Macro_widget_iniziativa();
@@ -32,12 +27,6 @@ public class Widget_Inserimento extends Widget_Centrale
     }
     
     //Funzioni che vengono chiamate dai click di alcuni bottoni
-    @Override
-    public void showdialog(){
-        QDialog dialog = new QDialog(qMainWindow);
-        dialog_errore_nodati.setupUi(dialog);
-        dialog.show();
-    }
     
     @Override
     protected void set_signals(){
@@ -131,7 +120,8 @@ public class Widget_Inserimento extends Widget_Centrale
             }
         } catch (SQLException ex) {
             Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
-            messaggio = "Errore nell'inserimento dei dati. Forse manca qualcosa?";
+            messaggio = "Errore nell'inserimento dei dati.";
+            maiunui.showErrorDialog(ex.getMessage());
         } finally {
             MainGUI.statusMessage(messaggio);
         }

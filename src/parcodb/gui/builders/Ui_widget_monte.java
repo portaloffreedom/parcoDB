@@ -70,7 +70,7 @@ public class Ui_widget_monte implements com.trolltech.qt.QUiForm<QWidget>
     void retranslateUi(QWidget widget_monte)
     {
         widget_monte.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("widget_monte", "Form", null));
-        label_altitudine.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_monte", "Altitudine", null));
+        label_altitudine.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_monte", "Altitudine (m)", null));
     } // retranslateUi
 
 }

@@ -102,14 +102,14 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Tempo</string>
+            <string>Tempo (minuti)</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QDoubleSpinBox" name="doubleSpinBox">
            <property name="maximum">
-            <double>1000.000000000000000</double>
+            <double>99999.000000000000000</double>
            </property>
           </widget>
          </item>
@@ -131,7 +131,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Lunghezza</string>
+            <string>Lunghezza (m)</string>
            </property>
           </widget>
          </item>

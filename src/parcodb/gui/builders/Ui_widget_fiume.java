@@ -28,7 +28,7 @@ public class Ui_widget_fiume implements com.trolltech.qt.QUiForm<QWidget>
     public void setupUi(QWidget widget_fiume)
     {
         widget_fiume.setObjectName("widget_fiume");
-        widget_fiume.resize(new QSize(261, 293).expandedTo(widget_fiume.minimumSizeHint()));
+        widget_fiume.resize(new QSize(484, 237).expandedTo(widget_fiume.minimumSizeHint()));
         QSizePolicy sizePolicy = new QSizePolicy(com.trolltech.qt.gui.QSizePolicy.Policy.Maximum, com.trolltech.qt.gui.QSizePolicy.Policy.Preferred);
         sizePolicy.setHorizontalStretch((byte)0);
         sizePolicy.setVerticalStretch((byte)0);
@@ -105,7 +105,7 @@ public class Ui_widget_fiume implements com.trolltech.qt.QUiForm<QWidget>
     void retranslateUi(QWidget widget_fiume)
     {
         widget_fiume.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("widget_fiume", "Form", null));
-        label_lunghezza.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_fiume", "Lunghezza", null));
+        label_lunghezza.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_fiume", "Lunghezza (m)", null));
         checkBox_navigabile.setText(com.trolltech.qt.core.QCoreApplication.translate("widget_fiume", "Navigabile", null));
     } // retranslateUi
 

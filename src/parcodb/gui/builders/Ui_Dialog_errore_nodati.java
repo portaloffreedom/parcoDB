@@ -15,7 +15,7 @@ public class Ui_Dialog_errore_nodati implements com.trolltech.qt.QUiForm<QDialog
     public QVBoxLayout verticalLayout_2;
     public QWidget widget;
     public QVBoxLayout verticalLayout;
-    public QLabel label;
+    public QLabel label_errore;
     public QPushButton pushButton;
 
     public Ui_Dialog_errore_nodati() { super(); }
@@ -30,11 +30,11 @@ public class Ui_Dialog_errore_nodati implements com.trolltech.qt.QUiForm<QDialog
         widget.setObjectName("widget");
         verticalLayout = new QVBoxLayout(widget);
         verticalLayout.setObjectName("verticalLayout");
-        label = new QLabel(widget);
-        label.setObjectName("label");
-        label.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.LeftToRight);
+        label_errore = new QLabel(widget);
+        label_errore.setObjectName("label_errore");
+        label_errore.setLayoutDirection(com.trolltech.qt.core.Qt.LayoutDirection.LeftToRight);
 
-        verticalLayout.addWidget(label);
+        verticalLayout.addWidget(label_errore);
 
 
         verticalLayout_2.addWidget(widget);
@@ -55,8 +55,8 @@ public class Ui_Dialog_errore_nodati implements com.trolltech.qt.QUiForm<QDialog
 
     void retranslateUi(QDialog Dialog_errore_nodati)
     {
-        Dialog_errore_nodati.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("Dialog_errore_nodati", "Errore nell'immisione", null));
-        label.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog_errore_nodati", "Errore nell'immissione dei dati! Forse manca qualcosa?", null));
+        Dialog_errore_nodati.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("Dialog_errore_nodati", "Errore", null));
+        label_errore.setText("");
         pushButton.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog_errore_nodati", "OK", null));
     } // retranslateUi
 
