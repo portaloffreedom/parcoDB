@@ -252,7 +252,7 @@ public class Widget_Ricerca extends Widget_Centrale{
             Logger.getLogger(Widget_Ricerca.class.getName()).log(Level.SEVERE, null, ex);
         }
         int index = tappa_com.comboBox_inizio.findText(selezionato.getInizio().getNome());
-        tappa_com.comboBox_fine.setCurrentIndex(index);
+        tappa_com.comboBox_inizio.setCurrentIndex(index);
         index = tappa_com.comboBox_fine.findText(selezionato.getFine().getNome());
         tappa_com.comboBox_fine.setCurrentIndex(index);
         tappa_com.lineEdit_lunghezza.setText(Float.toString(selezionato.getLunghezza()));
