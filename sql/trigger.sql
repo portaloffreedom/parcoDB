@@ -22,6 +22,28 @@ CREATE TRIGGER numero_tappe AFTER INSERT ON Composto
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 -- Trigger che fa fallire se la sequenza delle tappe non è rispettata
+
+CREATE OR REPLACE FUNCTION update_sentiero(_sentiero int) RETURNS boolean
+AS $update_sentiero$
+  BEGIN
+    UPDATE Sentiero
+    SET (lunghezza,tempo) = (
+        (SELECT SUM(Tappa.lunghezza) FROM Tappa,Composto
+            WHERE Composto.sentiero = _sentiero 
+            AND Composto.inizio = Tappa.inizio
+            AND Composto.fine = Tappa.fine),
+        (SELECT SUM(Tappa.tempo) FROM Tappa,Composto
+            WHERE Composto.sentiero = _sentiero
+            AND Composto.inizio = Tappa.inizio
+            AND Composto.fine = Tappa.fine)
+        )
+    WHERE Sentiero.numero_sentiero=_sentiero;
+    RETURN TRUE;
+  END;
+$update_sentiero$ LANGUAGE plpgsql
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
 CREATE OR REPLACE FUNCTION seq_sent_proc_trig() RETURNS trigger AS $seq_sent_proc_trig$ 
   DECLARE
     _fine CHARACTER(64) := 0;
@@ -58,7 +80,7 @@ CREATE OR REPLACE FUNCTION seq_sent_proc_trig() RETURNS trigger AS $seq_sent_pro
         SELECT INTO contatoreTappe COUNT(*)
             FROM Composto
             WHERE sentiero = OLD.sentiero;
-        IF (OLD.numero_tappa != contatoreTappe+1) THEN
+        IF (OLD.numero_tappa != contatoreTappe) THEN
             raise exception 'puoi cancellare solo l`ultima tappa del sentiero';
         END IF;
         RETURN OLD;
@@ -128,27 +150,6 @@ $lunghezza_sentiero_ins_upd_tappa$ LANGUAGE plpgsql;
 
 CREATE TRIGGER lunghezza_sentiero_tappa after INSERT OR UPDATE ON Tappa
   FOR each ROW EXECUTE PROCEDURE lunghezza_sentiero_ins_upd_tappa();
-
--- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-
-CREATE OR REPLACE FUNCTION update_sentiero(_sentiero int) RETURNS boolean
-AS $update_sentiero$
-  BEGIN
-    UPDATE Sentiero
-    SET (lunghezza,tempo) = (
-        (SELECT SUM(Tappa.lunghezza) FROM Tappa,Composto
-            WHERE Composto.sentiero = _sentiero 
-            AND Composto.inizio = Tappa.inizio
-            AND Composto.fine = Tappa.fine),
-        (SELECT SUM(Tappa.tempo) FROM Tappa,Composto
-            WHERE Composto.sentiero = _sentiero
-            AND Composto.inizio = Tappa.inizio
-            AND Composto.fine = Tappa.fine)
-        )
-    WHERE Sentiero.numero_sentiero=_sentiero;
-    RETURN TRUE;
-  END;
-$update_sentiero$ LANGUAGE plpgsql
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 -- Trigger che controlla che il valore di difficoltà del sentiero sia compreso
