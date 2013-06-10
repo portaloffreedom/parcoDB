@@ -40,7 +40,7 @@ AS $update_sentiero$
     WHERE Sentiero.numero_sentiero=_sentiero;
     RETURN TRUE;
   END;
-$update_sentiero$ LANGUAGE plpgsql
+$update_sentiero$ LANGUAGE plpgsql;
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -167,6 +167,6 @@ CREATE OR REPLACE FUNCTION difficolta_sentiero_ins_upd() RETURNS trigger AS $dif
 $difficolta_sentiero_ins_upd$ LANGUAGE plpgsql;
 
 CREATE TRIGGER difficolta_sentiero AFTER INSERT OR UPDATE ON sentiero 
-  FOR EACH ROW EXECUTE PROCEDURE difficolta_sentiero_ins_upd()
+  FOR EACH ROW EXECUTE PROCEDURE difficolta_sentiero_ins_upd();
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
